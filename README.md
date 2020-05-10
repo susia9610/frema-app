@@ -1,4 +1,3 @@
-## Readme
 # frema_70c DB設計
 
 ## usersテーブル
@@ -126,3 +125,4 @@
 
 ### Association
 - has_many :items
+
