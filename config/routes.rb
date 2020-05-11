@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  #devise_for :users
   $date = Time.now.in_time_zone('Tokyo').to_s
   root "items#index"
   resources :items do
