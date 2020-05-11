@@ -10,15 +10,10 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer  :birth_month       , null: false
       t.integer  :birth_day         , null: false
       t.string   :tel_number        , null: false
-<<<<<<< Updated upstream
       t.text     :introduction
       t.string   :email             , null: false, default: ""
       t.string   :encrypted_password, null: false, default: ""
       t.string   :password_confirmation, null: false, default: ""
-=======
-      t.string   :email             , null: false, default: ""
-      t.string   :encrypted_password, null: false, default: ""
->>>>>>> Stashed changes
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
       t.datetime :remember_created_at
@@ -28,9 +23,3 @@ class CreateUsers < ActiveRecord::Migration[5.2]
     add_index :users, :reset_password_token, unique: true
   end
 end
-<<<<<<< Updated upstream
-=======
-    end
-  end
-end
->>>>>>> Stashed changes
