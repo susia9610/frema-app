@@ -1,0 +1,31 @@
+- contents = ["マイページ"  ,"出品する","会員情報変更","住所変更","カード情報照会・削除","ログアウト"]
+- links    = [user_path(1),new_item_path,root_path,root_path,root_path,destroy_user_session_path]
+- method   = ["get"       ,"get"           ,"get"          ,"get"          ,"get"       ,"delete"]
+
+= render "layouts/header"
+.show-users-wrapper
+  .show-users-wrapper__center
+    .show-users-wrapper__center__left-content
+      - contents.each.with_index(0) do |content,i|
+        = link_to links[i], method: method[i],class: "show-users-wrapper__center__left-content__box" do
+          = content
+    .show-users-wrapper__center__right-content
+      = image_tag "https://i.gyazo.com/4df8e0219cb8f56f8b95df121f3dda86.jpg", class:"show-users-wrapper__center__right-content__image"
+      = image_tag "https://i.gyazo.com/744692893080cea9439107aa6279c07f.png", class:"show-users-wrapper__center__right-content__user-image"
+      .show-users-wrapper__center__right-content__user-name
+        フリマ太郎
+        %div
+          評価12
+          出品20
+      .show-users-wrapper__center__right-content__title-wrapper
+        .show-users-wrapper__center__right-content__title-wrapper__title.active
+          お知らせ
+        .show-users-wrapper__center__right-content__title-wrapper__title
+          やることリスト
+      .show-users-wrapper__center__right-content__contents
+        事務局からの個別メッセージ（FaceBook通知)
+      .show-users-wrapper__center__right-content__contents
+        事務局からの個別メッセージ「500円分ポイントが届きました！」
+      .show-users-wrapper__center__right-content__view-list
+        一覧を見る
+= render "layouts/footer"
