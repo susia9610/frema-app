@@ -1,26 +1,8 @@
-<<<<<<< HEAD
-/*
-	TODO will need to remove settings on HTML since we can't namespace it.
-	TODO with the prefix, should I group by selector or property for weight savings?
-*/
-html{
-	color:#000;
-	background:#FFF;
-}
-/*
-	TODO remove settings on BODY since we can't namespace it.
-*/
-/*
-	TODO test putting a class on HEAD.
-		- Fails on FF.
-*/
-=======
 html{
    color:#000;
    background:#FFF;
 }
 
->>>>>>> origin
 body,
 div,
 dl,
@@ -46,22 +28,6 @@ p,
 blockquote,
 th,
 td {
-<<<<<<< HEAD
-	margin:0;
-	padding:0;
-}
-table {
-	border-collapse:collapse;
-	border-spacing:0;
-}
-fieldset,
-img {
-	border:0;
-}
-/*
-	TODO think about hanlding inheritence differently, maybe letting IE6 fail a bit...
-*/
-=======
    margin:0;
    padding:0;
 }
@@ -74,7 +40,6 @@ img {
    border:0;
 }
 
->>>>>>> origin
 address,
 caption,
 cite,
@@ -84,31 +49,18 @@ em,
 strong,
 th,
 var {
-<<<<<<< HEAD
-	font-style:normal;
-	font-weight:normal;
-=======
    font-style:normal;
    font-weight:normal;
->>>>>>> origin
 }
 
 ol,
 ul {
-<<<<<<< HEAD
-	list-style:none;
-=======
    list-style:none;
->>>>>>> origin
 }
 
 caption,
 th {
-<<<<<<< HEAD
-	text-align:left;
-=======
    text-align:left;
->>>>>>> origin
 }
 h1,
 h2,
@@ -116,26 +68,6 @@ h3,
 h4,
 h5,
 h6 {
-<<<<<<< HEAD
-	font-size:100%;
-	font-weight:normal;
-}
-q:before,
-q:after {
-	content:'';
-}
-abbr,
-acronym {
-	border:0;
-	font-variant:normal;
-}
-/* to preserve line-height and selector appearance */
-sup {
-	vertical-align:text-top;
-}
-sub {
-	vertical-align:text-bottom;
-=======
    font-size:100%;
    font-weight:normal;
 }
@@ -154,22 +86,10 @@ sup {
 }
 sub {
    vertical-align:text-bottom;
->>>>>>> origin
 }
 input,
 textarea,
 select {
-<<<<<<< HEAD
-	font-family:inherit;
-	font-size:inherit;
-	font-weight:inherit;
-	*font-size:100%; /*to enable resizing for IE*/
-}
-/*because legend doesn't inherit in IE */
-legend {
-	color:#000;
-}
-=======
    font-family:inherit;
    font-size:inherit;
    font-weight:inherit;
@@ -186,4 +106,3 @@ legend {
 }
 
 #yui3-css-stamp.cssreset { display: none; }
->>>>>>> origin
