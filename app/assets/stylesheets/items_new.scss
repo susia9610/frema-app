@@ -103,10 +103,10 @@
       }
     }
     .froat-left{
-      // float: left;
+      float: left;
     }
     .float-right{
-      // float: right;
+      float: right;
     }
     &__submit{
       border-radius: 4px;
@@ -125,5 +125,16 @@
       font-size: 12px;
       padding: 20px;
     }
+    &__create{
+      font-weight: bold;
+      text-align: center;
+      font-size: 20px;
+      .link-blue{
+        color: $frema;
+        text-decoration: none;
+      }
+    }
   }
 }
+
+    
