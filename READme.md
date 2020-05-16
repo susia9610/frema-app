@@ -39,7 +39,7 @@ add_index: [:nickname, :email]
 |local|string|null: false|
 |local_number|string|null: false|
 |building|string|null: false|
-|tel_number|integer||
+|tel_number|string||
 |user_id|integer|null: false,foreign_key:true|
 
 ### Association
