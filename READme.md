@@ -53,11 +53,8 @@ add_index: [:prefecture, :user_id]
 
 |Column|Type|Options|
 |------|----|-------|
-|card_number|integer|null: false|
-|CVC|integer|null: false|
-|limit_year|integer|null: false|
-|limit_month|integer|null: false|
-|name|string|null: false|
+|customer_id|string||
+|card_id|string||
 |user_id|integer|null: false,foreign_key:true|
 
 ### Association
