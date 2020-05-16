@@ -1,0 +1,31 @@
+#request{action: request.path}
+.header
+  .header__top
+    = link_to root_path do
+      %i{class: "fab fa-pagelines"}
+      %span{class: "header__top__logo"}
+        Frema
+    %input{class: "header__top__input", id: "serch-box", placeholder: "何かお探しですか？"}
+  .header__bottom
+    %ul
+      %li
+        %i{class: "fas fa-list"}
+        カテゴリーから探す
+      %li
+        %i{class: "fas fa-tags"}
+        ブランドから探す
+      %li
+        %i{class: "fas fa-bell"}
+        お知らせ
+      %li
+        %i{class: "fas fa-check"}
+        やることリスト
+      %li
+        - if user_signed_in?
+          = link_to user_path(current_user) do
+            %i{class: "fas fa-smile"}
+            マイページ
+        - else
+          = link_to new_user_session_path do
+            %i{class: "fas fa-smile"}
+            ログイン/新規会員登録

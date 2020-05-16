@@ -1,0 +1,14 @@
+.new_session-wrapper
+  .new_session-wrapper__logo
+    = link_to root_path do
+      %i{class: "fab fa-pagelines"}
+      %span{class: "new_session-wrapper__logo__text"}
+        Frema
+  .new_session-wrapper__main
+    アカウントをお持ちでない方はこちら
+    = link_to new_user_users_path, class: "new_session-wrapper__main__btn" do
+      新規会員登録
+  .new_session-wrapper__main
+    %input{class: "new_session-wrapper__main__text",placeholder: "メールアドレス"}
+    %input{class: "new_session-wrapper__main__text",placeholder: "パスワード"}
+    %input{type:"submit", class: "new_session-wrapper__main__btn", value: "ログイン"}

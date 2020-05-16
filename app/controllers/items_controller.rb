@@ -1,11 +1,29 @@
 class ItemsController < ApplicationController
-before_action :set_item, only: [:show, :edit, :update]
-
+  
+  def index
+    
+  end
+  
   def new
+
+  end
+    
+  def create
+    
   end
 
-  private
-  def set_item
-    @item = Item.find(params[:id])
+  def edit
+
+  end  
+
+  def update
+   
   end
-end
+
+  def destroy
+   
+  end
+  
+  def show
+    
+  end

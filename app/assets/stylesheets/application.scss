@@ -1,7 +1,46 @@
+$frema: #3CCACE;
+
 @import "reset";
-@import "colors";
+@import "config/colors";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
 @import "users";
 @import "items";
 @import "items_new";
+@import "users_show";
+@import "items_index";
+@import "modules/flash";
+
+*{
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  color: #333;
+}
+
+
+body{
+  padding: 0;
+  margin: 0;
+}
+
+a{
+  text-decoration: none;
+  color: #333;
+  &:hover{
+    text-decoration: underline;
+    opacity: 0.5;
+  }
+}
+
+.link-blue{
+  color: #62A6E6;
+}
+
+h1,h2,h3,h4,h5{
+  margin: 0;
+}
+
+li{
+  list-style: none;
+}

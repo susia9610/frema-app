@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_09_140847) do
+ActiveRecord::Schema.define(version: 2020_05_11_022422) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "postal_code", null: false
+    t.string "post_number", null: false
     t.string "prefecture", null: false
     t.string "local", null: false
     t.string "local_number", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_05_09_140847) do
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "image", null: false
+    t.string "url", null: false
     t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -37,12 +37,12 @@ ActiveRecord::Schema.define(version: 2020_05_09_140847) do
     t.text "description", null: false
     t.string "category", null: false
     t.string "brand", null: false
-    t.string "size"
     t.string "condition", null: false
-    t.string "postage", null: false
     t.string "prefecture", null: false
-    t.integer "shipping_days", null: false
+    t.string "size"
     t.integer "price", null: false
+    t.integer "shipping_days", null: false
+    t.string "postage", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 2020_05_09_140847) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "password_confirmation", default: "", null: false
+    t.text "introduction"
+    t.string "user_image"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
