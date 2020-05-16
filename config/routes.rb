@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
   }
   $date = Time.now.in_time_zone('Tokyo').to_s
-  root "items#index"
+  root "users#show"
   resources :items do
     # 以下はビュー表示用の仮アクション
     collection do
