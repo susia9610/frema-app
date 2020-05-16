@@ -12,7 +12,7 @@
 |birthday_year|integer|null: false|
 |birthday_month|integer|null: false|
 |birthday_day|integer|null: false|
-|tel_number|integer|null: false|
+|tel_number|string|null: false|
 |email|string|null: false|
 |encrypted_password|string|null: false|
 |password_confirmation|string|null: false|
