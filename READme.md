@@ -17,7 +17,6 @@
 |encrypted_password|string|null: false|
 |password_confirmation|string|null: false|
 |introduction|text||
-|user_image|string||
 
 ### Association
 - has_many :items,dependent: :destroy
