@@ -94,7 +94,6 @@ add_index: [:user_id, :item_id]
 |user_id|integer|null: false,foreign_key:true|
 |category_id|integer|null: false,foreign_key:true|
 |brand_id|integer|null: false,foreign_key:true|
-|prefecture_id|integer|null: false|
 
 ### Association
 - belongs_to :user
