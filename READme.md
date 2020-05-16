@@ -16,7 +16,6 @@
 |email|string|null: false|
 |encrypted_password|string|null: false|
 |password_confirmation|string|null: false|
-|introduction|text||
 
 ### Association
 - has_many :items,dependent: :destroy
