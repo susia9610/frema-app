@@ -16,7 +16,7 @@
     .new-wrapper__main__title
       商品名
       %span.require 必須
-    %input{class: "new-wrapper__main__input-text", placeholder: "４０文字まで"}
+    %input.new-wrapper__main__input-text{placeholder: "４０文字まで"}
     .new-wrapper__main__title.spacing
       商品の説明
       %span.require 必須
@@ -35,7 +35,7 @@
     .new-wrapper__main__title.spacing
       ブランド
       %span.require 必須
-    %input{class: "new-wrapper__main__input-text", placeholder: "例) シャネル"}
+    %input.new-wrapper__main__input-text{placeholder: "例) シャネル"}
     .new-wrapper__main__title.spacing
       サイズ
       %span.any 任意
@@ -84,10 +84,10 @@
       %sapn.require 必須
     .new-wrapper__main__input-price.froat-right
       ¥
-      %input{class: "new-wrapper__main__input-price__input", placeholder: 0}
+      %input.new-wrapper__main__input-price__input{placeholder: 0}
     .spacing
     .spacing
-    %input{type: "submit", value: "出品する", class: "new-wrapper__main__submit"}
+    %input.new-wrapper__main__submit{type: "submit", value: "出品する"}
     .new-wrapper__main__caution
       禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
 -# = render "layouts/footer"
