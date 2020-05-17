@@ -62,11 +62,16 @@
     padding: 20px;
     margin: 0 auto;
     margin-bottom: 1px;
-    background-color: white;
+    background-color: white;      
     &__head{
       text-align: center;
       font-size: 22px;
       font-weight: bold;
+      display: block;      
+    }
+    &__sentence{
+      text-align: center;
+      display: block;
     }
     &__btn{
       width: 300px;
