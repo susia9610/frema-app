@@ -10,7 +10,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer  :birth_month       , null: false
       t.integer  :birth_day         , null: false
       t.string   :tel_number        , null: false
-      t.text     :introduction
       t.string   :email             , null: false, default: ""
       t.string   :encrypted_password, null: false, default: ""
       t.string   :password_confirmation, null: false, default: ""
