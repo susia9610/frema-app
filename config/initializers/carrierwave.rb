@@ -14,7 +14,7 @@ CarrierWave.configure do |config|
       aws_secret_access_key: Rails.application.credentials.aws[:secret_access_key],
       region: 'ap-northeast-1' 
     }
-    config.fog_directory  = 'frema_70cimage' 
+    config.fog_directory  = 'frema70cimage' 
     config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/frema_70cimage'
   else
     config.storage :file # 開発環境:public/uploades下に保存
