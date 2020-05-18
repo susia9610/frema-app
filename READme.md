@@ -12,12 +12,10 @@
 |birthday_year|integer|null: false|
 |birthday_month|integer|null: false|
 |birthday_day|integer|null: false|
-|tel_number|integer|null: false|
+|tel_number|string|null: false|
 |email|string|null: false|
 |encrypted_password|string|null: false|
 |password_confirmation|string|null: false|
-|introduction|text||
-|user_image|string||
 
 ### Association
 - has_many :items,dependent: :destroy
@@ -41,7 +39,7 @@ add_index: [:nickname, :email]
 |local|string|null: false|
 |local_number|string|null: false|
 |building|string|null: false|
-|tel_number|integer||
+|tel_number|string||
 |user_id|integer|null: false,foreign_key:true|
 
 ### Association
@@ -55,11 +53,8 @@ add_index: [:prefecture, :user_id]
 
 |Column|Type|Options|
 |------|----|-------|
-|card_number|integer|null: false|
-|CVC|integer|null: false|
-|limit_year|integer|null: false|
-|limit_month|integer|null: false|
-|name|string|null: false|
+|customer_id|string||
+|card_id|string||
 |user_id|integer|null: false,foreign_key:true|
 
 ### Association
@@ -99,7 +94,6 @@ add_index: [:user_id, :item_id]
 |user_id|integer|null: false,foreign_key:true|
 |category_id|integer|null: false,foreign_key:true|
 |brand_id|integer|null: false,foreign_key:true|
-|prefecture_id|integer|null: false|
 
 ### Association
 - belongs_to :user
