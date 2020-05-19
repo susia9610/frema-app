@@ -12,14 +12,6 @@ Rails.application.routes.draw do
       get "item_destroy",to: 'items#destroy'
     end
   end
-  resources :users, only: :show do
-    # 以下はビュー表示用の仮アクション
-    collection do
-      get "new_session"
-      get "new_user"
-      get "new_address"
-      get "create_address"
-    end
-  end  
+  resources :users, only: :show 
 end
 
