@@ -1,4 +1,4 @@
-class Product < ApplicationRecord
+class Item < ApplicationRecord
   belongs_to :user
   has_many   :images, dependent: :destroy
   validates :name, :explanation, :category, :condition, :postage, :region, :shipping_days, :price, presence: true

@@ -1,0 +1,27 @@
+.t__main
+  .t__head__bar
+    .t__head__bar__box
+      .t__head__bar__box-logo
+        %a(href="/")
+          = image_tag 'logo.png', alt: '', height: '40px', width: '140px', class: 'img-logo'
+      %input.t__head__bar__box-text-box{:name => "search", :placeholder => "キーワードから探す", :type => "search", :value => ""}/
+      .t__head__bar__box-text-box-btn(type="submit")
+        %a(href="/")
+          = image_tag 'icon-search 1.png', alt: '',height: '22px',width:'22px',type: 'submit', class: 't__head__bar__box-text-box-btn-icon'
+    .t__head__bar__search
+      .t__head__bar__search__box
+        %a(id="categoryBtn" href="/")
+          = render 'layouts/category'
+        %a(id="brandBtn" href="/")
+          .t__head__bar__search__box-brandブランド
+      .t__head__bar__search__select
+        -if user_signed_in?
+          = link_to users_path(current_user),id: "logBtn" do
+            .t__head__bar__search__select-login マイページ
+          = link_to destroy_user_session_path, method: :delete, id: "newBtn" do
+            .t__head__bar__search__select-login ログアウト
+        -else
+          = link_to new_user_session_path,id: "logBtn" do
+            .t__head__bar__search__select-login ログイン
+          = link_to new_user_registration_path,id: "newBtn" do
+            .t__head__bar__search__select-login 新規会員登録
