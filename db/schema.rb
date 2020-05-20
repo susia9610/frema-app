@@ -12,18 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_05_11_022422) do
 
-  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "post_number", null: false
-    t.string "prefecture", null: false
-    t.string "local", null: false
-    t.string "local_number", null: false
-    t.string "building"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_addresses_on_user_id"
-  end
-
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "url", null: false
     t.bigint "item_id", null: false
@@ -59,7 +47,6 @@ ActiveRecord::Schema.define(version: 2020_05_11_022422) do
     t.integer "birth_month", null: false
     t.integer "birth_day", null: false
     t.string "tel_number", null: false
-    t.text "introduction"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "password_confirmation", default: "", null: false
@@ -72,6 +59,5 @@ ActiveRecord::Schema.define(version: 2020_05_11_022422) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "addresses", "users"
   add_foreign_key "items", "users"
 end
