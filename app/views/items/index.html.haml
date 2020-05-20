@@ -1,0 +1,42 @@
+= render "layouts/header"
+.top-image
+  .top-image__text
+    .top-image__text__top
+      もっとみんな
+      %span の、
+      %br
+      フリマアプリ
+      %span へ。
+    .top-image__text__bottom
+      TVCM START！
+  .top-image__image
+.top-main
+  .top-main__title
+    %h2 人気のカテゴリー
+    .top-main__title__tags
+      %ul
+        %li レディース
+        %li メンズ
+        %li 家電・スマホ・カメラ
+        %li おもちゃ・ホビー・グッズ
+  .top-main__contents
+    %h2 レディース新着アイテム
+    = link_to "#", class:"link-blue" do
+      もっと見る
+      %i{class: "fas fa-chevron-right"}
+  - for i in 1..2
+    .top-main__items
+      - for j in 1..5
+        .top-main__items__item
+          = image_tag "1069723_s.jpg"
+          .top-main__items__item__price
+            ¥1,980
+          .top-main__items__item__text
+            商品サンプル商品サンプル商品サンプル商品サンプル
+= render "layouts/footer"
+
+= link_to new_item_path, data: {turbolinks: false} do
+  .new-items-btn
+    出品
+    %br
+    %i{class:"fas fa-camera"}
