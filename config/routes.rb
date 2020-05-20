@@ -20,6 +20,20 @@ Rails.application.routes.draw do
       get "item_destroy",to: 'items#destroy'
     end
   end
-  resources :users, only: :show 
+  
+  resources :users, only: [:new, :edit, :show] do
+    collection do
+      get "signin"
+    end
+  end
+  
+  resources :users, only: [:edit, :update]
+
+  resources :mypage, only: [:index, :show, :new, :edit, :create] do
+
+    collection do
+      get "logout"
+    end   
+  end
 end
 

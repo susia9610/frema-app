@@ -1,73 +1,72 @@
 = form_with model: @user,url: user_registration_path do |f|
-  .new_session-wrapper
-    .new_session-wrapper__logo
-      = link_to root_path do
-        %i.fab.fa-pagelines
-        %span.new_session-wrapper__logo__text
-          Frema
-      %span{class: "new_session-wrapper__logo__title title-active after-active"}
-        会員情報
-      %span{class: "new_session-wrapper__logo__title"}
-        住所情報
-      %span{class: "new_session-wrapper__logo__title-done"}
-        登録完了
-    .new_session-wrapper__main
-      .new_session-wrapper__main__head
-        会員情報
-    .new_session-wrapper__main
-      = render "devise/shared/error_messages", resource: @user
-      .new_session-wrapper__main__title
-        ニックネーム
-        %span.require 必須
-      %input.new_session-wrapper__main__text{placeholder: "例)フリマ太郎"}
-      .new_session-wrapper__main__title
-        メールアドレス
-        %span.require 必須
-      %input.new_session-wrapper__main__text{placeholder: "PC・携帯どちらでも可"}
-      .new_session-wrapper__main__title
-        パスワード
-        %span.require 必須
-      %input.new_session-wrapper__main__text{placeholder: "7文字以上、英字数字両方を含むこと"}
-      .new_session-wrapper__main__title
-        パスワード(確認)
-        %span.require 必須
-      %input.new_session-wrapper__main__text{placeholder: "7文字以上、英字数字両方を含むこと"}
-      .new_session-wrapper__main__title
-        お名前(全角)
-        %span.require 必須
-        .flexbox
-          %input{class: "new_session-wrapper__main__text text-half", placeholder: "例)山田"}
-          %input{class: "new_session-wrapper__main__text text-half", placeholder: "例)彩"}
-      .new_session-wrapper__main__title
-        お名前カナ(全角)
-        %span.require 必須
-        .flexbox
-          %input{class: "new_session-wrapper__main__text text-half", placeholder: "例)ヤマダ"}
-          %input{class: "new_session-wrapper__main__text text-half", placeholder: "例)アヤ"}
-      .new_session-wrapper__main__title
-        生年月日
-        %span.require 必須
-        .flexbox
-          - year = ["--"]
-          - for num in 0..120
-            - year << 2020-num
-          = f.select :birth_year, year, {}, class: "new_session-wrapper__main__select three-select"
-          年
-          - month = ["--"]
-          - for num in 1..12
-            - month << num
-          = f.select :birth_month, month, {}, class: "new_session-wrapper__main__select three-select"
-          月
-          - day = ["--"]
-          - for num in 1..31
-            - day << num
-          = f.select :birth_day, day, {}, class: "new_session-wrapper__main__select three-select"
-          日
-      .new_session-wrapper__main__title
-        電話番号
-        %span.require 必須
-      %input.new_session-wrapper__main__text{placeholder: "ハイフンなし10~11桁"}
-      .new_session-wrapper__main__title
-      .new_session-wrapper__main__caution
-        ※本人情報は正しく入力してください。会員登録後、お時間を頂く場合があります。
-      %input{type: "submit",class: "new_session-wrapper__main__btn", value: "次へ進む"}
+  = render "devise/shared/error_messages", resource: @user
+  
+.new_session-wrapper
+  .new_session-wrapper__logo
+    = link_to root_path do
+      %i.fab.fa-pagelines
+      %span.new_session-wrapper__logo__text 
+      Frema
+    %span.new_session-wrapper__logo__title title-active after-active 会員情報
+    %span.new_session-wrapper__logo__title 住所情報
+    %span.new_session-wrapper__logo__title-done 登録完了
+  .new_session-wrapper__main
+    .new_session-wrapper__main__head
+      会員情報
+  .new_session-wrapper__main
+    = render "devise/shared/error_messages", resource: @user
+    .new_session-wrapper__main__title
+      ニックネーム
+      %span.require 必須
+    %input.text_field :nickname, {class: "new_session-wrapper__main__text", placeholder: "例)フリマ太郎"}
+    .new_session-wrapper__main__title
+      メールアドレス
+      %span.require 必須
+    %input.text_field :email, {class: "new_session-wrapper__main__text", placeholder: "PC・携帯どちらでも可"}
+    .new_session-wrapper__main__title
+      パスワード
+      %span.require 必須
+    %input.password_field :password, {class: "new_session-wrapper__main__text", placeholder: "7文字以上、英字数字両方を含むこと"}
+    .new_session-wrapper__main__title
+      パスワード(確認)
+      %span.require 必須
+    %input.password_field :password_confirmation, {class: "new_session-wrapper__main__text", placeholder: "7文字以上、英字数字両方を含むこと"}
+    .new_session-wrapper__main__title
+      お名前(全角)
+      %span.require 必須
+      .flexbox
+        %input.text_field :firstname, {class: "new_session-wrapper__main__text text-half", placeholder: "例)山田"}
+        %input.text_field :lastname , {class: "new_session-wrapper__main__text text-half", placeholder: "例)彩"}
+    .new_session-wrapper__main__title
+      お名前カナ(全角)
+      %span.require 必須
+      .flexbox
+        %input.text_field :firstname_kana, {class: "new_session-wrapper__main__text text-half", placeholder: "例)ヤマダ"}
+        %input.text_field :lastname_kana , {class: "new_session-wrapper__main__text text-half", placeholder: "例)アヤ"}
+    .new_session-wrapper__main__title
+      生年月日
+      %span.require 必須
+      .flexbox
+        - year = ["--"]
+        - for num in 0..120
+          - year << 2020-num
+        %input.select :birth_year, year, {}, class: "new_session-wrapper__main__select three-select"
+        年
+        - month = ["--"]
+        - for num in 1..12
+          - month << num
+        %input.select :birth_month, month, {}, class: "new_session-wrapper__main__select three-select"
+        月
+        - day = ["--"]
+        - for num in 1..31
+          - day << num
+        %input.select :birth_day, day, {}, class: "new_session-wrapper__main__select three-select"
+        日
+    .new_session-wrapper__main__title
+      電話番号
+      %span.require 必須
+    %input.text_field :tel_number, {class: "new_session-wrapper__main__text", placeholder: "ハイフンなし10~11桁"}
+    .new_session-wrapper__main__title
+    .new_session-wrapper__main__caution
+      ※本人情報は正しく入力してください。会員登録後、お時間を頂く場合があります。
+    %input.submit "次へ進む", class: "new_session-wrapper__main__btn"
