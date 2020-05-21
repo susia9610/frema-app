@@ -1,3 +1,11 @@
+.mypage__container
+  .mypage__inner
+    = render 'mypage/parts/side_list'
+    = render 'mypage/parts/list_content'
+
+
+
+
 - contents = ["マイページ"  ,"出品する","会員情報変更","住所変更","カード情報照会・削除","ログアウト"]
 - links    = [user_path,new_item_path,root_path,root_path,root_path,destroy_user_session_path]
 - method   = ["get"       ,"get"           ,"get"          ,"get"          ,"get"       ,"delete"]

@@ -5,12 +5,15 @@ $frema: #3CCACE;
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-@import "users";
+
 @import "items";
 @import "items_new";
-@import "users_show";
+@import "modules/new-session";
+@import "modules/mypage";
 @import "items_index";
 @import "modules/flash";
+@import "templates/error_messages";
+
 
 *{
   background-repeat: no-repeat;

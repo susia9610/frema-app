@@ -30,7 +30,6 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update]
 
   resources :mypage, only: [:index, :show, :new, :edit, :create] do
-
     collection do
       get "logout"
     end   
