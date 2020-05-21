@@ -1,28 +1,32 @@
-= render "layouts/header"
-
 .main
   .show-main
-    .show-main__topcontents
-      .show-main__itembox
-        .show-main__itembox__name
-        %h2 item
-        .show-main__itembox__body
-          = image_tag "a004.png", class:"show-main__itembox__image"
-          .show-main__itembox__body__icons
-            - for num in 1..6
-              - if num == 1
-                = image_tag "a004.png", class:"show-main__icons__icon"
-              - else
-                = image_tag "a005.png", class:"show-main__icons__icon non-active"
-        .show-main__itembox__price
-          ¥3000
-          .show-main__itembox__price-detail
+    .topcontents
+      .itembox
+        .itembox__name
+          %h2 item
+        .itembox__body
+          %ul
+            %li
+              = image_tag "a004.png", class:"firstimage"
+            %ul
+              %li
+                = image_tag "a005.png", class:"imagelist"
+                = image_tag "a006.png", class:"imagelist"
+                = image_tag "a007.png", class:"imagelist"
+
+        .itembox__price
+          %span ¥30000
+          .itembox__price--detail
             %span (税込)
             %span 送料込み
-        .show-main__itembox__itemdetail
-          親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。
+        .itembox__itemdetail
+          %p 親譲りの無鉄砲で小供の時から損ばかりしている。
+          小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。
+          なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。
+          新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、
+          そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。
 
-        .show-main__table
+        .table
           %table
             %tbody
               %tr
@@ -49,34 +53,40 @@
               %tr
                 %th 発送日の目安
                 %td 
-      .show-main__optonalarea
-        %ul
-          %li.show-main__optonalarea__likebtn
-            =icon('fa','star')
-            お気に入り 0
-        %ul
-          %li.show-main__optonalarea__optonalbtn
-            =link_to "#", data: { confirm: '不適切な商品を報告しますか？' } do
+        
+        .optonalarea
+          %ul
+            %li.optonalarea__likebtn
+              =icon('fa','star')
+              お気に入り
+          %ul
+            %li.optonalarea__optonalbtn
               =icon('fa','flag')
               不適切な商品の通報
+      
+      .itemchangebox
+        = link_to "#" do
+          %button.itemchangebox__buybtn
+            購入画面に進む
 
-      .show-main__commentbox
-        .show-main__commentbox__newcontent
-          %text_area :text, disabled: true
+      .commentbox
+        .commentbox__newcontent
+          %form
+            %input.text
 
-        .show-main__commentbox__noticemsg
+        .commentbox__noticemsg
           相手のことを考え丁寧なコメントを心がけましょう。
-        %br
-          不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          %input.button{type: "submit", value: "コメントする"}
+          %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          
+        %button.commentbox__commentbtn
+          =icon('fa','fa-comment')
+          コメントする
 
-    .show-main__links
-      %ur
-        %li
-          = link_to "#" do
-            < 前の商品
-        %li
-          = link_to "#" do
-            次の商品 >
-    
-= render "layouts/footer"
+      .links
+        %ur
+          %li
+            = link_to "#", class: "right" do
+              次の商品 >
+          %li
+            = link_to "#", class: "left" do
+              < 前の商品
