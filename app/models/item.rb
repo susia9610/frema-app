@@ -6,5 +6,6 @@ class Item < ApplicationRecord
 
   belongs_to_active_hash :condition
   belongs_to_active_hash :postage
+  belongs_to_active_hash :shipping_days
 end
 
