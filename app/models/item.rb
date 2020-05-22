@@ -5,5 +5,6 @@ class Item < ApplicationRecord
   validates :price, numericality: { only_integer: true , greater_than: 0, less_than: 9999999 }
 
   belongs_to_active_hash :condition
+  belongs_to_active_hash :postage
 end
 
