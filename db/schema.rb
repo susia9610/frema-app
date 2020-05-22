@@ -31,12 +31,12 @@ ActiveRecord::Schema.define(version: 2020_05_22_053848) do
     t.text "description", null: false
     t.string "category", null: false
     t.string "brand", null: false
-    t.string "condition", null: false
-    t.string "prefecture", null: false
+    t.string "condition_id", null: false
+    t.string "prefecture_id", null: false
     t.string "size"
     t.integer "price", null: false
-    t.integer "shipping_days", null: false
-    t.string "postage", null: false
+    t.integer "shipping_days_id", null: false
+    t.string "postage_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
