@@ -1,20 +1,12 @@
 .new_session-wrapper
   .new_session-wrapper__logo
-    = link_to root_path do
-      %i.fab.fa-pagelines
-      %span.new_session-wrapper__logo__text
-        Frema
-    %span{class: "new_session-wrapper__logo__title title-active after-active"}
-      会員情報
-    %span{class: "new_session-wrapper__logo__title"}
-      住所情報
-    %span{class: "new_session-wrapper__logo__title-done"}
-      登録完了  
-
-
+    = render "devise/sessions/header"
+    
   .new_session-wrapper__main
     .new_session-wrapper__main__head
       登録が完了しました
-    = link_to root_path, class: "new_session-wrapper__main__head link-blue" do
+    =link_to root_path, class:"new_session-wrapper__main__btn" do 
       トップページに戻る
+  = render "devise/sessions/footer"
+
    

@@ -10,12 +10,12 @@ class User < ApplicationRecord
                                format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
     validates :password,       length: { minimum: 7 }
     with_options format: {with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/} do
-      validates :first_name
-      validates :last_name
+      validates :firstname
+      validates :lastname
     end
     with_options format: {with: /\A[ァ-ヶー－]+\z/} do
-      validates :first_name_kana
-      validates :last_name_kana
+      validates :firstname_kana
+      validates :lastname_kana
     end
   end
   has_one :address
