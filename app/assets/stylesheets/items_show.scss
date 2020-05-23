@@ -19,16 +19,15 @@
         }
         &__body{
           margin: 16px 0 0;
-          display: flex;
           ul {
             position: relative;
+            display: flex;
             li {
               flex-direction: column;
               width: 560px;
               align-items: center;
               margin: 0 auto;
               .firstimage {
-                width: 100%;
                 object-fit: cover;
                 height: 346px;
               }
@@ -94,6 +93,10 @@
                     text-decoration: none;
                     color: #3ccace;
                   }
+                  .prefectures{
+                    text-decoration: none;
+                    color: #3ccace;
+                  }
                 }
               }
             }
@@ -118,28 +121,16 @@
             padding: 6px 10px;
             display: inline-block;
             border-radius: 4px;
-            color: #333;
             border: 1px solid #333;
 
             a{
               text-decoration: none;
+              color: #333;
             }
           }
         }
       }  
-      .itemchangebox {
-        padding: 24px 40px 40px;
-        text-align: center;
-        background-color: #ffffff;
-        &__buybtn {
-          cursor: pointer;
-          background-color: #3CCACE;
-          color: #fff;
-          margin: 16px 0px;
-          height: 53px;
-          line-height: 53px;
-        }
-      }
+      
       .commentbox{
         padding: 24px;
         background-color: #ffffff;
