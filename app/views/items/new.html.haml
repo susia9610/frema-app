@@ -65,10 +65,8 @@
     .new-wrapper__main__title.spacing
       発送までの日数
       %span.require 必須
-    %select.new-wrapper__main__input-select
-      %option{value: "0"} 選択してください
-      %option{value: "1"} 選択肢1
-      %option{value: "2"} 選択肢2
+      = form_with model: @shipping_days do |f|
+        = f.collection_select :shipping_days_id, Shipping_days.all, :id, :name, {prompt: "選択してください"}, class: "new_session-wrapper__main__select"
   .new-wrapper__main
     .new-wrapper__main__subtitle
       価格 (¥300~9,999,999)
