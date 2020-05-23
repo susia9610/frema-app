@@ -1,13 +1,13 @@
-$frema: #3CCACE;
-
 @import "reset";
 @import "config/colors";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "variables";
 
-@import "users";
+
 @import "items";
 @import "items_new";
+<<<<<<< HEAD
 @import "users_show";
 
 @import "items_index";
@@ -26,24 +26,16 @@ body{
   padding: 0;
   margin: 0;
 }
+=======
+@import "items_index";
+>>>>>>> origin
 
-a{
-  text-decoration: none;
-  color: #333;
-  &:hover{
-    text-decoration: underline;
-    opacity: 0.5;
-  }
-}
+@import "modules/login";
+@import "modules/new_session";
+@import "modules/mypage";
 
-.link-blue{
-  color: #62A6E6;
-}
+@import "templates/subheader";
+@import "templates/subfooter";
+@import "templates/error_messages";
 
-h1,h2,h3,h4,h5{
-  margin: 0;
-}
 
-li{
-  list-style: none;
-}

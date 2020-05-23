@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .hp__main {
   background-color: #f8f8f8;
 }
@@ -22,6 +23,20 @@
       font-size: 60px;
       line-height: 1.2;
       color: $white;
+=======
+.header{
+  height: 100px;
+  border-bottom: 2px solid #333;
+  &__top{
+    height: 50px;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .fa-pagelines{
+      font-size: 30px;
+      color: #3CCACE;
+>>>>>>> origin
     }
     &__text {
       text-shadow: $shadow;
@@ -73,6 +88,7 @@
       margin: 16px 5% 0 0;
       text-align: left;
       display: flex;
+<<<<<<< HEAD
       flex-direction: column;
       align-items: center;
       &__pict {
@@ -94,6 +110,14 @@
           padding: 10px 20px;
           background-color: $basic-color;
           color: $white;
+=======
+      li{
+        font-size: 14px;
+        font-weight: bold;
+        padding-right: 20px;
+        i{
+          color: #3CCACE;
+>>>>>>> origin
         }
       }
       &__text span {
@@ -349,6 +373,7 @@
     }
 
 
+<<<<<<< HEAD
     &--img {
       width: 220px;
       height: 150px;
@@ -373,5 +398,26 @@
         }
       }
     }
+=======
+.new-product-btn{
+  z-index: 11;
+  position: fixed;
+  bottom: 30px;
+  right:30px;
+  background-color: #3CCACE;
+  display: inline-block;
+  height: 140px;
+  width: 140px;
+  border-radius: 140px;
+  padding-top: 10px;
+  color: #fff;
+  font-weight: bold;
+  background-size: 80px;
+  text-align: center;
+  background-position: center center;
+  .fa-camera{
+    color: white;
+    font-size: 70px;
+>>>>>>> origin
   }
 }
