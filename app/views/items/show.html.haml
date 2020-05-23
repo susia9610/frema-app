@@ -1,4 +1,5 @@
-= render "layouts/header"
+= render "/items/header"
+
 
 .main
   .show-main
@@ -9,12 +10,12 @@
         .itembox__body
           %ul
             %li
-              = image_tag "a004.png", class:"firstimage"
-            %ul
-              %li
-                = image_tag "a005.png", class:"imagelist"
-                = image_tag "a006.png", class:"imagelist"
-                = image_tag "a007.png", class:"imagelist"
+              = image_tag "a004.png", size:'560x346', class:"firstimage"
+              %ul
+                %li
+                  = image_tag "a005.png", size:'140x87', class:"imagelist"
+                  = image_tag "a006.png", size:'140x87', class:"imagelist"
+                  = image_tag "a007.png", size:'140x87', class:"imagelist"
 
         .itembox__price
           %span ¥30000
@@ -68,7 +69,7 @@
                 %th 
                   発送元の地域
                 %td 
-                  = link_to "岩手県", "", class: "Prefectures"
+                  = link_to "岩手県", "#", class: "prefectures"
               %tr
                 %th 
                   発送日の目安
@@ -82,11 +83,6 @@
             
           .optonalarea__optonalbtn
             = link_to "🏴 不適切な商品の報告", "#"
-      
-      .itemchangebox
-        = link_to "#" do
-          %button.itemchangebox__buybtn
-            購入画面に進む
 
       .commentbox
         .commentbox__newcontent
@@ -101,16 +97,17 @@
           =icon('fa','comment', class: "commentbtn-icon")
           コメントする
 
-    .links
-      %ur
-        %li
-          = link_to "#", class: "right" do
-            次の商品 >
-        %li
-          = link_to "#", class: "left" do
-            < 前の商品
+      .links
+        %ur
+          %li
+            = link_to "#", class: "right" do
+              次の商品 >
+          %li
+            = link_to "#", class: "left" do
+              < 前の商品
 
     .relateditems
       = link_to "ベビー・キッズをもっと見る", "#", class: "itemlists" 
 
-= render "layouts/footer"
+= render "/items/banner"
+= render "/items/footer"
