@@ -12,9 +12,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string   :tel_number        , null: false
       t.string   :email             , null: false, default: ""
       t.string   :encrypted_password, null: false, default: ""
-      t.string   :password_confirmation, null: false, default:""
-      t.text     :introduction
-      t.string   :user_image
+      t.string   :password_confirmation, null: false, default: ""
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
       t.datetime :remember_created_at
