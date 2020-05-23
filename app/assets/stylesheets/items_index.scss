@@ -9,7 +9,7 @@
     justify-content: center;
     .fa-pagelines{
       font-size: 30px;
-      color: $frema;
+      color: #3CCACE;
     }
     a{
       &:hover{
@@ -42,7 +42,7 @@
         font-weight: bold;
         padding-right: 20px;
         i{
-          color: $frema;
+          color: #3CCACE;
         }
       }
     }
@@ -277,7 +277,7 @@
   position: fixed;
   bottom: 30px;
   right:30px;
-  background-color: $frema;
+  background-color: #3CCACE;
   display: inline-block;
   height: 140px;
   width: 140px;
