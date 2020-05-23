@@ -47,11 +47,8 @@
     .new-wrapper__main__title.spacing
       商品の状態
       %span.require 必須
-    %select.new-wrapper__main__input-select
-      %option{value: "0"} 選択してください
-      %option{value: "1"} 選択肢1
-      %option{value: "2"} 選択肢2
-      %option{value: "3"} 選択肢3
+      = form_with model: @condition do |f|
+        = f.collection_select :condition_id, Condition.all, :id, :name, {prompt: "選択してください"}, class: "new_session-wrapper__main__select"
   .new-wrapper__main
     .new-wrapper__main__subtitle
       配送について
