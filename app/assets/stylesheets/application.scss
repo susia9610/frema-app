@@ -7,28 +7,7 @@
 
 @import "items";
 @import "items_new";
-<<<<<<< HEAD
-@import "users_show";
-
 @import "items_index";
-
-@import "modules/flash";
-@import "items_show";
-
-*{
-  background-repeat: no-repeat;
-  box-sizing: border-box;
-  color: #333;
-}
-
-
-body{
-  padding: 0;
-  margin: 0;
-}
-=======
-@import "items_index";
->>>>>>> origin
 
 @import "modules/login";
 @import "modules/new_session";

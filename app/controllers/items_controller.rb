@@ -27,8 +27,4 @@ class ItemsController < ApplicationController
   def show
     
   end
-<<<<<<< HEAD
 end
-=======
-end
->>>>>>> origin
