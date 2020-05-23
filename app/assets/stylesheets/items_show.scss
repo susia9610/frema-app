@@ -19,11 +19,10 @@
         }
         &__body{
           margin: 16px 0 0;
+          display: flex;
           ul {
-            display: flex;
             position: relative;
             li {
-              display: flex;
               flex-direction: column;
               width: 560px;
               align-items: center;
@@ -38,9 +37,9 @@
                 justify-content: center;
                 margin-top: 10px;
                 li {
-                  width: 75%;
+                  width: 25%;
                   margin: 0 10px 0 0;
-                  .imgimagelist {
+                  .imagelist {
                     object-fit: cover;
                     height: 87px;
                   }
@@ -91,6 +90,10 @@
                   padding: 15px 15px;
                   border: 1px solid #dedede;
                   font-size: 14px;
+                  .categorys{
+                    text-decoration: none;
+                    color: #3ccace;
+                  }
                 }
               }
             }
@@ -99,23 +102,27 @@
         .optonalarea {
           display: flex;
           justify-content: space-between;
-          ul {
-            margin: 10px 0 0;
-            display: flex;
-            &__likebtn {
-              margin-right: auto;
-              padding: 6px 10px;
-              border-radius: 40px;
+          margin: 10px 0 0;
+          &__likebtn{
+            margin-right: auto;
+            padding: 6px 10px;
+            border-radius: 40px;
+            color: #3CCACE;
+            border: 1px solid #ffb340;
+            .star {
               color: #3CCACE;
-              border: 1px solid #ffb340;
             }
-            &__optonalbtn {
-              padding: 6px 10px;
-                  display: inline-block;
-                  border-radius: 4px;
-                  color: #333;
-                  border: 1px solid #333;
-                  text-decoration: none;
+          }
+          &__optonalbtn{
+            font-size: 14px;
+            padding: 6px 10px;
+            display: inline-block;
+            border-radius: 4px;
+            color: #333;
+            border: 1px solid #333;
+
+            a{
+              text-decoration: none;
             }
           }
         }
@@ -163,23 +170,39 @@
           width: 60%;
           font-size: 18px;
           border-radius: 100px;
+          .commentbtn-icon{
+            color:#fff;
+          }
         }
       }
-    
-      .links {
-        list-style: none;
-        .right {
-          color: #3ccace;
-          text-decoration: none;
-          float: right;
-        }
-        .left {
-          color: #3ccace;
-          text-decoration: none;
-          float: left;
-        }
-      }
-      
     }
+
+    .links {
+      list-style: none;
+      .right {
+        color: #3ccace;
+        text-decoration: none;
+        float: right;
+      }
+      .left {
+        color: #3ccace;
+        text-decoration: none;
+        float: left;
+      }
+    }
+    
+    .relateditems{
+      a{
+        font-size: 22px;
+        font-weight: 600;
+        text-decoration: none;
+        width: 700px;
+        margin: 0 auto;
+        display: block;
+        margin-top: 60px;
+        color: #3ccace;
+      }
+    }
+
   }
 }

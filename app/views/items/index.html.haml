@@ -1,38 +1,123 @@
 = render "layouts/header"
-.top-image
-  .top-image__text
-    .top-image__text__top
-      もっとみんな
-      %span の、
-      %br
-      フリマアプリ
-      %span へ。
-    .top-image__text__bottom
-      TVCM START！
-  .top-image__image
-.top-main
-  .top-main__title
-    %h2 人気のカテゴリー
-    .top-main__title__tags
-      %ul
-        %li レディース
-        %li メンズ
-        %li 家電・スマホ・カメラ
-        %li おもちゃ・ホビー・グッズ
-  .top-main__contents
-    %h2 レディース新着アイテム
-    = link_to "#", class:"link-blue" do
-      もっと見る
-      %i{class: "fas fa-chevron-right"}
-  - for i in 1..2
-    .top-main__items
-      - for j in 1..5
-        .top-main__items__item
-          = image_tag "1069723_s.jpg"
-          .top-main__items__item__price
-            ¥1,980
-          .top-main__items__item__text
-            商品サンプル商品サンプル商品サンプル商品サンプル
+
+.hp__main
+  .main__visual
+    .content
+      %h1.content__subtitle
+        人生を変えるフリマアプリ
+      .content__text
+        %p FURIMAはだれでもかんたんに出品・購入できる
+        %p フリマアプリです
+      .content__btn
+        .content__btn--app
+          =link_to (image_tag asset_path("material/icon/download-on-the-app-store-apple.svg")), root_path
+        .content__btn--gstore
+          =link_to (image_tag asset_path("material/icon/google-play-badge.svg")), root_path
+
+  .top__introduction
+    %h2.subtitle
+      FURIMAが選ばれる3つの理由
+    %ul.lists
+      %li.list
+        .list__pict
+          %span.number 1
+          =image_tag asset_path("material/pict/pict-reason-01.jpg")
+        %h3.list__text
+          %span 3分
+          ですぐに出品
+        %p.list__description
+          スマホで入力するだけで簡単に出品できる！
+      %li.list
+        .list__pict
+          %span.number 2
+          =image_tag asset_path("material/pict/pict-reason-02.jpg")
+        %h3.list__text
+          %span シンプル
+          で使いやすい
+        %p.list__description
+          めんどくさい入力は必要なく、検索も購入もスムーズ！
+      %li.list.list--last
+        .list__pict
+          %span.number 3
+          =image_tag asset_path("material/pict/pict-reason-03.jpg")
+        %h3.list__text
+          手数料
+          %span 業界最安
+        %p.list__description
+          最大3%でお得に出品&amp;購入！
+
+  .middle__dl
+    .middle__dl__inner
+      .subtitle 会員数日本一位
+      .text
+        %p FURIMAは、フリマアプリで最も人気。
+        %p 出品・購入回数も業界最多です！
+        %p ほしかったあの商品に出会えるかもしれません。
+      .content__btn
+        .content__btn--app
+          =link_to (image_tag asset_path("material/icon/download-on-the-app-store-apple.svg")), root_path
+        .content__btn--gstore
+          =link_to (image_tag asset_path("material/icon/google-play-badge.svg")), root_path
+
+  .key__features
+    %h2.head FURIMAの特徴
+    .items
+      %section.item
+        %figure.item__img
+        =image_tag asset_path("material/icon/icon-01.png")
+        %h3.item__subtitle 簡単に売り買いできる
+        %p.item__detail
+          スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+      %section.item
+        %figure.item__img
+        =image_tag asset_path("material/icon/icon-03.png")
+        %h3.item__subtitle 売上金は即日振込みに対応
+        %p.item__detail
+          午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+      %section.item
+        %figure.item__img
+        =image_tag asset_path("material/icon/icon-04.png")
+        %h3.item__subtitle 様々な支払いに対応
+        %p.item__detail
+          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+
+  .pickup__container
+    %h2.head 新規投稿商品
+    .product_box
+      .product__head
+        =link_to "もっと見る", list_items_path 
+      .product__lists
+        - @items[0..2].each do |item|
+          =link_to item_path(item.id) do
+            =image_tag ("#{item.images.first.image}"), class: "product__list--img"   
+            .product__list--body
+              %h3= item.name
+              .details
+                %ul
+                  %li= "¥" + item.price.to_s
+                  %li
+                    =icon("fas", "star", class: "likeIcon")
+                    0
+                %p (税込)
+  - if @items.length > 3
+    .pickup__container2
+      .product_box
+        .product__head
+        .product__lists
+          - @items[3..5].each do |item|
+            =link_to detail_items_path do
+              =image_tag ("#{item.images.first.image}"), class: "product__list--img" 
+              .product__list--body
+                %h3= item.name
+                .details
+                  %ul
+                    %li= "¥" + item.price.to_s
+                    %li
+                      =icon("fas", "star", class: "likeIcon")
+                      0
+                  %p (税込)
+
+
 = render "layouts/footer"
 
 = link_to new_item_path, data: {turbolinks: false} do
