@@ -161,3 +161,7 @@
 .logout {
   @include mypage-btn;
 }
+
+@import "toppage/header";
+@import "toppage/banner";
+@import "toppage/footer";

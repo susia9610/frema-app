@@ -2,7 +2,7 @@
 @import "config/colors";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
+@import "variables";
 
 
 @import "items";
@@ -13,5 +13,8 @@
 @import "modules/new_session";
 @import "modules/mypage";
 
+@import "templates/subheader";
+@import "templates/subfooter";
+@import "templates/error_messages";
 
 
