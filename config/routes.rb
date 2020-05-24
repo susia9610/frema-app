@@ -20,10 +20,6 @@ Rails.application.routes.draw do
       get "item_destroy",to: 'items#destroy'
       get "purchase"
       get "done"
-<<<<<<< Updated upstream
-=======
-      
->>>>>>> Stashed changes
     end
   end
   
