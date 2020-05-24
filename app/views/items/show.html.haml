@@ -1,6 +1,5 @@
 = render "/items/header"
 
-
 .main
   .show-main
     .topcontents
@@ -10,12 +9,14 @@
         .itembox__body
           %ul
             %li
-              = image_tag "a004.png", size:'560x346', class:"firstimage"
+              = image_tag "a004.png", size:"560x346", class:"firstimage"
               %ul
                 %li
-                  = image_tag "a005.png", size:'140x87', class:"imagelist"
-                  = image_tag "a006.png", size:'140x87', class:"imagelist"
-                  = image_tag "a007.png", size:'140x87', class:"imagelist"
+                  = image_tag "a005.png", size:"140x87", class:"imagelist"
+                %li
+                  = image_tag "a006.png", size:"140x87", class:"imagelist"
+                %li
+                  = image_tag "a007.png", size:"140x87", class:"imagelist"
 
         .itembox__price
           %span ¥30000

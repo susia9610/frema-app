@@ -138,10 +138,9 @@
         text-align: center;
         &__newcontent{
           form {
-            text-align: center;
             .text {
               width: 100%;
-              height: 104px;
+              min-height: 104px;
               padding: 10px;
             }
           }  
