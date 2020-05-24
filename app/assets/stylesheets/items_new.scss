@@ -54,7 +54,11 @@
       .fa-camera{
         position: absolute;
         top: 40px;
+        right: 320px;
         font-size: 20px;
+      }
+      .file-field{
+        display: none;
       }
       &__text{
         padding-top: 20px;

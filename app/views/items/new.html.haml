@@ -8,11 +8,12 @@
       .new-wrapper__main__text
         最大１０枚までアップロードできます
       .new-wrapper__main__image-field
-        %i.fas.fa-camera
+        = f.fields_for :images do |i|
+          = f.label :image, class: "label-image" do
+            = icon('fas','camera')
+            = i.file_field :image, class: "file-field"
         .new-wrapper__main__image-field__text
-          ドラッグアンドドロップ
-          %br
-          またはクリックしてファイルをダウンロード
+          クリックしてファイルをアップロード
     .new-wrapper__main
       .new-wrapper__main__title
         商品名
