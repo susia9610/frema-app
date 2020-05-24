@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
   has_many   :images, dependent: :destroy
   validates :name, :description, :category, :condition, :postage, :prefecture, :shipping_days, :price, presence: true
