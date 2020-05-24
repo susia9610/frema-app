@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       get "item_create" ,to: 'items#create'
       get "item_update" ,to: 'items#update'
       get "item_destroy",to: 'items#destroy'
+      get "purchase"
+      get "done"
     end
   end
   
