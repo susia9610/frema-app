@@ -8,16 +8,16 @@ Rails.application.routes.draw do
     post 'addresses', to: 'users/registrations#create_address'
   end
   
-  
-  
   $date = Time.now.in_time_zone('Tokyo').to_s
   root "items#index"
+
   resources :items do
-    # 以下はビュー表示用の仮アクション
     collection do
       get "item_create" ,to: 'items#create'
       get "item_update" ,to: 'items#update'
       get "item_destroy",to: 'items#destroy'
+      
+      get "show",to: 'items#show'
       get "purchase"
       get "done"
     end
