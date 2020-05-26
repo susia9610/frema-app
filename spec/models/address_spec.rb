@@ -21,7 +21,7 @@ describe Address do
     end
     
     it "first_name_kanaがない場合は登録できないこと" do
-      address = build(:address, last_name_kana: nil) do
+      address = build(:address, last_name_kana: nil) 
       address.valid?
       expect(address.errors[:first_name_kana]).to include("can't be blank") 
     end
