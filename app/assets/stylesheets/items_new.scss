@@ -39,6 +39,21 @@
     &__text{
       padding: 0 12px;
     }
+    .item-content{
+      height: 150px;
+      width: 116px;
+      background-color: white;
+      border: solid 1px;
+      border-color: #eee;
+      margin-left: 10px;
+      &__icon{
+        margin-top: 16px;
+      }
+      &__delete{
+        color: $frema;
+        margin: 8px 0px 0px 42px;
+      }
+    }
     &__image-field{
       width: 660px;
       height: 160px;
