@@ -1,4 +1,6 @@
 class MypageController < ApplicationController
+  before_action :authenticate_user! , only: [:index, :logout, :new]##:cardは実装前のため、未だ反映していない
+  
   def index
   end
 

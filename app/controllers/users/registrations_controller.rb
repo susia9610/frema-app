@@ -6,6 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   # GET /resource/sign_up
   def new
+    check_user_login
     @user = User.new
   end
 
