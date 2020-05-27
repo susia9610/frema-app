@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  
+  before_action :move_to_root, except: [:index, :show]
+
   def index
     
   end
@@ -36,4 +37,9 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :descripton, :condition,:prefecture,:size,:price,:shipping_days,:postage,:user_id,:category_id,:brand_id,images_attributes: [:url, :item_id]).merge(user_id: current_user.id)
   end
+
+  def move_to_root
+    redirect_to root_path unless user_signed_in?
+  end
+
 end
