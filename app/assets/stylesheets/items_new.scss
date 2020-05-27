@@ -51,7 +51,9 @@
       }
       &__delete{
         color: $frema;
-        margin: 8px 0px 0px 42px;
+        margin: 8px 0px 0px 38px;
+        font-weight: bold;
+        background: #eee;
       }
     }
     &__image-field{
