@@ -1,0 +1,114 @@
+= render "/items/header"
+
+.main
+  .show-main
+    .topcontents
+      .itembox
+        %h1.itembox__name
+          item
+        .itembox__body
+          %ul
+            %li
+              = image_tag "a004.png", size:"560x346", class:"firstimage"
+              %ul
+                %li
+                  = image_tag "a005.png", size:"140x87", class:"imagelist"
+                %li
+                  = image_tag "a006.png", size:"140x87", class:"imagelist"
+                %li
+                  = image_tag "a007.png", size:"140x87", class:"imagelist"
+
+        .itembox__price
+          %span ¥30000
+          .itembox__price--detail
+            %span (税込)
+            %span 送料込み
+        .itembox__itemdetail
+          %p 
+          親譲りの無鉄砲で小供の時から損ばかりしている。
+          小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。
+          なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。
+          新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、
+          そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。
+
+        .table
+          %table
+            %tbody
+              %tr
+                %th 
+                  出品者
+                %td 
+                  hoge
+              %tr
+                %th 
+                  カテゴリー
+                %td
+                  = link_to "ベビー・キッズ", "#", class: "categorys"
+                  %br
+                  = link_to "ベビー服(男女兼用)~95cm", "#", class: "categorys"
+                  %br
+                  = link_to "アウター", "#", class: "categorys"
+              %tr
+                %th 
+                  ブランド
+                %td 
+              %tr
+                %th 
+                  商品のサイズ
+                %td 
+              %tr
+                %th 
+                  商品の状態
+                %td 
+                  未使用に近い
+              %tr
+                %th 
+                  配送料の負担
+                %td 
+                  送料込み（出品者負担）
+              %tr
+                %th 
+                  発送元の地域
+                %td 
+                  = link_to "岩手県", "#", class: "prefectures"
+              %tr
+                %th 
+                  発送日の目安
+                %td 
+                  4-7日で発送
+        
+        .optonalarea
+          .optonalarea__likebtn
+            =icon('fa','fa-star',class: "star")
+            お気に入り 0
+            
+          .optonalarea__optonalbtn
+            = link_to "🏴 不適切な商品の報告", "#"
+
+      .commentbox
+        .commentbox__newcontent
+          %form
+            %input.text
+
+        .commentbox__noticemsg
+          相手のことを考え丁寧なコメントを心がけましょう。
+          %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          
+        %button.commentbox__commentbtn
+          =icon('fa','comment', class: "commentbtn-icon")
+          コメントする
+
+      .links
+        %ur
+          %li
+            = link_to "#", class: "right" do
+              次の商品 >
+          %li
+            = link_to "#", class: "left" do
+              < 前の商品
+
+    .relateditems
+      = link_to "ベビー・キッズをもっと見る", "#", class: "itemlists" 
+
+= render "/items/banner"
+= render "/items/footer"

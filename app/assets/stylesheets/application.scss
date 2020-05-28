@@ -1,8 +1,24 @@
 @import "reset";
+@import "config/colors";
 @import "colors";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "users";
+@import "variables";
+
 @import "items";
 @import 'item_index.scss';
-@import 'category.scss'
+@import "items_new";
+@import "items_index";
+@import "items_show";
+@import "modules/items_done";
+@import "modules/items_purchase";
+
+@import "modules/login";
+@import "modules/new_session";
+@import "modules/mypage";
+
+@import "templates/subheader";
+@import "templates/subfooter";
+@import "templates/error_messages";
+
+
