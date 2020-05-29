@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   
   def index
-    
+    @items = Item.includes(:images)
   end
   
   def new
@@ -14,7 +14,8 @@ class ItemsController < ApplicationController
 
   def edit
 
-  end  
+  end
+   
 
   def update
    
@@ -27,4 +28,10 @@ class ItemsController < ApplicationController
   def show
     
   end
+
+  private
+  def set_item
+    @item = Item.find(params[:id])
+  end 
+
 end

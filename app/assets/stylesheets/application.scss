@@ -1,11 +1,12 @@
 @import "reset";
 @import "config/colors";
+@import "colors";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "variables";
 
-
 @import "items";
+@import 'item_index.scss';
 @import "items_new";
 @import "items_index";
 @import "items_show";
