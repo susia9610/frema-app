@@ -2,16 +2,17 @@ class ItemsController < ApplicationController
   before_action :move_to_root, except: [:index, :show]
 
   def index
-    @items = Item.includes(:images)
+    @item = Item.all
   end
   
   def new
+    @item = Item.new
   end
     
   def create
     @item = Item.create(item_params)
     if  @item.save
-      redirect_to items_path, notice: "出品しました"
+      redirect_to roots_path, notice: "出品しました"
     else
       redirect_to  new_item_path, notice: "出品できません。入力必須項目を確認してください"
     end
@@ -27,6 +28,10 @@ class ItemsController < ApplicationController
   end
   
   def show
+    @item = Item.find(params[:id])
+  end
+
+  def purchase
   end
 
   def move_to_root

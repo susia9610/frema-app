@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
   
   $date = Time.now.in_time_zone('Tokyo').to_s
+  
   root "items#index"
 
   resources :items do
@@ -16,11 +17,14 @@ Rails.application.routes.draw do
       get "item_create" ,to: 'items#create'
       get "item_update" ,to: 'items#update'
       get "item_destroy",to: 'items#destroy'
-      
-      get "show",to: 'items#show'
-      get "purchase"
-      get "done"
     end
+
+    member do
+      get "show"
+      get "purchase"
+      patch "done"
+    end
+  
   end
   
   resources :users, only: [:new, :edit, :show] do

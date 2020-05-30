@@ -129,6 +129,24 @@
             }
           }
         }
+        .purchasebox{
+          padding: 24px;
+          background-color: #ffffff;
+          text-align: center;
+          text-decoration: none;
+          .purchasebtm{
+            line-height: 48px;
+            background: #3CCACE;
+            border: 1px solid #3CCACE;
+            color: #fff;
+            width: 65%;
+            font-size: 18px;
+            border-radius: 100px;
+            a{
+              color: #fff;
+            }
+          }
+        }
       }  
       
       .commentbox{
