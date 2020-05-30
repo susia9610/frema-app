@@ -8,7 +8,7 @@ CarrierWave.configure do |config|
   if Rails.env.development? || Rails.env.test? #開発とテストは今まで通りに
     config.storage = :file
  
-  elseif Rails.env.production? # 本番環境:AWS使用
+  elsif Rails.env.production? # 本番環境:AWS使用
     config.storage = :fog
     config.fog_provider = 'fog/aws'
     config.fog_credentials = {
