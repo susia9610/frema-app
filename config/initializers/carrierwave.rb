@@ -5,7 +5,10 @@ require 'carrierwave/storage/fog'
 
 # 保存先の分岐
 CarrierWave.configure do |config|
-  if Rails.env.production? # 本番環境:AWS使用
+  if Rails.env.development? || Rails.env.test? #開発とテストは今まで通りに
+    config.storage = :file
+ 
+  elsif Rails.env.production? # 本番環境:AWS使用
     config.storage = :fog
     config.fog_provider = 'fog/aws'
     config.fog_credentials = {
