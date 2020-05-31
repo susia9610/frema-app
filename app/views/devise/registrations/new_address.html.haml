@@ -1,5 +1,5 @@
 = form_with model: @address, local: true do |f|
-  = render "devise/shared/error_messages", resource: @address
+  -#= render "devise/shared/error_messages", @address: @address
   .new_session-wrapper
     .new_session-wrapper__logo   
       = render "devise/sessions/header"
@@ -13,28 +13,60 @@
         .flexbox
           = f.text_field :firstname, {class: "new_session-wrapper__main__text text-half", placeholder: "例)山田"}
           = f.text_field :lastname, {class: "new_session-wrapper__main__text text-half", placeholder: "例)彩"}
+        - if @address.errors.include? :firstname
+          %p{style: "color: red;"}
+            -# =@address.errors.full_messages_for(:firstname).first 
+            名字を入力してください    
+        - if @address.errors.include? :lastname
+          %p{style: "color: red;"}
+            名前を入力してください 
+      
       .new_session-wrapper__main__title
         お名前カナ(全角)
         %span{class: "require"} 必須
         .flexbox
           = f.text_field :firstname_kana, {class: "new_session-wrapper__main__text text-half", placeholder: "例)ヤマダ"}
           = f.text_field :lastname_kana, {class: "new_session-wrapper__main__text text-half", placeholder: "例)アヤ"}
+        - if @address.errors.include? :firstname_kana
+          %p{style: "color: red;"}
+            名字（カナ）を入力してください
+        - if @address.errors.include? :lastname_kana
+          %p{style: "color: red;"}
+            名前（カナ）を入力してください
+      
+      
       .new_session-wrapper__main__title
         郵便番号
         %span{class: "require"} 必須
         = f.text_field :post_number, {class: "new_session-wrapper__main__text", placeholder: "例)123-4567"}
+        - if @address.errors.include? :post_number
+          %p{style: "color: red;"}
+            郵便番号を入力してください。
+      
       .new_session-wrapper__main__title
         都道府県
         %span{class: "require"} 必須
         = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, class: "new_session-wrapper__main__select2"
+        - if @address.errors.include? :prefecture_id
+          %p{style: "color: red;"}
+            都道府県を入力してください
+      
       .new_session-wrapper__main__title
         市区町村
         %span{class: "require"} 必須
         = f.text_field :local, {class: "new_session-wrapper__main__text", placeholder: "例）大阪市中央区"}
+        - if @address.errors.include? :local
+          %p{style: "color: red;"}
+            市区町村を入力してください
+      
       .new_session-wrapper__main__title
         番地
         %span{class: "require"} 必須
         = f.text_field :local_number, {class: "new_session-wrapper__main__text", placeholder: "例）難波5-1"}
+        - if @address.errors.include? :local_number
+          %p{style: "color: red;"}
+            番地を入力してください
+      
       .new_session-wrapper__main__title
         建物名
         %span{class: "any"} 任意
