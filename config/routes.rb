@@ -15,14 +15,14 @@ Rails.application.routes.draw do
   resources :items do
     collection do
       get "item_create" ,to: 'items#create'
-      get "item_update" ,to: 'items#update'
-      get "item_destroy",to: 'items#destroy'
     end
 
     member do
       get "show"
+      delete "destroy"
       get "purchase"
       patch "done"
+      
     end
   
   end

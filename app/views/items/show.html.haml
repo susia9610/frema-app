@@ -4,33 +4,24 @@
   .show-main
     .topcontents
       .itembox
-        %h1.itembox__name
-          item
+        %h1.name
+          = @item.name
         .itembox__body
           %ul
             %li
-              = image_tag "a004.png", size:"560x346", class:"firstimage"
+              = image_tag "@image.image", size:"560x346", class:"firstimage"
               %ul
-                %li
-                  = image_tag "a005.png", size:"140x87", class:"imagelist"
-                %li
-                  = image_tag "a006.png", size:"140x87", class:"imagelist"
-                %li
-                  = image_tag "a007.png", size:"140x87", class:"imagelist"
+                -@item.images.each do |image|
+                  %li
+                    = image_tag "image.image", size:"140x87", class:"imagelist"
 
         .itembox__price
-          %span ¥30000
+          = @item.price
           .itembox__price--detail
             %span (税込)
             %span 送料込み
-        .itembox__itemdetail
-          %p 
-          親譲りの無鉄砲で小供の時から損ばかりしている。
-          小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。
-          なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。
-          新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、
-          そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。
-
+        .itembox__description
+          = @item.description
         .table
           %table
             %tbody
@@ -38,29 +29,27 @@
                 %th 
                   出品者
                 %td 
-                  hoge
+                  = @item.user_id
               %tr
                 %th 
                   カテゴリー
                 %td
-                  = link_to "ベビー・キッズ", "#", class: "categorys"
-                  %br
-                  = link_to "ベビー服(男女兼用)~95cm", "#", class: "categorys"
-                  %br
-                  = link_to "アウター", "#", class: "categorys"
+                  = @item.category
               %tr
                 %th 
                   ブランド
-                %td 
+                %td
+                  = @item.brand
               %tr
                 %th 
                   商品のサイズ
-                %td 
+                %td
+                  = @item.size	
               %tr
                 %th 
                   商品の状態
                 %td 
-                  未使用に近い
+                  = @item.condition	
               %tr
                 %th 
                   配送料の負担
@@ -70,12 +59,12 @@
                 %th 
                   発送元の地域
                 %td 
-                  = link_to "岩手県", "#", class: "prefectures"
+                  iwate
               %tr
                 %th 
                   発送日の目安
                 %td 
-                  4-7日で発送
+                  = @item.shipping_days
         
         .optonalarea
           .optonalarea__likebtn
@@ -84,7 +73,16 @@
             
           .optonalarea__optonalbtn
             = link_to "🏴 不適切な商品の報告", "#"
-
+          
+        .show_purchasebox
+          - if user_signed_in? && current_user.id == @item.user_id
+          .item-editbtn
+            = link_to "商品編集", 
+            = link_to "商品削除", item_path(@item.id), method: :delete
+          - else
+            .show_purchasebtn
+              = link_to "購入する", purchase_item_path
+          
       .commentbox
         .commentbox__newcontent
           %form
