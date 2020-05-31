@@ -81,8 +81,9 @@ gem 'mini_magick'
 gem 'devise'
 gem 'font-awesome-sass'
 gem 'active_hash'
-
-
-
-
-
+gem 'payjp'
+<<<<<<< HEAD
+gem 'dotenv-rails'
+=======
+gem 'dotenv-rails'
+>>>>>>> 4379c1fbb6242d74d362ba4cbe04959913b88f60
