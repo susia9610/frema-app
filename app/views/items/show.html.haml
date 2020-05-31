@@ -76,9 +76,9 @@
           
         .show_purchasebox
           - if user_signed_in? && current_user.id == @item.user_id
-          .item-editbtn
-            = link_to "商品編集", 
-            = link_to "商品削除", item_path(@item.id), method: :delete
+            .item-editbtn
+              = link_to "商品編集", edit_item_path
+              = link_to "商品削除", item_path(@item.id), method: :delete
           - else
             .show_purchasebtn
               = link_to "購入する", purchase_item_path
