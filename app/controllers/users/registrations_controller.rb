@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   
   # GET /resource/sign_up
@@ -22,6 +22,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @address = @user.build_address
     render :new_address 
   end
+  
+  def new_address
+    @address = Address.new
+  end
+
 
   def create_address
     @user = User.new(session["devise.regist_data"]["user"])
@@ -39,11 +44,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
     sign_in(:user, @user)
   end
 
+  
+
 
   protected
+  
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  end
+  
 
   def address_params
     params.require(:address).permit( :firstname, :lastname, :firstname_kana, :lastname_kana, :post_number, :prefecture_id, :local, :local_number, :building, :tel_number)
+  end
+
+  def update_resource(resource, params)
+    resource.update_without_password(params)
   end
 end
   # GET /resource/edit

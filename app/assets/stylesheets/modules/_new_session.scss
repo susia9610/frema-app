@@ -49,6 +49,9 @@
     &__title {
       margin: 20px auto;
       width: 310px;
+      p { 
+          color: red;
+        }
       .require {
         padding: 2px;
         font-size: 12px;
@@ -62,6 +65,7 @@
         border-radius: 2px;
         background-color: yellowgreen;
         color: white;
+        
       }
       
     }

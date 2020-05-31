@@ -23,14 +23,14 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :users, only: [:new, :edit, :show] do
+  resources :users, only: [:new, :show, :edit, :update] do
     collection do
       get "signin"
     end
   end
   
   resources :users, only: [:edit, :update]
-
+  resources :addresses, only:[:edit, :update]
   resources :mypage, only: [:index, :show, :new, :edit, :create] do
     collection do
       get "logout"
