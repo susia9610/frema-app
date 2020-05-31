@@ -1,5 +1,5 @@
 = form_with model: @user, url: user_registration_path, local:true do |f|
-  -# = render "devise/shared/error_messages", resource: @user
+  
   
   .new_session-wrapper
     .new_session-wrapper__logo
@@ -13,35 +13,28 @@
         %span{class: "require"} 必須
         = f.text_field :nickname, {class: "new_session-wrapper__main__text", placeholder: "例)フリマ太郎"}
         - if resource.errors.include? :nickname
-          %p{style: "color: red;"}
-            ニックネームを入力してください
+          %p ニックネームを入力してください
 
       .new_session-wrapper__main__title
         メールアドレス
         %span{class: "require"} 必須
         = f.text_field :email, {class: "new_session-wrapper__main__text", placeholder: "PC・携帯どちらでも可"}
         - if resource.errors.include? :email
-          %p{style: "color: red;"}
-            メールアドレスを入力してください
+          %p メールアドレスを入力してください
       
       .new_session-wrapper__main__title
         パスワード
         %span{class: "require"} 必須
         = f.password_field :password, {class: "new_session-wrapper__main__text", placeholder: "7文字以上"}
         - if resource.errors.include? :password
-          %p{style: "color: red;"}
-            パスワードを入力してください
-      
+          %p パスワードを入力してください
       
       .new_session-wrapper__main__title
         パスワード(確認)
         %span{class: "require"} 必須
-        = f.password_field :password_confirmation, {class: "new_session-wrapper__main__text", placeholder: "7文字以上"}
-        - if resource.errors.include? :password_confirmation
-          %p{style: "color: red;"}
-            パスワード（確認）入力してください
-
-
+        = f.password_field :password, {class: "new_session-wrapper__main__text", placeholder: "7文字以上"}
+        - if resource.errors.include? :password
+          %p パスワード（確認）入力してください
 
       .new_session-wrapper__main__title
         お名前(全角)
@@ -50,11 +43,9 @@
           = f.text_field :firstname, {class: "new_session-wrapper__main__text text-half", placeholder: "例)山田"}
           = f.text_field :lastname, {class: "new_session-wrapper__main__text text-half", placeholder: "例)彩"}
         - if resource.errors.include? :firstname
-          %p{style: "color: red;"}
-            名字を入力してください
+          %p 名字を入力してください
         - if resource.errors.include? :lastname
-          %p{style: "color: red;"}
-            名前を入力してください
+          %p 名前を入力してください
 
       .new_session-wrapper__main__title
         お名前カナ(全角)
@@ -63,11 +54,9 @@
           = f.text_field :firstname_kana, {class: "new_session-wrapper__main__text text-half", placeholder: "例)ヤマダ"}
           = f.text_field :lastname_kana, {class: "new_session-wrapper__main__text text-half", placeholder: "例)アヤ"}
         - if resource.errors.include? :firstname_kana
-          %p{style: "color: red;"}
-            名字（カナ）を入力してください
+          %p 名字（カナ）を入力してください
         - if resource.errors.include? :lastname_kana
-          %p{style: "color: red;"}
-            名前（カナ）を入力してください
+          %p 名前（カナ）を入力してください
       
       .new_session-wrapper__main__title
         生年月日
@@ -79,8 +68,7 @@
           = f.select :birth_year, year, {prompt: "--"}, class: "new_session-wrapper__main__select1 three-select"
           年
           - if resource.errors.include? :birth_year
-            %p{style: "color: red;"}
-              年を入力してください
+            %p 年を入力してください
 
           - month = []
           - for num in 1..12
@@ -88,8 +76,7 @@
           = f.select :birth_month, month, {prompt: "--"}, class: "new_session-wrapper__main__select1 three-select"
           月
           - if resource.errors.include? :birth_month
-            %p{style: "color: red;"}
-              月を入力してください
+            %p 月を入力してください
           
           - day = []
           - for num in 1..31
@@ -97,8 +84,7 @@
           = f.select :birth_day, day, {prompt: "--"}, class: "new_session-wrapper__main__select1 three-select"
           日  
           - if resource.errors.include? :birth_day
-            %p{style: "color: red;"}
-              日を入力してください
+            %p 日を入力してください
       
       
       

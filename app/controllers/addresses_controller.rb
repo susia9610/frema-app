@@ -23,12 +23,7 @@ class AddressesController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  #def set_category
-   # @category_parent_array = []
-    #  Category.where(ancestry: nil).each do |parent|
-     #   @category_parent_array << parent
-      #end
-  #end
+
 end
 
 

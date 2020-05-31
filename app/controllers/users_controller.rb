@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(update_params)
+    
     unless @user.update(update_params)
       redirect_to edit_user_path(@user.id), notice: "変更できません。ニックネームとパスワードは必須項目です"
     end
@@ -52,12 +52,8 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :password, :encrypted_password)
   end
 
-  # def set_category
-    # @category_parent_array = []
-     # Category.where(ancestry: nil).each do |parent|
-      #  @category_parent_array << parent
-      #end
-  end
+  
+  
 
 
 end
