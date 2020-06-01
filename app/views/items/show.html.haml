@@ -9,14 +9,14 @@
         .itembox__body
           %ul
             %li
-              = image_tag "@image.image", size:"560x346", class:"firstimage"
+              = image_tag @item.images[0].url, size:"560x346", class:"firstimage"
               %ul
                 -@item.images.each do |image|
                   %li
-                    = image_tag "image.image", size:"140x87", class:"imagelist"
+                    = image_tag image.url, size:"140x87", class:"imagelist"
 
         .itembox__price
-          = @item.price
+          = "¥#{@item.price}"
           .itembox__price--detail
             %span (税込)
             %span 送料込み
@@ -49,7 +49,7 @@
                 %th 
                   商品の状態
                 %td 
-                  = @item.condition	
+                  = @item.condition
               %tr
                 %th 
                   配送料の負担
@@ -58,8 +58,8 @@
               %tr
                 %th 
                   発送元の地域
-                %td 
-                  iwate
+                %td
+                  /= @item.prefecture
               %tr
                 %th 
                   発送日の目安
@@ -77,11 +77,11 @@
         .show_purchasebox
           - if user_signed_in? && current_user.id == @item.user_id
             .item-editbtn
-              = link_to "商品編集", edit_item_path
-              = link_to "商品削除", item_path(@item.id), method: :delete
+              = link_to "商品編集", root_path
+              = link_to "商品削除", item_path(@item), method: :delete
           - else
             .show_purchasebtn
-              = link_to "購入する", purchase_item_path
+              = link_to "購入する", purchase_item_path(@item.id)
           
       .commentbox
         .commentbox__newcontent

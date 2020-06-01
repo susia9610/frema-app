@@ -12,17 +12,11 @@ Rails.application.routes.draw do
   
   root "items#index"
 
-  resources :items do
-    collection do
-      get "item_create" ,to: 'items#create'
-    end
+  resources :items, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
 
     member do
-      get "show"
-      delete "destroy"
       get "purchase"
-      patch "done"
-      
+      get "done"
     end
   
   end

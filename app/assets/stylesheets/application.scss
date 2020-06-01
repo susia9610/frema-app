@@ -1,4 +1,3 @@
-
 @import "reset";
 @import "config/colors";
 @import "font-awesome-sprockets";
@@ -15,6 +14,7 @@
 @import "modules/login";
 @import "modules/new_session";
 @import "modules/mypage";
+@import "modules/flash";
 
 @import "templates/subheader";
 @import "templates/subfooter";
