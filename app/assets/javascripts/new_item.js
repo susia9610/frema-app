@@ -5,7 +5,6 @@ $(function(){
   var file_field = document.querySelector('input[type=file]')
 
   $('.file-field').change(function(e){
-    console.log("OK")
 
     file = e.target.files[0]
 
@@ -43,7 +42,6 @@ $(function(){
       $(".image-preview").css(css);
 
       $(".new-wrapper__main__image-field").before(html);
-      console.log(num)
     };
     });
   });
@@ -63,31 +61,6 @@ $(function(){
       $(".new-wrapper__main__image-field").css(block);
 
       $('.new-wrapper__main__image-field')[0].style.removeProperty({"display": "none"});
-      // var image = `<div class='new-wrapper__main__image-field'>
-      //              <label class="label-image">
-      //              <i class="fas fa-camera"></i>
-      //              <input class="file-field" type="file">
-      //              </label>
-      //              <div class="new-wrapper__main__image-field__text">クリックでアップロード</div>
-      //              </div>`
-
-      var flex = {"display": "flex"}
-      // var field = $(".new-wrapper__main__image-field");
-    
-
-      // $(".item-content:last").after(field)
-      // $(".item-content:last").css(flex);
-
-      
-      // $(".item-content__delete").css(initial);
-
-      // $(".new-wrapper__main__image-field").css({'width': `calc(100% - 650px)`});
-
-     
-      
    }
-    console.log(num)
   })
 });
-
-
