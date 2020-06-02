@@ -35,8 +35,8 @@
         .text 支払い方法
         =icon("fas", "chevron-right", class: "arrow")
     %li.btn
-      = link_to edit_user_registration_path(current_user) do
-        .text パスワード
+      = link_to edit_user_path(current_user) do
+        .text 会員情報変更
         =icon("fas", "chevron-right", class: "arrow")
     %li.btn
       = link_to logout_mypage_index_path do

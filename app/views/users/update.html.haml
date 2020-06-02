@@ -1,0 +1,10 @@
+.new_session-wrapper
+  .new_session-wrapper__logo
+    = render "devise/sessions/header"
+    
+  .new_session-wrapper__main
+    .new_session-wrapper__main__head
+      変更が完了しました
+    =link_to root_path, class:"new_session-wrapper__main__btn" do 
+      引続きお買い物をお楽しみください
+  = render "devise/sessions/footer"
