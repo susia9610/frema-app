@@ -14,8 +14,8 @@ class ItemsController < ApplicationController
     @item = Item.new(set_params)
     if @item.valid?
       @item.save
-    else
-      redirect_to new_item_path
+    # else
+    #   redirect_to new_item_path
     end
   end
 

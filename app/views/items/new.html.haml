@@ -7,13 +7,14 @@
         %span.require 必須
       .new-wrapper__main__text
         最大１０枚までアップロードできます
-      .new-wrapper__main__image-field
-        = f.fields_for :images do |i|
-          = f.label :image, class: "label-image" do
-            = icon('fas','camera')
-            = i.file_field :image, class: "file-field"
-        .new-wrapper__main__image-field__text
-          クリックしてファイルをアップロード
+      .image-preview
+        .new-wrapper__main__image-field
+          = f.fields_for :images do |i|
+            = f.label :image, class: "label-image" do
+              = icon('fas','camera')
+              = i.file_field :image, class: "file-field"
+          .new-wrapper__main__image-field__text
+            クリックでアップロード
     .new-wrapper__main
       .new-wrapper__main__title
         商品名

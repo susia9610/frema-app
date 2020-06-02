@@ -45,7 +45,7 @@
       background-color: white;
       border: solid 1px;
       border-color: #eee;
-      margin-left: 10px;
+      margin: 20px 10px 0px 10px;
       &__icon{
         margin-top: 16px;
       }
@@ -57,22 +57,17 @@
       }
     }
     &__image-field{
-      width: 660px;
       height: 160px;
       margin: 16px auto;
       background-color: #eee;
       border: 1px dashed #ccc;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       font-size: 12px;
       text-align: center;
       position: relative;
+      flex-grow: 1;
       .fa-camera{
-        position: absolute;
-        top: 40px;
-        right: 320px;
         font-size: 20px;
+        margin-top: 40px;
       }
       .file-field{
         display: none;
@@ -81,7 +76,6 @@
         padding-top: 20px;
       }
     }
-    
     &__input-text{
       height: 44px;
       line-height: 44px;
