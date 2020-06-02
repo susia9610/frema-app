@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :users, only: [:edit, :update]
+  resources :users, only: [:show, :edit, :update]
   resources :addresses, only:[:edit, :update]
   resources :mypage, only: [:index, :show, :new, :edit, :create] do
     collection do

@@ -27,7 +27,7 @@
   %ul.side__list
     %p 設定
     %li.btn
-      = link_to do
+      = link_to edit_address_path(current_user) do
         .text 発送元・お届け先住所変更
         =icon("fas", "chevron-right", class: "arrow")
     %li.btn
@@ -35,7 +35,7 @@
         .text 支払い方法
         =icon("fas", "chevron-right", class: "arrow")
     %li.btn
-      = link_to edit_user_password_path do
+      = link_to edit_user_registration_path(current_user) do
         .text パスワード
         =icon("fas", "chevron-right", class: "arrow")
     %li.btn
