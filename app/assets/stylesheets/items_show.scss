@@ -12,7 +12,7 @@
       .itembox{
         padding: 24px 40px 40px;
         background-color: #ffffff;
-        &__name{
+        .name{
           text-align: center;
           font-size: 24px;
           font-weight: bold;
@@ -60,7 +60,7 @@
           }
         }
 
-        &__itemdetail {
+        &__description {
           line-height: 1.5;
           font-size: 18px;
           margin-bottom: 30px;
@@ -126,6 +126,41 @@
             a{
               text-decoration: none;
               color: #333;
+            }
+          }
+        }
+        .show_purchasebox{
+          padding: 24px;
+          background-color: #ffffff;
+          text-align: center;
+          .item-editbtn{
+            display: flex;
+            justify-content: space-between;
+            a{
+              margin: 0 auto;
+              margin-top: 30px;
+              text-align: center;
+              display: block;
+              height: 48px;
+              width: 30%;
+              background-color: #3ccace;
+              border: 1px solid #3ccace;
+              line-height: 48px;
+              color: white;
+              font-size: 18px;
+              border-radius: 100px;
+            }
+          }
+          .show_purchasebtn{
+            margin: 0 auto;
+            line-height: 48px;
+            background-color: #3CCACE;
+            border: 1px solid #3CCACE;
+            width: 65%;
+            font-size: 18px;
+            border-radius: 100px;
+            a{
+              color: #fff;
             }
           }
         }
