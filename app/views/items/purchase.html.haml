@@ -1,39 +1,40 @@
 = render "/items/templates/subheader"
-= form_with url: "#" do |f|
-  .purchase
-    .purchase__main
-      .purchase__main__title
-        .purchase__main__title__text
-          購入内容の確認
-      .border
-      .purchase__main__contents
-        = image_tag "a004.png", size:"100x100"
-        .purchase__main__contents__right
-          %p item
-          %p ￥30000 (税込み) 
-          %p 送料込み
-      .border
-      .purchase__main__title
-        .purchase__main__title__text
-          .price-box
-            %p 支払い金額
-            %P ￥30000
-      .border      
-      .purchase__main__title
-        .purchase__main__title__text
-          支払い方法
-          %p クレジットカード
-      .border
-      .purchase__main__title
-        .purchase__main__title__text
-          配送先 
-          %p 〒123-4567 岩手県いわて市123-123
 
-        .purchase__main__title__text__bottom
-        .purchase__submit
-          = f.submit "購入する", class: "purchase__submit__button"
-        %p.caution 
-          ※郵便局/コンビニ受取をご希望の方は、購入後に取引画面から受取場所を変更をすることが可能です。
-          出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。
+.purchase
+  .purchase__main
+    .purchase__main__title
+      .purchase__main__title__text
+        購入内容の確認
+    .border
+    .purchase__main__contents
+      = image_tag @item.images[0].url, size:"100x100"
+      .purchase__main__contents__right
+        = @item.name
+        = "¥#{@item.price}(税込み)"
+        %p 送料込み
+    .border
+    .purchase__main__title
+      .purchase__main__title__text
+        .price-box
+          %p 支払い金額
+          = "¥#{@item.price.to_s}"
+    .border      
+    .purchase__main__title
+      .purchase__main__title__text
+        支払い方法
+        %p クレジットカード
+    .border
+    .purchase__main__title
+      .purchase__main__title__text
+        配送先 
+        %p 〒123-4567 岩手県いわて市123-123
+
+      .purchase__main__title__text__bottom
+      .purchase__submit
+      = form_with url: "#" do |f|
+        = f.submit "購入する", class: "purchase__submit__button"
+      %p.caution 
+        ※郵便局/コンビニ受取をご希望の方は、購入後に取引画面から受取場所を変更をすることが可能です。
+        出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。
 
 = render "/items/templates/subfooter"
