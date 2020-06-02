@@ -44,6 +44,7 @@ class ItemsController < ApplicationController
 
   def move_to_root
     redirect_to root_path unless user_signed_in?
+    flash[:alert] = 'ログインしてください'
   end
 
   private
