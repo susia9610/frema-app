@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :set_user_params, only: [:show,:edit, :update]
-  before_action :set_user_current, only: [:index, :edit_detail, :update_detail]
-
+before_action :set_user_params, only: [:index, :edit_detail, :update_detail]
   def index
     @items = @user.items 
   end
@@ -15,7 +13,7 @@ class UsersController < ApplicationController
   end
   
   def edit
-    
+       
   end
 
   def update
@@ -28,6 +26,7 @@ class UsersController < ApplicationController
   end
   
   def edit_detail
+    
   end
 
   def update_detail
@@ -48,12 +47,10 @@ class UsersController < ApplicationController
   end
 
   def set_user_params
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
   end
+  
 
-  def set_user_current
-    @user = User.find(current_user.id)
-  end
 
   def update_detail_params
     params.require(:user).permit(:email, :password, :password_confirmation)
