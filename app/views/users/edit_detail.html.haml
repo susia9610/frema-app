@@ -1,0 +1,28 @@
+= form_with model: @user, url: user_registration_path, local:true do |f|
+  = render "devise/shared/error_messages", resource: @user
+  .new_session-wrapper
+    .new_session-wrapper__logo   
+      = render "devise/sessions/header"  
+    .new_session-wrapper__main     
+      .new_session-wrapper__main__head
+        メールアドレス・パスワード変更
+      .new_session-wrapper__main__title
+        メールアドレス
+        %span{class: "require"} 必須
+        = f.text_field :email, {class: "new_session-wrapper__main__text", placeholder: "PC・携帯どちらでも可"}
+      .new_session-wrapper__main__title
+        パスワード
+        %span{class: "require"} 必須
+        = f.password_field :password, {class: "new_session-wrapper__main__text", placeholder: "7文字以上"}
+      .new_session-wrapper__main__title
+        パスワード(確認)
+        %span{class: "require"} 必須
+        = f.password_field :password_confirmation, {class: "new_session-wrapper__main__text", placeholder: "7文字以上"}
+      
+
+
+      
+      .new_session-wrapper__main__caution
+        ※本人情報は正しく入力してください。会員登録後、お時間を頂く場合があります。
+        = f.submit "変更する", class: 'new_session-wrapper__main__btn'   
+    = render "devise/sessions/footer"

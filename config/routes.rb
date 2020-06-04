@@ -26,7 +26,13 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :users, only: [:show, :edit, :update]
+  
+  resources :users,     only: [:show, :index, :edit, :update] do
+    get 'edit_detail', to: 'users#edit_detail'
+    patch 'update_detail', to: 'users#update_detail'
+  end
+
+
   resources :addresses, only:[:edit, :update]
   resources :mypage, only: [:index, :show, :new, :edit, :create] do
     collection do
