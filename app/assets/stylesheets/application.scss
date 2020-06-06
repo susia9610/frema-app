@@ -1,46 +1,23 @@
-$frema: #3CCACE;
-
 @import "reset";
 @import "config/colors";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "variables";
 
-@import "users";
 @import "items";
 @import "items_new";
-@import "users_show";
-@import "items_index";
+@import "modules/items_index";
+@import "items_show";
+@import "modules/items_done";
+@import "modules/items_purchase";
+
+@import "modules/login";
+@import "modules/new_session";
+@import "modules/mypage";
 @import "modules/flash";
 
-*{
-  background-repeat: no-repeat;
-  box-sizing: border-box;
-  color: #333;
-}
+@import "templates/subheader";
+@import "templates/subfooter";
+@import "templates/error_messages";
 
 
-body{
-  padding: 0;
-  margin: 0;
-}
-
-a{
-  text-decoration: none;
-  color: #333;
-  &:hover{
-    text-decoration: underline;
-    opacity: 0.5;
-  }
-}
-
-.link-blue{
-  color: #62A6E6;
-}
-
-h1,h2,h3,h4,h5{
-  margin: 0;
-}
-
-li{
-  list-style: none;
-}

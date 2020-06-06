@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+@mixin app_btn {
+  img {
+    width: 100%;
+    vertical-align: bottom;
+  }
+  &--app {
+    margin-right: 10px;
+    width: 180px;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  &--gstore {
+    margin-right: 10px;
+    width: 180px;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+
+@import "modules/toppage/header";
+@import "modules/toppage/main";
+@import "modules/toppage/banner";
+@import "modules/toppage/footer";

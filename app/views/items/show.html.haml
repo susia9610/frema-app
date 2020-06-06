@@ -1,0 +1,112 @@
+= render "/items/header"
+
+.main
+  .show-main
+    .topcontents
+      .itembox
+        %h1.name
+          = @item.name
+        .itembox__body
+          %ul
+            %li
+              = image_tag @item.images[0].url, size:"560x346", class:"firstimage"
+              %ul
+                -@item.images.each do |image|
+                  %li
+                    = image_tag image.url, size:"140x87", class:"imagelist"
+
+        .itembox__price
+          = "¥#{@item.price}"
+          .itembox__price--detail
+            %span (税込)
+            %span 送料込み
+        .itembox__description
+          = @item.description
+        .table
+          %table
+            %tbody
+              %tr
+                %th 
+                  出品者
+                %td 
+                  = @item.user_id
+              %tr
+                %th 
+                  カテゴリー
+                %td
+                  = @item.category
+              %tr
+                %th 
+                  ブランド
+                %td
+                  = @item.brand
+              %tr
+                %th 
+                  商品のサイズ
+                %td
+                  = @item.size	
+              %tr
+                %th 
+                  商品の状態
+                %td 
+                  = @item.condition
+              %tr
+                %th 
+                  配送料の負担
+                %td 
+                  送料込み（出品者負担）
+              %tr
+                %th 
+                  発送元の地域
+                %td
+                  /= @item.prefecture
+              %tr
+                %th 
+                  発送日の目安
+                %td 
+                  = @item.shipping_days
+        
+        .optonalarea
+          .optonalarea__likebtn
+            =icon('fa','fa-star',class: "star")
+            お気に入り 0
+            
+          .optonalarea__optonalbtn
+            = link_to "🏴 不適切な商品の報告", "#"
+          
+        .show_purchasebox
+          - if user_signed_in? && current_user.id == @item.user_id
+            .item-editbtn
+              = link_to "商品編集", root_path
+              = link_to "商品削除", item_path(@item), method: :delete
+          - else
+            .show_purchasebtn
+              = link_to "購入する", purchase_item_path(@item.id)
+          
+      .commentbox
+        .commentbox__newcontent
+          %form
+            %input.text
+
+        .commentbox__noticemsg
+          相手のことを考え丁寧なコメントを心がけましょう。
+          %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          
+        %button.commentbox__commentbtn
+          =icon('fa','comment', class: "commentbtn-icon")
+          コメントする
+
+      .links
+        %ur
+          %li
+            = link_to "#", class: "right" do
+              次の商品 >
+          %li
+            = link_to "#", class: "left" do
+              < 前の商品
+
+    .relateditems
+      = link_to "ベビー・キッズをもっと見る", "#", class: "itemlists" 
+
+= render "/items/banner"
+= render "/items/footer"

@@ -3,24 +3,42 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
+  
+  devise_scope :user do
+    get  'addresses', to: 'users/registrations#new_address'
+    post 'addresses', to: 'users/registrations#create_address'
+  end
+  
   $date = Time.now.in_time_zone('Tokyo').to_s
+  
   root "items#index"
-  resources :items do
-    # 以下はビュー表示用の仮アクション
+
+  resources :items, only: [:index, :new, :create, :show, :edit, :destroy] do
+    member do
+      get "purchase"
+      get "done"
+    end
+  
+  end
+  
+  resources :users, only: [:new, :show, :edit, :update] do
     collection do
-      get "item_create" ,to: 'items#create'
-      get "item_update" ,to: 'items#update'
-      get "item_destroy",to: 'items#destroy'
+      get "signin"
     end
   end
-  resources :users, only: :show do
-    # 以下はビュー表示用の仮アクション
+  
+  
+  resources :users,     only: [:show, :index, :edit, :update] do
+    get 'edit_detail', to: 'users#edit_detail'
+    patch 'update_detail', to: 'users#update_detail'
+  end
+
+
+  resources :addresses, only:[:edit, :update]
+  resources :mypage, only: [:index, :show, :new, :edit, :create] do
     collection do
-      get "new_session"
-      get "new_user"
-      get "new_address"
-      get "create_address"
-    end
-  end  
+      get "logout"
+    end   
+  end
 end
 
