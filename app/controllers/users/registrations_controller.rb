@@ -58,9 +58,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.require(:address).permit( :firstname, :lastname, :firstname_kana, :lastname_kana, :post_number, :prefecture_id, :local, :local_number, :building, :tel_number)
   end
 
-  def update_resource(resource, params)
-    resource.update_without_password(params)
-  end
+  # def update_resource(resource, params)
+  #   resource.update_without_password(params)
+  # end
 end
   # GET /resource/edit
   # def edit
