@@ -12,12 +12,19 @@ Rails.application.routes.draw do
   
   root "items#index"
 
+  resources :categories, only: [:index] do
+    member do
+      get 'parent'
+      get 'child'
+      get 'grandchild'
+    end
+  end
+
   resources :items, only: [:index, :new, :create, :show, :edit, :destroy] do
     member do
       get "purchase"
       get "done"
     end
-  
   end
   
   resources :users, only: [:new, :show, :edit, :update] do
