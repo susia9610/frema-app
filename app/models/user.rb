@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  with_options presence: true do
+  devise :omniauthable, omniauth_providers: %i[facebook google_oauth2]
+         with_options presence: true do
     validates :nickname
     validates :birth_year
     validates :birth_month
