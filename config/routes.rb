@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  
+
   devise_for :users, controllers: {
-    registrations: 'users/registrations',
+  omniauth_callbacks: 'users/omniauth_callbacks',
+  registrations: 'users/registrations'
   }
+
+  
   
   devise_scope :user do
     get  'addresses', to: 'users/registrations#new_address'
@@ -40,7 +45,11 @@ Rails.application.routes.draw do
   end
 
 
-  resources :addresses, only:[:edit, :update]
+  resources :addresses, only:[:edit, :update] do
+    get 'edit', to:'addresses#edit'
+    patch 'update', to: 'addresses#update'
+  end  
+  
   resources :mypage, only: [:index, :show, :new, :edit, :create] do
     collection do
       get "logout"
