@@ -5,7 +5,7 @@ class CreditcardsController < ApplicationController
 
   def index
     if @card.present?
-      Payjp.api_key = Rails.application.credentials.pay_jp[:payjp_private_key]
+      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @card_info = customer.cards.retrieve(customer.default_card)
       @card_brand = @card_info.brand
