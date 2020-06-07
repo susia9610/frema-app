@@ -1,16 +1,24 @@
 .login-main
   .login__panel
-    .login__panel__no-account
-      %p アカウントをお持ちでない方はこちら
+    .login__panel__no-account__form
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .no-account
+          %p アカウントをお持ちでない方はこちら
       - if devise_mapping.registerable? && controller_name != "registrations"
-        = link_to "新規会員登録", new_registration_path(resource_name)
-
-        = link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, method: :post 
-        -#   = icon('fab', 'facebook-square', class: 'login__panel__form__btn--facebook__icon')
-        -#     Facebookで登録する
-        = link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post
-        -#   = icon('fab', 'google', class: 'login__panel__form__btn--google__icon') 
-        -#     Googleで登録する
+        .new-account
+          = link_to "新規会員登録", new_registration_path(resource_name)
+        .facebook
+          = link_to user_facebook_omniauth_authorize_path, method: :post, class: "btn-def--facebook" do
+            %i.fab.fa-facebook
+            %span<>
+            Facebookでログイン 
+        .google
+          = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn-def--google" do
+            %i.fab.fa-google
+            %span<>
+            Googleでログイン 
+      
+        
     .login__panel__form
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .mail-field
