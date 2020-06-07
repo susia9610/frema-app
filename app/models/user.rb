@@ -39,9 +39,3 @@ class User < ApplicationRecord
     { user: user, sns: sns }
   end  
 end
-
-
-
-
-
-
