@@ -1,5 +1,5 @@
 class AddressesController < ApplicationController
-  #before_action :set_category
+  
   before_action :set_user_params, only: [:edit, :update]
   def edit
     @address = @user.address

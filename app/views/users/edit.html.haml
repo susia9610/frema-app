@@ -1,0 +1,87 @@
+= form_with model: @user, url: user_registration_path, local:true do |f|
+  
+  
+  .new_session-wrapper
+    .new_session-wrapper__logo
+      = render "devise/sessions/header"
+
+    .new_session-wrapper__main     
+      .new_session-wrapper__main__head
+        会員情報
+      .new_session-wrapper__main__title
+        ニックネーム
+        %span{class: "require"} 必須
+        = f.text_field :nickname, {class: "new_session-wrapper__main__text", placeholder: "例)フリマ太郎"}
+          %p ニックネームを入力してください
+
+      .new_session-wrapper__main__title
+        メールアドレス
+        %span{class: "require"} 必須
+        = f.text_field :email, {class: "new_session-wrapper__main__text", placeholder: "PC・携帯どちらでも可"}
+          %p メールアドレスを入力してください
+      
+      .new_session-wrapper__main__title
+        パスワード
+        %span{class: "require"} 必須
+        = f.password_field :password, {class: "new_session-wrapper__main__text", placeholder: "7文字以上"}
+          %p パスワードを入力してください
+      
+      .new_session-wrapper__main__title
+        パスワード(確認)
+        %span{class: "require"} 必須
+        = f.password_field :password, {class: "new_session-wrapper__main__text", placeholder: "7文字以上"}
+        %p パスワード（確認）入力してください
+
+      .new_session-wrapper__main__title
+        お名前(全角)
+        %span{class: "require"} 必須
+        .flexbox
+          = f.text_field :firstname, {class: "new_session-wrapper__main__text text-half", placeholder: "例)山田"}
+          = f.text_field :lastname, {class: "new_session-wrapper__main__text text-half", placeholder: "例)彩"}
+        
+          %p 名字を入力してください
+        
+          %p 名前を入力してください
+
+      .new_session-wrapper__main__title
+        お名前カナ(全角)
+        %span{class: "require"} 必須
+        .flexbox
+          = f.text_field :firstname_kana, {class: "new_session-wrapper__main__text text-half", placeholder: "例)ヤマダ"}
+          = f.text_field :lastname_kana, {class: "new_session-wrapper__main__text text-half", placeholder: "例)アヤ"}
+        
+          %p 名字（カナ）を入力してください
+        
+          %p 名前（カナ）を入力してください
+      
+      .new_session-wrapper__main__title
+        生年月日
+        %span{class: "require"} 必須
+        .flexbox
+          - year = []
+          - for num in 0..100
+            - year << 2020-num
+          = f.select :birth_year, year, {prompt: "--"}, class: "new_session-wrapper__main__select1 three-select"
+          年
+          %p 年を入力してください
+
+          - month = []
+          - for num in 1..12
+            - month << num
+          = f.select :birth_month, month, {prompt: "--"}, class: "new_session-wrapper__main__select1 three-select"
+          月
+          %p 月を入力してください
+          
+          - day = []
+          - for num in 1..31
+            - day << num
+          = f.select :birth_day, day, {prompt: "--"}, class: "new_session-wrapper__main__select1 three-select"
+          日  
+          %p 日を入力してください
+      
+      
+      
+      .new_session-wrapper__main__caution
+        ※本人情報は正しく入力してください。会員登録後、お時間を頂く場合があります。
+        = f.submit "変更する", class: 'new_session-wrapper__main__btn'  
+    = render "devise/sessions/footer"
