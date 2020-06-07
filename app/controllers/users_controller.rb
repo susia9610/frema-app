@@ -11,11 +11,8 @@ before_action :set_user_params, only: [:show, :edit_detail, :update_detail]
   def new
     @user = User.new
   end
-  
-  
-  
-  def edit_detail
     
+  def edit_detail
   end
 
   def update_detail

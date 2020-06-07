@@ -45,7 +45,11 @@ Rails.application.routes.draw do
   end
 
 
-  resources :addresses, only:[:edit, :update]
+  resources :addresses, only:[:edit, :update] do
+    get 'edit', to:'addresses#edit'
+    patch 'update', to: 'addresses#update'
+  end
+  
   resources :mypage, only: [:index, :show, :new, :edit, :create] do
     collection do
       get "logout"

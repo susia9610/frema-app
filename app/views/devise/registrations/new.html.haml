@@ -21,21 +21,22 @@
         = f.text_field :email, {class: "new_session-wrapper__main__text", placeholder: "PC・携帯どちらでも可"}
         - if resource.errors.include? :email
           %p メールアドレスを入力してください
-      
-      .new_session-wrapper__main__title
-        パスワード
-        %span{class: "require"} 必須
-        = f.password_field :password, {class: "new_session-wrapper__main__text", placeholder: "7文字以上"}
-        - if resource.errors.include? :password
-          %p パスワードを入力してください
-      
-      .new_session-wrapper__main__title
-        パスワード(確認)
-        %span{class: "require"} 必須
-        = f.password_field :password, {class: "new_session-wrapper__main__text", placeholder: "7文字以上"}
-        - if resource.errors.include? :password
-          %p パスワード（確認）入力してください
-
+      - if request.env["omniauth.auth"] == nil
+        .new_session-wrapper__main__title
+          パスワード
+          %span{class: "require"} 必須
+          = f.password_field :password, {class: "new_session-wrapper__main__text", placeholder: "7文字以上"}
+          - if resource.errors.include? :password
+            %p パスワードを入力してください
+        
+        .new_session-wrapper__main__title
+          パスワード(確認)
+          %span{class: "require"} 必須
+          = f.password_field :password, {class: "new_session-wrapper__main__text", placeholder: "7文字以上"}
+          - if resource.errors.include? :password
+            %p パスワード（確認）入力してください
+      - else 
+        = hidden_field_tag :sns_auth, true
       .new_session-wrapper__main__title
         お名前(全角)
         %span{class: "require"} 必須
