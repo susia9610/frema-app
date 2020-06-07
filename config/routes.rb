@@ -48,7 +48,7 @@ Rails.application.routes.draw do
   resources :addresses, only:[:edit, :update] do
     get 'edit', to:'addresses#edit'
     patch 'update', to: 'addresses#update'
-  end
+  end  
   
   resources :mypage, only: [:index, :show, :new, :edit, :create] do
     collection do
