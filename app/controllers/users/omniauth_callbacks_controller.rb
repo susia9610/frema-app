@@ -1,26 +1,29 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
-    callback_for(:facebook)
-  
-  def google_oauth2
-    callback_for(:google)
+    authorization
   end
 
-  
-  def callback_for(provider)
-    @user = User.from_omniauth(request.env["omniauth.auth"])
-    if @user.persisted?
-      sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
-      set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
-    else
-      session["devise.#{provider}_data"] = request.env["omniauth.auth"].except("extra")
-      redirect_to new_user_registration_url
-    end
+  def google_oauth2
+    authorization
   end
 
   def failure
     redirect_to root_path
   end
 
+  private
+
+  def authorization
+    sns_info = User.from_omniauth(request.env["omniauth.auth"])
+    @user = sns_info[:user]
+
+    if @user.persisted?
+      sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
+    else
+      @sns_id = sns_info[:sns].id
+      render template: 'devise/registrations/new'
+    end
+  end
 end
+
