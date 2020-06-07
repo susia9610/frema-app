@@ -55,5 +55,12 @@ Rails.application.routes.draw do
       get "logout"
     end   
   end
+
+  resources :creditcards, only:[:index, :new, :create, :destroy, :show] do
+    member do
+      post 'pay'
+    end
+  end
+  
 end
 
