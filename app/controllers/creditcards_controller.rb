@@ -35,7 +35,7 @@ class CreditcardsController < ApplicationController
   end
 
   def create
-    Payjp.api_key = Rails.application.credentials.pay_jp[:payjp_private_key]
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
     if params['payjpToken'].blank?
       render "new"
     else
@@ -57,7 +57,7 @@ class CreditcardsController < ApplicationController
   end
 
   def destroy
-    Payjp.api_key = Rails.application.credentials.pay_jp[:payjp_private_key]
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
     customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete
     if @card.destroy
