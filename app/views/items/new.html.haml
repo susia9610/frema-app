@@ -10,9 +10,10 @@
       .image-preview
         .new-wrapper__main__image-field
           = f.fields_for :images do |i|
-            = f.label :image, class: "label-image" do
-              = icon('fas','camera')
-              = i.file_field :image, class: "file-field"
+            %div{"data-index" => "#{i.index}"} 
+              = f.label :image, class: "label-image" do
+                = icon('fas','camera')
+                = i.file_field :image, class: "file-field"
           .new-wrapper__main__image-field__text
             クリックでアップロード
     .new-wrapper__main
