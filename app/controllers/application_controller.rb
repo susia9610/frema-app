@@ -32,8 +32,4 @@ class ApplicationController < ActionController::Base
       password == Rails.application.credentials.basic[:password]
     end
   end
-
-  
-
-
 end
