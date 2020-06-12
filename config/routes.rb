@@ -26,9 +26,14 @@ Rails.application.routes.draw do
   end
 
   resources :items, only: [:index, :new, :create, :show, :edit, :destroy] do
+    collection do
+      get "set_images"
+    end
+    
     member do
       get "purchase"
       get "done"
+      post "pay"
     end
   end
   

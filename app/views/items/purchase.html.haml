@@ -22,16 +22,37 @@
     .purchase__main__title
       .purchase__main__title__text
         支払い方法
-        %p クレジットカード
+        - if @default_card_information.blank?
+          %br /
+        - else
+          = "**** **** **** " + "#{@default_card_information.last4}"
+          %br
+          - exp_month = @default_card_information.exp_month.to_s
+          - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+          = "有効期限 " + exp_month + " / " + exp_year
+          %br
+        = link_to "変更する", creditcards_path, calss:"update-btn"
     .border
     .purchase__main__title
       .purchase__main__title__text
         配送先 
-        %p 〒123-4567 岩手県いわて市123-123
-
+        %p 〒#{@address.post_number} 
+        %p #{@address.prefecture_id + @address.local + @address.local_number + @address.building}
+        - if @address.building.present? && @address.tel_number.present?
+          = "#{@address.building}"
+          %br
+          = "Tell #{@address.tel_number}"
+          %br
+        - elsif @address.tel_number.blank?
+          = "#{@address.building}"
+          %br
+        - elsif @address.building.blank?
+          = "Tell #{@address.tel_number}"
+          %br
+        %br
       .purchase__main__title__text__bottom
       .purchase__submit
-      = form_with url: "#" do |f|
+      = form_with url: pay_item_path, local: true do |f|
         = f.submit "購入する", class: "purchase__submit__button"
       %p.caution 
         ※郵便局/コンビニ受取をご希望の方は、購入後に取引画面から受取場所を変更をすることが可能です。
