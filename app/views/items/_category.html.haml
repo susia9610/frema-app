@@ -1,3 +1,18 @@
 .header__box__sub__left--category
-  = link_to "#", class: "categoryBtn", id: "left-category" do
+  = link_to "#", class: "categorybtn", id: "left-category" do
     = "カテゴリー"
+  .visibletree
+    %ul.firstmenu__parents
+      - @parents.each do |parent|
+        %li.firstmenu__parents__parent
+          = link_to "#{parent.name}", "/categories/#{parent.id}", class: "item-link" 
+
+          %ul.secondmenu__children
+            - parent.children.each do |child|
+              %li.secondmenu__children__child
+                = link_to "#{child.name}", "/categories/#{child.id}", class: "item-link" 
+
+                %ul.thirdmenu__grandchildren
+                  - child.children.each do |grandchildren|
+                    %li.thirdmenu__grandchildren__grandchild
+                      = link_to "#{grandchildren.name}", "/categories/#{grandchildren.id}", class: "item-link" 

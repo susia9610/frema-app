@@ -1,22 +1,17 @@
-.categoryBtn,.brandBtn {
+.categorybtn {
   text-decoration: none;
   color: black;
 }
 
-.categoryBtn:hover,.brandBtn:hover{
+.categorybtn:hover {
   background-position: -100% 0;
   color: orange;
+  cursor: pointer;
 }
 
 .item-link{
   color: black;
   text-decoration: none;
-  line-height: 32px;
-  background-position: center right;
-  background-repeat: no-repeat;
-  background-size: 18px;
-  padding-right: 30px;
-  display: block;
   width: 240px;
   padding: 3px 8px 3px 5px;
   border-bottom: 1px solid #f8f8f8;
@@ -29,23 +24,12 @@
 
 .header {
   padding: 0 60px;
-  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
   &__box {
     margin: 0 auto;
     height: 100%;
     min-height: 82px;
     width: 100%;
     max-width: 1040px;
-    &__main {
-      padding-top: 15px;
-      padding-bottom: 10px;
-      &--icon {
-        // background-image: image-url("logo.png");
-        height: 40px;
-        width: 140px;
-        background-size: cover;
-      }
-    }
     &__sub {
       display: flex;
       justify-content: space-between;
@@ -58,27 +42,26 @@
         &--category {
           padding-right: 30px;
           position: relative;
-          &:hover > .visibleTree{
+          &:hover > .visibletree{
             opacity: 1;
             visibility: visible;
           }
-          .visibleTree{
+          .visibletree{
             opacity: 0;
             visibility: hidden;
             position: absolute;
-            display: flex;
             top: 100%;
             z-index: 2;
             background-color: white;
-            .firstMenu__parents{
+            .firstmenu__parents{
               width: 240px;
               &__parent{
-              &:hover > .secondMenu__children{
+              &:hover > .secondmenu__children{
                 opacity: 1;
                 visibility: visible;
               }
               }
-              .secondMenu__children{
+              .secondmenu__children{
                 position: absolute;
                 top: 0px;
                 left: 100%;
@@ -86,12 +69,12 @@
                 visibility: hidden;
                 background-color: white;
                   &__child{
-                  &:hover > .thirdMenu__grandchildren{
+                  &:hover > .thirdmenu__grandchildren{
                   opacity: 1;
                   visibility: visible;
                   }
                   }
-                    .thirdMenu__grandchildren{
+                    .thirdmenu__grandchildren{
                       background-color: white;
                       position: absolute;
                       left: 100%;
