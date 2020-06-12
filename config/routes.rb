@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
   
 
+  get 'password_resets/new'
+  get 'password_resets/edit'
   devise_for :users, controllers: {
   omniauth_callbacks: 'users/omniauth_callbacks',
   registrations: 'users/registrations'
   }
+  resources :account_activations, only: [:edit]
+  resources :password_resets,     only: [:new, :create, :edit, :update] 
 
   
   

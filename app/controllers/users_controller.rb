@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 before_action :set_user_params, only: [:show, :edit_detail, :update_detail]
+
   def index
     @items = @user.items 
   end
@@ -11,7 +12,21 @@ before_action :set_user_params, only: [:show, :edit_detail, :update_detail]
   def new
     @user = User.new
   end
-    
+  
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      UserMailer.account_activation(@user).deliver_now
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
+    else
+      render 'new'
+    end
+  end
+
+
+
+
   def edit_detail
   end
 
@@ -23,6 +38,11 @@ before_action :set_user_params, only: [:show, :edit_detail, :update_detail]
     sign_in(:user, @user)
   end
 
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(remember_token))
+  end
+
   private
   def set_user_params
     @user = User.find(params[:user_id])
@@ -31,5 +51,7 @@ before_action :set_user_params, only: [:show, :edit_detail, :update_detail]
   def update_detail_params
     params.require(:user).permit(:email, :password, :password_confirmation)
   end
+  
 
+  
 end
