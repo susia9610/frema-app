@@ -1,11 +1,15 @@
+= render "/items/header"
+
 .category__container
   .category__container--top
     %h3
     カテゴリー一覧
+    
     - @parents.each_with_index do |parent, i|
       - unless parent.name.include?("カテゴリー一覧")
-        = link_to "##{i}", class: "box__parent--link" do
+        = link_to "#{i}", class: "box__parent--link" do
           = parent.name
+
   - @parents.each_with_index do |parent, i|
     - unless parent.name.include?("カテゴリー一覧")
       .category__container--box
@@ -28,3 +32,6 @@
                     - unless grandchild.name.include?("すべて")
                       = link_to "#", class: "category__link--btn" do
                         = grandchild.name
+
+= render "/items/banner"
+= render "/items/footer"

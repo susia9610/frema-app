@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:parent, :child, :grandchild]
   
   def index
+    @parents = Category.where(ancestry: nil)
   end
 
   def parent

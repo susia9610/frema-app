@@ -4,91 +4,60 @@
 }
 
 .categorybtn:hover {
-  background-position: -100% 0;
-  color: orange;
-  cursor: pointer;
+  color: #f86f20;
 }
 
-.item-link{
-  color: black;
+.item_category-link{
   text-decoration: none;
+  color: black;
   width: 240px;
   padding: 3px 8px 3px 5px;
-  border-bottom: 1px solid #f8f8f8;
-  &:hover{
-    background-position: -100% 0;
-    color: orange; 
-  }
 }
 
+.item_category-link:hover {
+  color: #f86f20;
+}
 
-.header {
-  padding: 0 60px;
-  &__box {
-    margin: 0 auto;
-    height: 100%;
-    min-height: 82px;
-    width: 100%;
-    max-width: 1040px;
-    &__sub {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
-      line-height: 32px;
-      padding-top: 1px;
-      &__left {
-        display: flex;
-        font-size: 14px;
-        &--category {
-          padding-right: 30px;
-          position: relative;
-          &:hover > .visibletree{
-            opacity: 1;
-            visibility: visible;
+.category {
+  position: relative;
+  &:hover > .visibletree{
+    opacity: 1;
+    visibility: visible;
+  }
+  .visibletree{
+    visibility: hidden;
+    position: absolute;
+    z-index: 2;
+    background-color: white;
+    .firstmenu__parents{
+      width: 240px;
+      &__parent{
+      &:hover > .secondmenu__children{
+        opacity: 1;
+        visibility: visible;
+      }
+      }
+      .secondmenu__children{
+        position: absolute;
+        top: 0px;
+        left: 100%;
+        visibility: hidden;
+        background-color: white;
+          &__child{
+          &:hover > .thirdmenu__grandchildren{
+          opacity: 1;
+          visibility: visible;
           }
-          .visibletree{
-            opacity: 0;
-            visibility: hidden;
-            position: absolute;
-            top: 100%;
-            z-index: 2;
-            background-color: white;
-            .firstmenu__parents{
-              width: 240px;
-              &__parent{
-              &:hover > .secondmenu__children{
-                opacity: 1;
-                visibility: visible;
-              }
-              }
-              .secondmenu__children{
-                position: absolute;
-                top: 0px;
-                left: 100%;
-                opacity: 0;
-                visibility: hidden;
-                background-color: white;
-                  &__child{
-                  &:hover > .thirdmenu__grandchildren{
-                  opacity: 1;
-                  visibility: visible;
-                  }
-                  }
-                    .thirdmenu__grandchildren{
-                      background-color: white;
-                      position: absolute;
-                      left: 100%;
-                      top: 0px;
-                      opacity: 0;
-                      visibility: hidden;
-                      &__grandchild{
-                        background-color: white;
-                      }
-                    }
-                }
-              }
           }
-        }
+            .thirdmenu__grandchildren{
+              position: absolute;
+              left: 100%;
+              top: 0px;
+              visibility: hidden;
+              background-color: white;
+              &__grandchild{
+              }
+            }
       }
     }
   }
