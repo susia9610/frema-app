@@ -59,8 +59,17 @@ class User < ApplicationRecord
       self.activation_token  = User.new_token
       self.activation_digest = User.digest(activation_token)
     end
+    
+    def create_reest_digest
+    self.reset_token = User.new_token
+    update_attribute(:reset_digest, User.digest(reset_token))
+    update_attribute(:reset_sent_at, Time.zone.now)
+    end
 
-
+  
+    def send_password_reset_email
+      UserMailer.password_reset(self).deliver_now
+    end
 
 
 end

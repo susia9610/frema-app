@@ -1,2 +1,14 @@
-%h1 PasswordResets#new
-%p Find me in app/views/password_resets/new.html.haml
+= form_for(:password_reset, url: password_reset_path) do |f|
+  = render "devise/shared/error_messages", resource: @user
+  .new_session-wrapper
+    .new_session-wrapper__logo   
+      = render "devise/sessions/header"  
+    .new_session-wrapper__main     
+      .new_session-wrapper__main__head
+        パスワードをお忘れですか？
+      .new_session-wrapper__main__title
+        Eメール
+        = f.text_field :email, {class: "new_session-wrapper__main__text", placeholder: "PC・携帯どちらでも可"}
+      .new_session-wrapper__main__caution
+        = f.submit "送信する", class: 'new_session-wrapper__main__btn'   
+    = render "devise/sessions/footer"
