@@ -37,7 +37,7 @@
       .purchase__main__title__text
         配送先 
         %p 〒#{@address.post_number} 
-        %p #{@address.prefecture_id + @address.local + @address.local_number + @address.building}
+        %p #{@address.prefecture.name + @address.local + @address.local_number + @address.building}
         - if @address.building.present? && @address.tel_number.present?
           = "#{@address.building}"
           %br

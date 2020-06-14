@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
   
-  EXHIBITING_STATUS = "1"
-  BUYING_STATUS = "2"
+  EXHIBITING_STATUS = 1
+  BUYING_STATUS = 2
   
   def check_user_login
     unless user_signed_in?
