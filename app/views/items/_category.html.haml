@@ -5,7 +5,7 @@
     %ul.firstmenu__parents
       - @parents.each do |parent|
         %li.firstmenu__parents__parent
-          = link_to "#{parent.name}", "/categories/#{parent.id}", class: "item_category-link" 
+          = link_to "#{parent.name}", "/categories/##{parent.id}", class: "item_category-link" 
 
           %ul.secondmenu__children
             - parent.children.each do |child|
