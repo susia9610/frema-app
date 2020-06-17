@@ -29,12 +29,13 @@
                 %th 
                   出品者
                 %td 
-                  = @item.user_id
+                  = @item.user.nickname
               %tr
                 %th 
                   カテゴリー
                 %td
-                  = @item.category
+                  = link_to categories_path(@item.category.id), class: "categories" do
+                    =@item.category.name
               %tr
                 %th 
                   ブランド
@@ -59,7 +60,7 @@
                 %th 
                   発送元の地域
                 %td
-                  /= @item.prefecture
+                  = @item.prefecture.name
               %tr
                 %th 
                   発送日の目安
