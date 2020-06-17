@@ -14,17 +14,17 @@ class CreditcardsController < ApplicationController
 
       case @card_brand
       when "Visa"
-        @card_image = "visa.svg"
+        @card_image = "visa.png"
       when "JCB"
-        @card_image = "jcb.svg"
+        @card_image = "jcb.png"
       when "MasterCard"
-        @card_image = "master-card.svg"
+        @card_image = "master-card.png"
       when "American Express"
-        @card_image = "american_express.svg"
+        @card_image = "american_express.png"
       when "Diners Club"
-        @card_image = "dinersclub.svg"
+        @card_image = "dinersclub.png"
       when "Discover"
-        @card_image = "discover.svg"
+        @card_image = "discover.png"
       end
     end
   end
