@@ -51,6 +51,7 @@ class ItemsController < ApplicationController
       end
       if @card.blank?
         flash[:alert] = '購入前にクレジットカードの登録をしてください'
+        binding.pry
         redirect_to creditcards_path
      else
         @address = Address.where(user_id: current_user.id).first
@@ -68,9 +69,7 @@ class ItemsController < ApplicationController
       customer: @card.customer_id,
       currency: 'jpy',
     )
-
-    @item.update!(status_id: BUYING_STATUS, buyer_id: current_user.id)
-
+    # @item.update(status_id: BUYING_STATUS, buyer_id: current_user.id)
     redirect_to done_item_path
   end
   
