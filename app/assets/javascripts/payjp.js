@@ -1,8 +1,11 @@
-$(document).on("turbolinks:load", function () {
+$(document).on('turbolinks:load', function () {
+  
+  console.log('hll')
   Payjp.setPublicKey("pk_test_ad3c87b48818dac35c200ddb");
   let form = $(".form");
 
-  $("#charge-form").click(function () {
+  $("#charge-form").click(function (e) {
+    e.preventDefault()
     let card = {
       number: $("#card_number").val(),
       cvc: $("#cvc").val(),
