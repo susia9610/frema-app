@@ -32,4 +32,4 @@ class Users::PasswordsController < Devise::PasswordsController
   #   super(resource_name)
   # end
 
-  
+end
