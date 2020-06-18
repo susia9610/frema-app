@@ -1,7 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_root, except: [:index, :show]
   before_action :set_item, only: [:show,:edit, :purchase, :done, :destroy]
-
 
   def index
     @items = Item.includes(:images).where(status_id: "1").order(created_at: :desc)
@@ -10,7 +8,6 @@ class ItemsController < ApplicationController
   
   def new
     @item = Item.new
-    
   end
     
   def create
@@ -41,10 +38,6 @@ class ItemsController < ApplicationController
   end
 
   def purchase
-  end
-
-  def move_to_root
-    redirect_to root_path unless user_signed_in?
   end
 
   private
