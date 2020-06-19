@@ -1,0 +1,17 @@
+aws:
+ access_key_id: AKIAXF3L2C5SYIKWBZZZ
+ secret_access_key: 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
+# Used as the base secret for all MessageVerifiers in Rails, including the one protecting cookies.
+basic:
+ username: frema_70c
+ password: 0718
+payjp:
+ PAYJP_PRIVATE_KEY: sk_test_c00af8e8300c4bd74eb06aa5
+secret_key_base: fa31528d08b403dae60a90f3effe968de35977ed565c56256128c94a5fd690e0749e5d411163a4c072e663c9162e739b657f3fa1f437c707447e31466d3e5373         
+~                                        
+~                                        
+~                                        
+~                                        
+~                                        
+~                                        
+~

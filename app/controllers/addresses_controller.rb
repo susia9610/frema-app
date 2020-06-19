@@ -20,10 +20,6 @@ class AddressesController < ApplicationController
   def update_params
     params.require(:address).permit(:familyname, :firstname, :familyname_kana, :firstname_kana, :post_number, :prefecture_id, :local, :local_number, :building, :tel_number)
   end
-
-  
-
-
 end
 
 
