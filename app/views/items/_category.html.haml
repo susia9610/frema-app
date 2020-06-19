@@ -1,18 +1,18 @@
 .category
-  = link_to "#", class: "categorybtn" do
+  = link_to categories_path, class: "categorybtn" do
     = "カテゴリー"
   .visibletree
     %ul.firstmenu__parents
       - @parents.each do |parent|
         %li.firstmenu__parents__parent
-          = link_to "#{parent.name}", "/categories/##{parent.id}", class: "item_category-link" 
+          = link_to "#{parent.name}", parent_category_path(parent.id), class: "item_category-link" 
 
           %ul.secondmenu__children
             - parent.children.each do |child|
               %li.secondmenu__children__child
-                = link_to "#{child.name}", "/categories/#{child.id}", class: "item_category-link" 
+                = link_to "#{child.name}", child_category_path(child.id), class: "item_category-link" 
 
                 %ul.thirdmenu__grandchildren
                   - child.children.each do |grandchildren|
                     %li.thirdmenu__grandchildren__grandchild
-                      = link_to "#{grandchildren.name}", "/categories/#{grandchildren.id}", class: "item_category-link" 
+                      = link_to "#{grandchildren.name}", grandchild_category_path(grandchildren.id), class: "item_category-link" 

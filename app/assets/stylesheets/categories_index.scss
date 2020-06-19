@@ -43,9 +43,11 @@
       padding: 16px 10px 8px;
       background-color:#3ccace;
       border-radius: 4px 4px 0 0;
-      color: white;
       font-size: 22px;
       font-weight: bold;
+      .category__parent--title{
+        color: white;
+      }
     }
     
     .category__box--child{

@@ -1,6 +1,18 @@
-= "#{@category.name}の商品一覧"
-- @items.each do |item|
-  = item.name
-  = item.price
-  - category = Category.find(item.category_id) 
-  = category.name
+= render "/items/header"
+
+.category__child--main
+  .category__child--content
+    .category__child--title
+      = "#{@category.name}の商品一覧"
+    
+    .category__child--listbox
+      
+
+  - @items.each do |item|
+    = item.name
+    = item.price
+    - category = Category.find(item.category_id) 
+    = category.name
+
+= render "/items/banner"
+= render "/items/footer"
