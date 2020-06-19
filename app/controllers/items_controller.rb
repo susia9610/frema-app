@@ -60,8 +60,6 @@ class ItemsController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-=======
   def pay
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
     Payjp::Charge.create(
@@ -85,7 +83,6 @@ class ItemsController < ApplicationController
     @image = @item_images.first
   end
   
->>>>>>> origin
   private
   def item_params
     params.require(:item).permit(:name, :descripton, :condition,:prefecture,:size,:price,:shipping_days,:postage,:user_id,:category_id,:brand_id,images_attributes: [:url, :item_id]).merge(user_id: current_user.id)
