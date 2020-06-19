@@ -4,5 +4,6 @@
     .done__content--box
       %h1.done__content--box--info 購入が完了しました
       %p.done__content--box--message 引き続きお買い物をお楽しみください
-
+    .done__content--link
+      = link_to "トップページへ", root_path, class: "done__content" 
 = render "/items/templates/subfooter"
