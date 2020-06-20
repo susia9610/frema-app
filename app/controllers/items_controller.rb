@@ -12,22 +12,16 @@ class ItemsController < ApplicationController
   end
     
   def create
-    @item = Item.new(set_params)
     binding.pry
-      @item.save!
-      redirect_to new_item_path
+    @item = Item.new(set_params)
+    if @item.save
+      redirect_to new_item_path, notise: '出品しました'
+    else
+      flash.now[:alert] = '出品できません。入力必須項目を確認してください'
+      render :new
+    end
   end
-    
-  # def create
-  #   @item = Item.new(item_params)
-  #   if  @item.save
-  #     redirect_to roots_path, notice: "出品しました"
-  #   else
-  #     redirect_to  new_item_path, notice: "出品できません。入力必須項目を確認してください"
-
-  #   end
-  # end
-
+ 
   def edit
   end
    
@@ -60,10 +54,6 @@ class ItemsController < ApplicationController
   #   flash[:alert] = 'ログインしてください'
   # end
 
-  # private
-  # def item_params
-  #   params.require(:item).permit(:name, :descripton, :condition,:prefecture,:size,:price,:shipping_days,:postage,:user_id,:category_id,:brand_id,images_attributes: [:url, :item_id]).merge(user_id: current_user.id)
-  # end
   
   # def set_item
   #   @item = Item.find(params[:id])
