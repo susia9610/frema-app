@@ -11,47 +11,58 @@ RSpec.describe Item, type: :model do
     it "商品名(name)がないと登録できないこと" do
       item = build(:item, name:"")
       item.valid?
-      expect(item.errors[:name]).to inclide("can't be blank")
+      expect(item.errors[:name]).to include("can't be blank")
     end
     
-    it "商品名が(name)があれば登録できること" do
-      item = create(item, name: "ああああああああああいいいいいいいいいいううううううううううええええええええええ")
+    it "商品名(name)が40文字を超える場合は登録できないこと" do
+      item = build(:item, name: "あああああいいいいいうううううえええええおおおおおあああああいいいいいうううううえ")
       item.valid?
-      expect{item}.to be_valid
-    end 
+      expect(item.errors[:name]).to include("is too long (maximum is 40 characters)")
+    end
+
+    it "商品名(name)が40文字であれば登録できること" do
+      item = create(:item, name: "ああああああああああいいいいいいいいいいううううううううううええええええええええ")
+      expect(item).to be_valid
+    end
 
     it "販売価格がない場合は登録できないこと" do
-      item = build(item, price:"")
+      item = build(:item, price:"")
       item.valid?
       expect(item.errors[:price]).to include("can't_be blank")
     end 
     
     it "販売価格(price)が300円未満の場合は登録できないこと" do
-      item = build(item, price: 299)
+      item = build(:item, price: 299)
       item.valid?
-      expect(item.errors[price]).to inclide("must be greater than or equal to 300")
+      expect(item.errors[:price]).to include("must be greater than or equal to 300")
     end
-    
-    it "説明(description)がない場合は登録できないこと" do 
-      item = build(item, description: "")
+
+    it "販売価格(price)が10,000,000円以上の場合は登録できないこと" do
+      item = bulid(:item, price: 10000000)
       item.valid?
-      expect(item.errors[description]).to inclide("can't be blank")
+      expect(item.errors[:prise]).to include("must be less than or equal to 9999999")
+    end
+
+    it "説明(description)がない場合は登録できないこと" do 
+      item = build(:item, description: "")
+      item.valid?
+      expect(item.errors[:description]).to include("can't be blank")
     end
 
     it "カテゴリー(category_id)がない場合は登録できないこと" do
-      item = build(item, category_id: "")
+      item = build(:item, category_id: "")
       item.valid?
-      expect(item.errors[category_id]).to inclide("can't be blank")
+      expect(item.errors[:category_id]).to include("can't be blank")
     end
     
     it "商品状態(condition_id)がない場合は登録できないこと" do
-      item = build(item, category_id: "")
+      item = build(:item, condition_id: "")
       item.valid?
-      expect(item.errors[category_id]).to inclide("can't be blank")
+      expect(item.errors[:condition_id]).to include("can't be blank")
     end
 
-    it "配送料の負担（postage_id)がない場合は登録できないこと"
-      item = build(item, postage_id: "") do
+    it "配送料の負担（postage_id)がない場合は登録できないこと" do
+      item = build(:item, postage_id: "")
       item.valid?
       expect(item.errors[:postage_id]).to inclide("can't be blank")
     end
