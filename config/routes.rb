@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "items#new"
-  resources :items, only: [:create]
+  resources :items, only: [:new, :create]
 #   devise_for :users, controllers: {
 #     registrations: 'users/registrations',
 #   }

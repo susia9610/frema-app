@@ -12,7 +12,6 @@ class ItemsController < ApplicationController
   end
     
   def create
-    binding.pry
     @item = Item.new(set_params)
     if @item.save
       redirect_to new_item_path, notise: '出品しました'
