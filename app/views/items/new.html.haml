@@ -1,4 +1,4 @@
-
+= render "/items/templates/subheader"
 .new-wrapper
   = form_with model: @item, url: items_path, local: true do |f|
     .new-wrapper__main
@@ -18,7 +18,7 @@
                 = icon('fas','camera')
                 = i.file_field :image, class: "file-field"
         .new-wrapper__main__image-field__text
-          -# クリックでアップロード
+          クリックしてファイルをアップロード
     .new-wrapper__main
       .new-wrapper__main__title
         商品名
@@ -46,22 +46,22 @@
       .new-wrapper__main__title.spacing
         商品の状態
         %span.require 必須
-      = f.collection_select :condition_id, Condition.all, :id, :name, {prompt: "選択してください"}, class: "new_session-wrapper__main__select"
+      = f.collection_select :condition_id, Condition.all, :id, :name, {prompt: "選択してください"}, class: "new-wrapper__main__input-select"
     .new-wrapper__main
       .new-wrapper__main__subtitle
         配送について
       .new-wrapper__main__title
         配送料の負担
         %span.require 必須
-      = f.collection_select :postage_id, Postage.all, :id, :name, {prompt: "選択してください"}, class: "new_session-wrapper__main__select"
+      = f.collection_select :postage_id, Postage.all, :id, :name, {prompt: "選択してください"}, class: "new-wrapper__main__input-select"
       .new-wrapper__main__title.spacing
         発送元の地域
         %span.require 必須
-      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, class: "new_session-wrapper__main__select"
+      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, class: "new-wrapper__main__input-select"
       .new-wrapper__main__title.spacing
         発送までの日数
         %span.require 必須
-      = f.collection_select :shipping_days_id, ShippingDays.all, :id, :name, {prompt: "選択してください"}, class: "new_session-wrapper__main__select"
+      = f.collection_select :shipping_days_id, ShippingDays.all, :id, :name, {prompt: "選択してください"}, class: "new-wrapper__main__input-select"
     .new-wrapper__main
       .new-wrapper__main__subtitle
         価格 (¥300~9,999,999)
@@ -73,8 +73,7 @@
         = f.text_field :price, class: "new-wrapper__main__input-price__input", placeholder: "0"
       .spacing
       .spacing
-      -# %input.new-wrapper__main__submit{type: "submit", value: "出品する"}
       = f.submit "出品する", class: "new-wrapper__main__submit"
       .new-wrapper__main__caution
         禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
--# = render "layouts/footer"
+= render "/items/templates/subfooter"

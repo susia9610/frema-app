@@ -16,7 +16,8 @@ class ItemsController < ApplicationController
     if @item.save
       render :create, notise: '出品しました'
     else
-      render :new, notise: '出品できません。入力必須項目を確認してください'
+      flash.now[:alert] = '出品できません。入力必須項目を確認してください'
+      render :new
     end
   end
  
