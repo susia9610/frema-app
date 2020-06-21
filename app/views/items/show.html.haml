@@ -67,9 +67,8 @@
                   = @item.shipping_days
         
         .optonalarea
-          .optonalarea__likebtn
-            =icon('fa','fa-star',class: "star")
-            お気に入り 0
+          .optonalarea__favoritebtn
+            = render partial: 'favorites/favorite', locals: {item: @item}
             
           .optonalarea__optonalbtn
             = link_to "🏴 不適切な商品の報告", "#"
