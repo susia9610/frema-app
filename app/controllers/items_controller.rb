@@ -14,10 +14,9 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(set_params)
     if @item.save
-      redirect_to new_item_path, notise: '出品しました'
+      render :create, notise: '出品しました'
     else
-      flash.now[:alert] = '出品できません。入力必須項目を確認してください'
-      render :new
+      render :new, notise: '出品できません。入力必須項目を確認してください'
     end
   end
  
