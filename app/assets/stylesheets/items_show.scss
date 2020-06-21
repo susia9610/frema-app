@@ -107,13 +107,26 @@
           justify-content: space-between;
           margin: 10px 0 0;
           &__favoritebtn{
-            margin-right: auto;
-            padding: 6px 10px;
-            border-radius: 40px;
-            color: #3CCACE;
-            border: 1px solid #ffb340;
+            
             .star {
               color: #3CCACE;
+            }
+            li.optionalBtn.already {
+              margin-right: auto;
+              padding: 6px 10px;
+              border-radius: 40px;
+              color: #ffffff;
+              background-color: #3CCACE;
+              display: block;
+            }
+            li.optionalBtn.none {
+              margin-right: auto;
+              padding: 6px 10px;
+              border-radius: 40px;
+              color: #3CCACE;
+              background-color: #ffffff;
+              border: 1px solid #ffb340;
+              display: block;
             }
           }
           &__optonalbtn{

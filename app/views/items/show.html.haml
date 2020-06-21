@@ -68,7 +68,8 @@
         
         .optonalarea
           .optonalarea__favoritebtn
-            = render partial: 'favorites/favorite', locals: {item: @item}
+            #favoritebtn
+              = render partial: 'favorites/favorite', locals: {item: @item}
             
           .optonalarea__optonalbtn
             = link_to "🏴 不適切な商品の報告", "#"
