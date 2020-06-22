@@ -5,7 +5,7 @@ class MypageController < ApplicationController
     @nickname = current_user.nickname
     @favorites = Favorite.where(user_id: current_user.id)
     @items = Item.all.includes(:images).where(status_id: "1").order(created_at: :desc)
-    #@items = @user.items 
+    @items = Item.order(created_at: "DESC").includes(:host).page(params[:page]).per(3) 
   end
 
 
