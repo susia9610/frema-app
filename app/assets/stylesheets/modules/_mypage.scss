@@ -18,18 +18,19 @@
 }
 
 .mypage__container {
+  padding: 30px 30px;
   background-color: whitesmoke;
   .mypage__inner {
-    margin: 0 auto 0;
+    margin-left: 50px;
     padding: 40px 0 20px 0;
-    width: 1020px;
+    width: 1420px;
     display: flex;
     justify-content: space-between;
   }
 }
-
 .side {
   &__list {
+    
     p {
       margin: 40px 0 5px 0;
     }
@@ -61,9 +62,6 @@
 }
 
 .pickup__container {
-  padding: 80px 0 0;
-  background-color: #f8f8f8;
-  height: 100%;
   .head {
     text-align: center;
     font-size: 28px;
@@ -72,6 +70,8 @@
   }
   .product_box {
     padding-bottom: 5px;
+    width: 100%;
+    
     .product__head {
       text-align: center;
       a {
@@ -82,14 +82,14 @@
       }
     }
     .product__lists {
-      width: 780px;
+      width: 880px;
       margin: 26px auto;
       display: flex;
       justify-content: space-around;
       .product__list {
         width: 220px;
         display: inline-block;
-        float: left;
+        // float: left;
         a {
           background-color: $white;
           display: inline-block;
