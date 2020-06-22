@@ -66,6 +66,10 @@ Rails.application.routes.draw do
       post 'pay'
     end
   end
-  
+
+  resources :searches,only:[:index]
+
+
 end
+  
 
