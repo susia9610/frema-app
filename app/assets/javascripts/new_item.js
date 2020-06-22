@@ -23,11 +23,9 @@ $(document).on('turbolinks:load', ()=> {
   $('#image-box').on('change', '.file-field', function(e) {
 
     const targetIndex = $(this).parent().parent().data('index');
-    console.log(targetIndex)
+
     const file = e.target.files[0];
-    console.log(file)
     const blobUrl = window.URL.createObjectURL(file);
-    console.log(blobUrl)
     $("#previews").append(buildImg(targetIndex, blobUrl));
 
     const css = {
@@ -52,7 +50,6 @@ $(document).on('turbolinks:load', ()=> {
     $(".label-image").css('display', 'none');
     
     const aaa = $(this).parent().parent().children().children().css('visibility', 'hidden');
-    console.log(aaa)
 
     $(".item-content__delete").css('margin-top', '40px');
 
@@ -62,7 +59,6 @@ $(document).on('turbolinks:load', ()=> {
   $('#image-box').on('click', '.item-content__delete', function() {
     $(this).parent().prev().remove();
     $(this).remove();
-    // $("i").css('display', 'none');
 
     if ($('.file-field').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   });

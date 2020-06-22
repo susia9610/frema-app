@@ -1,6 +1,4 @@
 class ItemsController < ApplicationController
-  # before_action :move_to_root, except: [:index, :show]
-  # before_action :set_item, only: [:show,:edit, :purchase, :done, :destroy]
 
   def index
     @items = Item.includes(:images).where(status_id: "1").order(created_at: :desc)
@@ -44,18 +42,5 @@ class ItemsController < ApplicationController
   def set_params
     params.require(:item).permit(:name, :description, :category_id, :brand, :condition_id, :prefecture_id, :size, :price, :shipping_days_id, :postage_id, images_attributes: [:image, :_destroy, :id]).merge(seller_id: "1")
   end
-
-  # def purchase
-  # end
-
-  # def move_to_root
-  #   redirect_to root_path unless user_signed_in?
-  #   flash[:alert] = 'ログインしてください'
-  # end
-
-  
-  # def set_item
-  #   @item = Item.find(params[:id])
-  # end 
 
 end
