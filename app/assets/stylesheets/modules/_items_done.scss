@@ -20,7 +20,15 @@
       &--message{
         font-size: 14px;
         text-align: center;
+  
       }
+    }
+    &--link{
+        display: block;
+        text-align: center;
+        font-size: 25px;
+        padding-bottom: 32px;
+        color: blue;
     }
   }
 }

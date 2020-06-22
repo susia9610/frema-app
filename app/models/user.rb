@@ -20,8 +20,12 @@ class User < ApplicationRecord
       validates :lastname_kana
     end
   end
+  
   has_one :address
   has_many :sns_credentials
+  has_many :creditcard
+  has_many :buyer_items, class_name: "Item", foreign_key: "buyer_id"
+  has_many :seller_items, class_name: "Item", foreign_key: "seller_id"
 
   has_many :buyer_items, class_name: "Item", foreign_key: "buyer_id"
   has_many :seller_items, class_name: "Item", foreign_key: "seller_id"

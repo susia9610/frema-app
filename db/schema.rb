@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_08_131314) do
+ActiveRecord::Schema.define(version: 2020_06_09_090943) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 2020_06_08_131314) do
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
+  create_table "creditcards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_creditcards_on_user_id"
+  end
+
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image", null: false
     t.bigint "item_id", null: false
@@ -58,17 +67,21 @@ ActiveRecord::Schema.define(version: 2020_06_08_131314) do
     t.text "description", null: false
     t.integer "category_id", null: false
     t.string "brand", null: false
-    t.string "condition_id", null: false
+    t.string "condition", null: false
     t.string "prefecture_id", null: false
     t.string "size"
     t.integer "price", null: false
-    t.integer "shipping_days_id", null: false
-    t.string "postage_id", null: false
-    t.string "status_id"
-    t.string "seller_id", null: false
-    t.string "buyer_id"
+    t.integer "shipping_days", null: false
+    t.string "postage", null: false
+    t.string "status_id", null: false
+    t.bigint "seller_id"
+    t.bigint "buyer_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_items_on_buyer_id"
+    t.index ["seller_id"], name: "index_items_on_seller_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -103,5 +116,9 @@ ActiveRecord::Schema.define(version: 2020_06_08_131314) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "creditcards", "users"
+  add_foreign_key "items", "users"
+  add_foreign_key "items", "users", column: "buyer_id"
+  add_foreign_key "items", "users", column: "seller_id"
   add_foreign_key "sns_credentials", "users"
 end
