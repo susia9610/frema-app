@@ -25,8 +25,8 @@
                 .grandchild__box
                   - child.children.each do |grandchild|
                     .grandchild__link
-                      = link_to "#", class: "category__link--btn" do
-                        = grandchild.name
+                      = link_to grandchild_category_path(grandchild.id), class: "category__link--btn" do
+                        = grandchild.name 
 
 = render "/items/banner"
 = render "/items/footer"

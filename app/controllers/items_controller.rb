@@ -3,11 +3,12 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only:[:purchase, :pay, :done]
   before_action :set_image, only:[:show, :purchase,:pay]
   before_action :set_card, only:[:purchase, :pay]
+  before_action :set_category, only:[:index,:show]
+  
   require "payjp"
 
   def index
     @items = Item.all.includes(:images).where(status_id: "1").order(created_at: :desc)
-    @parents = Category.where(ancestry: nil)
   end
   
   def new
@@ -38,7 +39,9 @@ class ItemsController < ApplicationController
   end
   
   def show
-    @parents = Category.where(ancestry: nil)
+    @grandchild = Category.find(@items.category_id)
+    @child = @grandchild.parent
+    @parent = @child.parent 
   end
 
   def purchase
@@ -100,5 +103,9 @@ class ItemsController < ApplicationController
 
   def set_card
     @card = Creditcard.find_by(user_id: current_user.id)
+  end
+
+  def set_category
+    @parents = Category.where(ancestry: nil)
   end
 end

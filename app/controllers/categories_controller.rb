@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
       grandchildren << Category.where(ancestry: "#{@category.id}/#{child.id}")
     end
     @items = []
-        grandchildren.each do |grandchild|
+    grandchildren.each do |grandchild|
       grandchild.each do |id|
         @items += Item.where(category_id: id)
       end
