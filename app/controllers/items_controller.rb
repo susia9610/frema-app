@@ -13,17 +13,19 @@ class ItemsController < ApplicationController
   
   def new
     @item = Item.new
+    @item.images.new
   end
     
   def create
-    @item = Item.new(item_params)
-    if  @item.save
-      redirect_to roots_path, notice: "出品しました"
+    @item = Item.new(set_params)
+    if @item.save
+      render :create, notise: '出品しました'
     else
-      redirect_to  new_item_path, notice: "出品できません。入力必須項目を確認してください"
+      flash.now[:alert] = '出品できません。入力必須項目を確認してください'
+      render :new
     end
   end
-
+ 
   def edit
   end
    
@@ -39,9 +41,9 @@ class ItemsController < ApplicationController
   end
   
   def show
-    @grandchild = Category.find(@items.category_id)
-    @child = @grandchild.parent
-    @parent = @child.parent 
+    # @grandchild = Category.find(@items.category_id)
+    # @child = @grandchild.parent
+    # @parent = @child.parent 
   end
 
   def purchase
@@ -87,8 +89,8 @@ class ItemsController < ApplicationController
   end
   
   private
-  def item_params
-    params.require(:item).permit(:name, :descripton, :condition,:prefecture,:size,:price,:shipping_days,:postage,:user_id,:category_id,:brand_id,images_attributes: [:url, :item_id]).merge(user_id: current_user.id)
+  def set_params
+    params.require(:item).permit(:name, :description, :category_id, :brand, :condition_id, :prefecture_id, :size, :price, :shipping_days_id, :postage_id, images_attributes: [:image, :_destroy, :id]).merge(seller_id: "1")
   end
 
   def set_item
