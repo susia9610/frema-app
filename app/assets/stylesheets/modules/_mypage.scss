@@ -132,6 +132,40 @@
   }
 }
 
+.nav-links{
+  padding:2em;
+  display:flex;
+  justify-content:center;
+  background:#f3f3f3;
+}
+a,span{
+  width:50px;
+  height:50px;
+  margin:2px;
+  line-height:50px;
+  text-align:center;
+  font-size:14px;
+  font-weight:bold;
+  text-decoration:none;
+  background:#fff;
+  color:#222;
+  transition:.3s;
+}
+a:hover{
+  background:gold;
+  border-radius:100%;
+  transform:rotate(360deg);
+}
+.current{
+  background:gold;
+  border-radius:100%;
+}
+.dots{
+  background:none;
+}
+
+
+
 .content__card__title {
   height: 50px;
   text-align: center;
