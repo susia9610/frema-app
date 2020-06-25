@@ -97,7 +97,7 @@
                     %li= "¥" + item.price.to_s
                     %li
                       =icon("fas", "star", class: "likeIcon")
-                      0
+                      = Favorite.where(item_id: item.id).count
                   %p (税込)
         
 -if @items.length > 3
@@ -119,6 +119,6 @@
                     %li= "¥" + item.price.to_s
                     %li
                       =icon("fas", "star", class: "likeIcon")
-                      0
+                      = Favorite.where(item_id: item.id).count
                   %p (税込)
         

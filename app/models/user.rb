@@ -26,6 +26,8 @@ class User < ApplicationRecord
   has_many :creditcard
   has_many :buyer_items, class_name: "Item", foreign_key: "buyer_id"
   has_many :seller_items, class_name: "Item", foreign_key: "seller_id"
+  has_many :favorites, dependent: :destroy
+  has_many :favorites, through: :favorites, source: :item
 
   has_many :buyer_items, class_name: "Item", foreign_key: "buyer_id"
   has_many :seller_items, class_name: "Item", foreign_key: "seller_id"

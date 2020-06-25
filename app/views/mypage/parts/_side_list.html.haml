@@ -1,8 +1,8 @@
 .side
   %ul.side__list
     %li.btn
-      = link_to mypage_index_path do
-        .text マイページ
+      = link_to item_favorites_path(@items) do
+        .text お気に入り商品
         =icon("fas", "chevron-right", class: "arrow")
     %li.btn
       = link_to do
@@ -32,7 +32,7 @@
         =icon("fas", "chevron-right", class: "arrow")
     %li.btn
       = link_to creditcards_path(current_user) do
-        .text 支払い方法
+        .text クレジットカード登録・削除
         =icon("fas", "chevron-right", class: "arrow")
     %li.btn
       = link_to user_edit_detail_path(current_user) do

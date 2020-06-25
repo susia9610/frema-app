@@ -1,12 +1,12 @@
 class MypageController < ApplicationController
-  before_action :authenticate_user! , only: [:index, :logout, :new]##:cardは実装前のため、未だ反映していない
+  before_action :authenticate_user! , only: [:index, :logout, :new]
   
   def index
     @nickname = current_user.nickname
+    @favorites = Favorite.order(created_at: "DESC").page(params[:page]).per(3).where(user_id: current_user.id)
+    @items = Item.all.includes(:images).where(status_id: "1").order(created_at: :desc)
   end
 
-  #def card
-  #end
 
   def show
   end
@@ -25,6 +25,7 @@ class MypageController < ApplicationController
 
   def logout
   end
-end
 
-private
+
+  
+end

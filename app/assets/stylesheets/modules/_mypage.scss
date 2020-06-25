@@ -18,18 +18,19 @@
 }
 
 .mypage__container {
+  padding: 30px 30px;
   background-color: whitesmoke;
   .mypage__inner {
-    margin: 0 auto 0;
+    margin-left: 50px;
     padding: 40px 0 20px 0;
-    width: 1020px;
+    width: 1420px;
     display: flex;
     justify-content: space-between;
   }
 }
-
 .side {
   &__list {
+    
     p {
       margin: 40px 0 5px 0;
     }
@@ -60,30 +61,18 @@
   }
 }
 
-.mypage__content {
-  width: 700px;
-  height: 100%;
-  background-color: white;
-}
 
-.user {
-  background-color: white;
-  height: 200px;
-  background-image: image-url("material/pict/mypage_back.jpg");
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &__name {
-    a {
-      color: black;
-      &:hover {
-        text-decoration: underline;
-        opacity: 0.5;
-      }
+  .pagination {
+    display: flex;
+    justify-content: center;
+
+    span {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      align-content: center;
     }
   }
-}
 
 .content__card__title {
   height: 50px;
