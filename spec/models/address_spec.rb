@@ -1,4 +1,4 @@
-requre 'rails_helper'
+require 'rails_helper'
 
 describe Address do
   describe '#create_address' do
@@ -39,7 +39,7 @@ describe Address do
     end 
 
     it "prefecture_idがない場合登録できないこと" do
-      address = build{:address, prefecture_id: nil}
+      address = build(:address, prefecture_id: nil)
       address.valid?
       expect(address.errors[:prefecture_id]).to include("can't be blank")
     end

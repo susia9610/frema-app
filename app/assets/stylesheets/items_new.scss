@@ -39,28 +39,40 @@
     &__text{
       padding: 0 12px;
     }
+    .item-content{
+      height: 100px;
+      &__delete{
+        color: $frema;
+        font-weight: bold;
+        background: #eee;
+      }
+    }
     &__image-field{
-      width: 660px;
       height: 160px;
       margin: 16px auto;
       background-color: #eee;
       border: 1px dashed #ccc;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       font-size: 12px;
       text-align: center;
       position: relative;
+      flex-grow: 1;
+      #previews{
+        .div0{
+          height: 20px;
+        }
+      }
       .fa-camera{
-        position: absolute;
-        top: 40px;
         font-size: 20px;
+        margin-top: 40px;
+      }
+      .file-field{
+        display: none;
       }
       &__text{
-        padding-top: 20px;
+        padding-top: 40px;
       }
+
     }
-    
     &__input-text{
       height: 44px;
       line-height: 44px;
