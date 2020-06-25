@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
+
+  devise_for :users, controllers: {
+  omniauth_callbacks: 'users/omniauth_callbacks',
+  registrations: 'users/registrations'
+  }
+
   root "items#new"
   resources :items, only: [:new, :create]
-#   devise_for :users, controllers: {
-#     registrations: 'users/registrations',
-#   }
-  
 
-  # devise_for :users, controllers: {
-  # omniauth_callbacks: 'users/omniauth_callbacks',
-  # registrations: 'users/registrations'
-  # }
+
 
   
   
@@ -42,6 +41,11 @@ Rails.application.routes.draw do
     end
   end
   
+  resources  :items do
+    resources :favorites , only: [:index, :create, :destroy]
+  end
+
+
   resources :users, only: [:new, :show, :edit, :update] do
     collection do
       get "signin"
