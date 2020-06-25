@@ -2,7 +2,9 @@ class FavoritesController < ApplicationController
 before_action :set_item, only: [:create, :destroy]
 
   def index
-    @favorites = Favorite.where(user_id: current_user.id)
+    @nickname = current_user.nickname
+    @favorites = Favorite.order(created_at: "DESC").page(params[:page]).per(3).where(user_id: current_user.id)
+    @items = Item.all.includes(:images).where(status_id: "1").order(created_at: :desc)
   end
   
   def create
