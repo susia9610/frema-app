@@ -9,11 +9,11 @@
         .itembox__body
           %ul
             %li
-              = image_tag @item.images[0].url, size:"560x346", class:"firstimage"
+              = image_tag @item.images[0], size:"560x346", class:"firstimage"
               %ul
                 -@item.images.each do |image|
                   %li
-                    = image_tag image.url, size:"140x87", class:"imagelist"
+                    = image_tag image, size:"140x87", class:"imagelist"
 
         .itembox__price
           = "¥#{@item.price}"
@@ -29,12 +29,12 @@
                 %th 
                   出品者
                 %td 
-                  = @item.user_id
+                  = @item.user.nickname
               %tr
                 %th 
                   カテゴリー
                 %td
-                  = @item.category
+                  = @item.category_id
               %tr
                 %th 
                   ブランド
@@ -49,7 +49,7 @@
                 %th 
                   商品の状態
                 %td 
-                  = @item.condition
+                  = @item.condition_id
               %tr
                 %th 
                   配送料の負担
@@ -64,7 +64,7 @@
                 %th 
                   発送日の目安
                 %td 
-                  = @item.shipping_days
+                  = @item.shipping_days_id
         
         .optonalarea
           .optonalarea__favoritebtn

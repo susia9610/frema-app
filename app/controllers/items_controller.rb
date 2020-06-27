@@ -17,6 +17,7 @@ class ItemsController < ApplicationController
     
   def create
     @item = Item.new(set_params)
+    @item.status_id = EXHIBITING_STATUS
     if @item.save
       render :create, notise: '出品しました'
     else
@@ -87,9 +88,9 @@ class ItemsController < ApplicationController
   
   private
   def set_params
-    params.require(:item).permit(:name, :description, :category_id, :brand, :condition_id, :prefecture_id, :size, :price, :shipping_days_id, :postage_id, images_attributes: [:image, :_destroy, :id]).merge(seller_id: "1")
+    params.require(:item).permit(:name, :description, :category_id, :brand, :condition_id, :prefecture_id, :size, :price, :shipping_days_id, :postage_id, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
-
+  
   def set_item
     @item = Item.find(params[:id])
 
@@ -98,6 +99,10 @@ class ItemsController < ApplicationController
     rescue
       redirect_to root_path
     end
+  end
+
+  def move_to_root
+    redirect_to root_path unless user_signed_in?
   end
 
   def set_card
