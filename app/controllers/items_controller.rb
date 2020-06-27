@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :purchase, :done, :destroy, :pay]
+  before_action :move_to_root, except: [:index, :show]
   before_action :authenticate_user!, only:[:purchase, :pay, :done]
   before_action :set_image, only:[:show, :purchase,:pay]
   before_action :set_card, only:[:purchase, :pay]
@@ -16,6 +17,7 @@ class ItemsController < ApplicationController
     
   def create
     @item = Item.new(set_params)
+    @item.status_id = EXHIBITING_STATUS
     if @item.save
       render :create, notise: '出品しました'
     else
@@ -86,9 +88,9 @@ class ItemsController < ApplicationController
   
   private
   def set_params
-    params.require(:item).permit(:name, :description, :category_id, :brand, :condition_id, :prefecture_id, :size, :price, :shipping_days_id, :postage_id, images_attributes: [:image, :_destroy, :id]).merge(seller_id: "1")
+    params.require(:item).permit(:name, :description, :category_id, :brand, :condition_id, :prefecture_id, :size, :price, :shipping_days_id, :postage_id, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
-
+  
   def set_item
     @item = Item.find(params[:id])
 
@@ -97,6 +99,10 @@ class ItemsController < ApplicationController
     rescue
       redirect_to root_path
     end
+  end
+
+  def move_to_root
+    redirect_to root_path unless user_signed_in?
   end
 
   def set_card
