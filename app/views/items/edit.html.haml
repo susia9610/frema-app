@@ -17,6 +17,14 @@
               = i.label :image, class: "label-image" do
                 = icon('fas','camera')
                 = i.file_field :image, class: "file-field"
+            - if @item.persisted?
+              = i.image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+          - if @item.persisted?
+            .item-content{"data-index" => "#{@item.images.count}"}
+            = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'file-field'
+            .item-content__delete
+              削除
+
         .new-wrapper__main__image-field__text
           クリックしてファイルをアップロード
     .new-wrapper__main

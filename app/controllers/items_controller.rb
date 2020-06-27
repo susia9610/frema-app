@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
   end
     
   def create
+    # binding.pry
     @item = Item.new(set_params)
     if @item.save
       render :create, notise: '出品しました'
@@ -25,9 +26,20 @@ class ItemsController < ApplicationController
   end
  
   def edit
+    if @item.seller_id == current_user.id
+      
+    else
+      redirect_to root_path
+    end
   end
    
   def update
+    if @item.seller_id == current_user.id
+      @item.update(set_params)
+      redirect_to root_path
+    else 
+      redirect_to root_path
+    end
   end
 
   def destroy
@@ -86,17 +98,17 @@ class ItemsController < ApplicationController
   
   private
   def set_params
-    params.require(:item).permit(:name, :description, :category_id, :brand, :condition_id, :prefecture_id, :size, :price, :shipping_days_id, :postage_id, images_attributes: [:image, :_destroy, :id]).merge(seller_id: "1")
+    params.require(:item).permit(:name, :description, :category_id, :brand, :condition_id, :prefecture_id, :size, :price, :shipping_days_id, :postage_id, images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
 
   def set_item
     @item = Item.find(params[:id])
 
-    begin
-      @item = Item.find(params[:id])
-    rescue
-      redirect_to root_path
-    end
+    # begin
+    #   @item = Item.find(params[:id])
+    # rescue
+    #   redirect_to root_path
+    # end
   end
 
   def set_card

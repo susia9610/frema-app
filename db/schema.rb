@@ -67,21 +67,19 @@ ActiveRecord::Schema.define(version: 2020_06_09_090943) do
     t.text "description", null: false
     t.integer "category_id", null: false
     t.string "brand", null: false
-    t.string "condition", null: false
+    t.string "condition_id", null: false
     t.string "prefecture_id", null: false
     t.string "size"
     t.integer "price", null: false
-    t.integer "shipping_days", null: false
-    t.string "postage", null: false
-    t.string "status_id", null: false
+    t.integer "shipping_days_id", null: false
+    t.string "postage_id", null: false
+    t.string "status_id"
     t.bigint "seller_id"
     t.bigint "buyer_id"
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["seller_id"], name: "index_items_on_seller_id"
-    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -117,7 +115,6 @@ ActiveRecord::Schema.define(version: 2020_06_09_090943) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "creditcards", "users"
-  add_foreign_key "items", "users"
   add_foreign_key "items", "users", column: "buyer_id"
   add_foreign_key "items", "users", column: "seller_id"
   add_foreign_key "sns_credentials", "users"

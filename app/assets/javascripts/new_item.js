@@ -1,5 +1,4 @@
-$(document).on('turbolinks:load', ()=> {
-
+$(function(){
   const buildFileField = (index)=> {
     const html = `<div data-index="${index}" class="item-content">
                     <label class="label-images">
@@ -20,8 +19,11 @@ $(document).on('turbolinks:load', ()=> {
 
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
 
+  lastIndex = $('.item-content:last').data('index');
+  fileIndex.splice(0,lastIndex);
+  $('.hidden-destroy').hide();
   $('#image-box').on('change', '.file-field', function(e) {
-
+    console.log(this)
     const targetIndex = $(this).parent().parent().data('index');
 
     const file = e.target.files[0];
@@ -57,6 +59,13 @@ $(document).on('turbolinks:load', ()=> {
   });
 
   $('#image-box').on('click', '.item-content__delete', function() {
+    console.log(this)
+    const targetIndex = $(this).parent().data('index')
+    
+    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
+
+    if (hiddenCheck) hiddenCheck.prop('checked', true);
+
     $(this).parent().prev().remove();
     $(this).remove();
 
