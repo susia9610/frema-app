@@ -1,6 +1,6 @@
-$(document).on('turbolinks:load', ()=> {
+$(document).on('turbolinks:load', () => {
 
-  const buildFileField = (index)=> {
+  const buildFileField = (index) => {
     const html = `<div data-index="${index}" class="item-content">
                     <label class="label-images">
                       <i class="fas fa-camera"></i>
@@ -13,18 +13,19 @@ $(document).on('turbolinks:load', ()=> {
     return html;
   }
 
-  const buildImg = (index,url)=> {
+  const buildImg = (index, url) => {
     const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
     return html;
   }
 
-  let fileIndex = [1,2,3,4,5,6,7,8,9,10];
+  let fileIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-  $('#image-box').on('change', '.file-field', function(e) {
+  $('#image-box').on('change', '.file-field', function (e) {
 
     const targetIndex = $(this).parent().parent().data('index');
 
     const file = e.target.files[0];
+
     const blobUrl = window.URL.createObjectURL(file);
     $("#previews").append(buildImg(targetIndex, blobUrl));
 
@@ -33,11 +34,11 @@ $(document).on('turbolinks:load', ()=> {
       "flex-wrap": "wrap",
       "height": "360px"
     }
-    $(".new-wrapper__main__image-field__text").css('display','none');
+    $(".new-wrapper__main__image-field__text").css('display', 'none');
     $('#image-box').css(css);
     $('#previews').css(css);
-    
-    $(".file-field").css('display','none');
+
+    $(".file-field").css('display', 'none');
 
     $('img').css('margin', '40px 0px 0px 7px');
 
@@ -48,7 +49,7 @@ $(document).on('turbolinks:load', ()=> {
     $(".item-content__delete").css('margin-top', '40px').css('text-align', 'left');
 
     $(".label-image").css('display', 'none');
-    
+
     const aaa = $(this).parent().parent().children().children().css('visibility', 'hidden');
 
     $(".item-content__delete").css('margin-top', '40px');
@@ -56,7 +57,7 @@ $(document).on('turbolinks:load', ()=> {
     fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
   });
 
-  $('#image-box').on('click', '.item-content__delete', function() {
+  $('#image-box').on('click', '.item-content__delete', function () {
     $(this).parent().prev().remove();
     $(this).remove();
 
