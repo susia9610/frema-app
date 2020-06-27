@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :purchase, :done, :destroy, :pay]
+  # before_action :move_to_root, except: [:index, :show]
   before_action :authenticate_user!, only:[:purchase, :pay, :done]
   before_action :set_image, only:[:show, :purchase,:pay]
   before_action :set_card, only:[:purchase, :pay]
