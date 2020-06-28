@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
   end
 
   def purchase
-    if @item.user_id == current_user.id
+    if @item.seller_id == current_user.id
       redirect_to root_path   
     else
       unless @item.status_id == "1"
@@ -88,7 +88,7 @@ class ItemsController < ApplicationController
   
   private
   def set_params
-    params.require(:item).permit(:name, :description, :category_id, :brand, :condition_id, :prefecture_id, :size, :price, :shipping_days_id, :postage_id, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description, :category_id, :brand, :condition_id, :prefecture_id, :size, :price, :shipping_days_id, :postage_id, images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
   
   def set_item
