@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only:[:purchase, :pay, :done]
   before_action :set_image, only:[:show, :purchase,:pay]
   before_action :set_card, only:[:purchase, :pay]
-  before_action :set_category, only:[:index,:show]
+  before_action :set_parents, only:[:index,:new, :create,:show]
   
   require "payjp"
 
@@ -15,6 +15,20 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.new
+    @category = Category.where(ancestry: "").limit(13)
+  end
+
+  def get_category_children
+    respond_to do |format|
+      format.html
+      format.json do
+        @category_children = Category.find(params[:parent_id]).children 
+      end
+    end
+  end
+  
+  def get_category_grandchildren
+    @category_grandchildren = Category.find(params[:child_id]).children
   end
     
   def create
@@ -113,7 +127,7 @@ class ItemsController < ApplicationController
     @card = Creditcard.find_by(user_id: current_user.id)
   end
 
-  def set_category
+  def set_parents
     @parents = Category.where(ancestry: nil)
   end
 end
