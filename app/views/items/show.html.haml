@@ -9,11 +9,11 @@
         .itembox__body
           %ul
             %li
-              = image_tag @item.images[0], size:"560x346", class:"firstimage"
+              = image_tag @item.images[0].image.to_s, size:"560x346", class:"firstimage"
               %ul
                 -@item.images.each do |image|
                   %li
-                    = image_tag image, size:"140x87", class:"imagelist"
+                    = image_tag image.image.to_s, size:"140x87", class:"imagelist"
 
         .itembox__price
           = "¥#{@item.price}"
