@@ -7,7 +7,7 @@
         購入内容の確認
     .border
     .purchase__main__contents
-      = image_tag @item.images[0].url, size:"100x100"
+      = image_tag @item.images[0].image.to_s, size:"100x100"
       .purchase__main__contents__right
         = @item.name
         = "¥#{@item.price}(税込み)"
