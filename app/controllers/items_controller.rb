@@ -19,10 +19,9 @@ class ItemsController < ApplicationController
     @item = Item.new(set_params)
     @item.status_id = EXHIBITING_STATUS
     if @item.save
-      render :create, notise: '出品しました'
+      render :create, notice: '出品しました'
     else
-      flash.now[:alert] = '出品できません。入力必須項目を確認してください'
-      render :new
+      redirect_to new_item_path, alert: "出品できません。入力必須項目を確認してください"
     end
   end
  
@@ -41,7 +40,6 @@ class ItemsController < ApplicationController
   end
   
   def show
-    
   end
 
   def purchase
@@ -103,6 +101,7 @@ class ItemsController < ApplicationController
 
   def move_to_root
     redirect_to root_path unless user_signed_in?
+    # flash[:alert] = "ログインしてください"
   end
 
   def set_card
