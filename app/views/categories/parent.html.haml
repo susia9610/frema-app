@@ -17,8 +17,8 @@
       .category__item_list
         .category__item_list--body
           =link_to item_path(item.id) do
-            -item.images.each do |image|
-              =image_tag image.url, class: "category__item_list--img"
+            - item.images.first(1).each do |image|
+              =image_tag image.image.to_s, class: "category__item_list--img"
               .category__item_list--details
                 .category__item_list--name
                   = item.name

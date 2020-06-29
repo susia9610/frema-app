@@ -18,20 +18,11 @@ class ItemsController < ApplicationController
   end
 
   def get_category_children
-    respond_to do |format|
-      format.html
-      format.json do
-        if params[:parent_id]
-          @childrens = Category.find(params[:parent_id]).children
-        elsif params[:children_id]
-          @grandChilds = Category.find(params[:children_id]).children
-        end
-      end
-    end
+    @child = Category.find(params[:parent_id]).children
   end
   
   def get_category_grandchildren
-    @category_grandchildren = Category.find(params[:child_id]).children
+    @grandchildren = Category.find(params[:child_id]).children
   end
     
   def create
@@ -59,14 +50,14 @@ class ItemsController < ApplicationController
   end
   
   def show
-    # @grandchild = Category.find(@items.category_id)
-    # @child = @grandchild.parent
-    # @parent = @child.parent 
+    @grandchild = Category.find(@item.category_id)
+    @child = @grandchild.parent
+    @parent = @child.parent 
   end
 
   def purchase
     if @item.seller_id == current_user.id
-      redirect_to root_path   
+      redirect_to root_path
     else
       unless @item.status_id == "1"
         redirect_to root_path, notice: "購入済みです"
@@ -123,7 +114,6 @@ class ItemsController < ApplicationController
 
   def move_to_root
     redirect_to root_path unless user_signed_in?
-    # flash[:alert] = "ログインしてください"
   end
 
   def set_card

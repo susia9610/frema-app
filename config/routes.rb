@@ -32,8 +32,6 @@ Rails.application.routes.draw do
       get "purchase"
       get "done"
       post "pay"
-      get 'get_category_children', defaults: { format: 'json' }
-      get 'get_category_grandchildren', defaults: { format: 'json' }
     end
   end
   
