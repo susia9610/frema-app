@@ -12,7 +12,6 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer    :shipping_days_id, null: false
       t.string     :postage_id      , null: false
       t.string     :status_id   
-      t.string     :user_id         , null: false
       t.timestamps
     end
   end

@@ -29,7 +29,7 @@
                 %th 
                   出品者
                 %td 
-                  = @item.user.nickname
+                  = @item.seller_id
               %tr
                 %th 
                   カテゴリー
@@ -69,14 +69,17 @@
         
         .optonalarea
           .optonalarea__favoritebtn
+          - if user_signed_in? && current_user.id == @item.seller_id
             #favoritebtn
               = render partial: 'favorites/favorite', locals: {item: @item}
+          - else
+            = link_to "お気に入り登録する際はログインしてください", root_path
             
           .optonalarea__optonalbtn
             = link_to "🏴 不適切な商品の報告", "#"
           
         .show_purchasebox
-          - if user_signed_in? && current_user.id == @item.user_id
+          - if user_signed_in? && current_user.id == @item.seller_id
             .item-editbtn
               = link_to "商品編集", root_path
               = link_to "商品削除", item_path(@item), method: :delete
