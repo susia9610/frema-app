@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :purchase, :done, :destroy, :pay]
+  before_action :move_to_root, except: [:index, :show]
   before_action :authenticate_user!, only:[:purchase, :pay, :done]
   before_action :set_image, only:[:show, :purchase,:pay]
   before_action :set_card, only:[:purchase, :pay]
@@ -20,8 +21,7 @@ class ItemsController < ApplicationController
     if @item.save
       render :create, notice: '出品しました'
     else
-      flash.now[:alert] = '出品できません。入力必須項目を確認してください'
-      render :new
+      redirect_to new_item_path, alert: "出品できません。入力必須項目を確認してください"
     end
   end
  
@@ -52,11 +52,10 @@ class ItemsController < ApplicationController
   end
   
   def show
-    
   end
 
   def purchase
-    if @item.user_id == current_user.id
+    if @item.seller_id == current_user.id
       redirect_to root_path   
     else
       unless @item.status_id == "1"
@@ -101,7 +100,7 @@ class ItemsController < ApplicationController
   def set_params
     params.require(:item).permit(:name, :description, :category_id, :brand, :condition_id, :prefecture_id, :size, :price, :shipping_days_id, :postage_id, images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
-
+  
   def set_item
     @item = Item.find(params[:id])
 
@@ -114,6 +113,7 @@ class ItemsController < ApplicationController
 
   def move_to_root
     redirect_to root_path unless user_signed_in?
+    # flash[:alert] = "ログインしてください"
   end
 
   def set_card

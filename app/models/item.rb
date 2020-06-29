@@ -7,7 +7,6 @@ class Item < ApplicationRecord
   has_many   :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
   validates :name, :description, :condition_id, :postage_id, :prefecture_id, :shipping_days_id, :price, presence: true
-  validates :price, numericality: { only_integer: true , greater_than: 0, less_than: 9999999 }
+  validates :price, numericality: { only_integer: true , greater_than: 300, less_than: 9999999 }
   validates :images, presence: true
 end
-
