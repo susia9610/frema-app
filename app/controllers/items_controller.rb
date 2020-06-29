@@ -15,10 +15,10 @@ class ItemsController < ApplicationController
   end
     
   def create
-    # binding.pry
     @item = Item.new(set_params)
+    @item.status_id = EXHIBITING_STATUS
     if @item.save
-      render :create, notise: '出品しました'
+      render :create, notice: '出品しました'
     else
       flash.now[:alert] = '出品できません。入力必須項目を確認してください'
       render :new
@@ -26,11 +26,11 @@ class ItemsController < ApplicationController
   end
  
   def edit
-    if @item.seller_id == current_user.id
+    # if @item.seller_id == current_user.id
       
-    else
-      redirect_to root_path
-    end
+    # else
+    #   redirect_to root_path
+    # end
   end
    
   def update
@@ -38,7 +38,8 @@ class ItemsController < ApplicationController
       @item.update(set_params)
       redirect_to root_path
     else 
-      redirect_to root_path
+      flash.now[:alert] = '編集できません。入力必須項目を確認してください'
+      render :edit
     end
   end
 
@@ -104,11 +105,15 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
 
-    # begin
-    #   @item = Item.find(params[:id])
-    # rescue
-    #   redirect_to root_path
-    # end
+    begin
+      @item = Item.find(params[:id])
+    rescue
+      redirect_to root_path
+    end
+  end
+
+  def move_to_root
+    redirect_to root_path unless user_signed_in?
   end
 
   def set_card

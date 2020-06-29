@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', () => {
   const buildFileField = (index)=> {
     const html = `<div data-index="${index}" class="item-content">
                     <label class="label-images">
@@ -13,7 +13,9 @@ $(function(){
   }
 
   const buildImg = (index,url)=> {
-    const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
+    const html = `<aaa>
+                    <img data-index="${index}" src="${url}" width="100px" height="100px">
+                  </aaa>`;
     return html;
   }
 
@@ -22,10 +24,30 @@ $(function(){
   lastIndex = $('.item-content:last').data('index');
   fileIndex.splice(0,lastIndex);
   $('.hidden-destroy').hide();
-  $('#image-box').on('change', '.file-field', function(e) {
-    console.log(this)
-    const targetIndex = $(this).parent().parent().data('index');
 
+  const url = location.href
+  console.log(url)
+  if (url == "http://localhost:3000/items/2/edit"){
+    const css = {
+      "display": "flex",
+      "flex-wrap": "wrap",
+      "height": "360px"
+    }
+    $(".new-wrapper__main__image-field__text").css('display','none');
+    $('#image-box').css(css);
+    $('#previews').css(css);
+  
+    $(".file-field").css('display','none');
+
+    $('img').css('margin', '40px 12px 0px 12px');
+
+    $(".label-image").not(".label-image:last").css('display', 'none');
+
+  }
+    
+  $('#image-box').on('change', '.file-field', function(e) {
+    
+    const targetIndex = $(this).parent().parent().data('index');
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
     $("#previews").append(buildImg(targetIndex, blobUrl));
@@ -41,27 +63,27 @@ $(function(){
     
     $(".file-field").css('display','none');
 
-    $('img').css('margin', '40px 0px 0px 7px');
+    $('img').css('margin', '40px 12px 0px 12px');
 
 
     $('#previews').append(buildFileField(fileIndex[0]));
     fileIndex.shift();
 
-    $(".item-content__delete").css('margin-top', '40px').css('text-align', 'left');
+
+    // $(".item-content__delete").eq(-1).css('margin-top', '40px').css('text-align', 'left');
 
     $(".label-image").css('display', 'none');
     
     const aaa = $(this).parent().parent().children().children().css('visibility', 'hidden');
 
-    $(".item-content__delete").css('margin-top', '40px');
-
+    
+    
     fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
   });
 
   $('#image-box').on('click', '.item-content__delete', function() {
-    console.log(this)
     const targetIndex = $(this).parent().data('index')
-    
+    console.log(targetIndex)
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
 
     if (hiddenCheck) hiddenCheck.prop('checked', true);

@@ -11,19 +11,22 @@
         #previews
           - if @item.persisted?
             - @item.images.each_with_index do |image,i|
-              = image_tag image.src.url, { data: { index: i } }, width: "100", height: "100"
+              .aaa
+                = image_tag image.image.to_s, data: { index: i }, width: "100", height: "100"
+                .item-content{"data-index" => "#{i}"}
+                  .item-content__delete
+                    削除
           = f.fields_for :images do |i|
             .div0{"data-index" => "#{i.index}"} 
               = i.label :image, class: "label-image" do
                 = icon('fas','camera')
                 = i.file_field :image, class: "file-field"
-            - if @item.persisted?
-              = i.image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
-          - if @item.persisted?
-            .item-content{"data-index" => "#{@item.images.count}"}
-            = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'file-field'
-            .item-content__delete
-              削除
+              - if @item.persisted?
+                = i.check_box :_destroy, data: { index: i.index }, class: 'hidden-destroy'
+              - if @item.persisted?
+                .item-content{"data-index" => "#{@item.images.count}"}
+                  = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'file-field', id: 'simo'
+        
 
         .new-wrapper__main__image-field__text
           クリックしてファイルをアップロード
