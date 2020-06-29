@@ -15,14 +15,17 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.new
-    @category = Category.where(ancestry: "").limit(13)
   end
 
   def get_category_children
     respond_to do |format|
       format.html
       format.json do
-        @category_children = Category.find(params[:parent_id]).children 
+        if params[:parent_id]
+          @childrens = Category.find(params[:parent_id]).children
+        elsif params[:children_id]
+          @grandChilds = Category.find(params[:children_id]).children
+        end
       end
     end
   end
