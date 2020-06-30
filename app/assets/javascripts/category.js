@@ -25,10 +25,8 @@ $(document).on('turbolinks:load', function(){
   }
   //親カテゴリー選択後イベント発火
   $('#category_form').on('change', function(){
-    console.log("発火確認");
     //選択された親カテゴリーのidを取得
     var parent_category_id = document.getElementById('category_form').value;
-    console.log(parent_category_id);
     if (parent_category_id != "---"){
       $.ajax({
         url: '/items/get_category_children',
@@ -37,7 +35,6 @@ $(document).on('turbolinks:load', function(){
         dataType: 'json'
       })
       .done(function(children){
-        console.log(children)
         //親カテゴリが変更された時に子・孫カテゴリを削除する
         $('#child_category').remove();
         $('#grandchild_category').remove();
