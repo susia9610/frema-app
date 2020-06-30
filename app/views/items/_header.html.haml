@@ -15,7 +15,7 @@
     .nav
       %ul.listsLeft
         %li.listsLeft__item
-          = link_to "商品一覧", root_path, class:"catBtn"
+          = render 'items/category'
       %ul.listsRight
         - if user_signed_in?
           %li.listsRight__item

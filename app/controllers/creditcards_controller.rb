@@ -1,6 +1,7 @@
 class CreditcardsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_card
+  before_action :set_parents, only: [:index, :new]
   require "payjp"
 
   def index
@@ -69,6 +70,11 @@ class CreditcardsController < ApplicationController
 
   private
   def set_card
-    @card = Creditcard.where(user_id: current_user.id).first if Creditcard.where(user_id: current_user.id).present?
+    @card = Creditcard.find_by(user_id: current_user.id) if Creditcard.find_by(user_id: current_user.id).present?
   end
+
+  def set_parents
+    @parents = Category.where(ancestry: nil)
+  end
+
 end
