@@ -23,6 +23,13 @@ $(document).on('turbolinks:load', function(){
                                 </select>`;
     $('.new-category-box').append(grandchildSelectHtml);
   }
+  
+  //idを変数に代入
+  var child;
+  child = "#child_category" ;
+  var grandchild;
+  grandchild = "#grandchild_category" ;
+
   //親カテゴリー選択後イベント発火
   $('#category_form').on('change', function(){
     //選択された親カテゴリーのidを取得
@@ -36,8 +43,8 @@ $(document).on('turbolinks:load', function(){
       })
       .done(function(children){
         //親カテゴリが変更された時に子・孫カテゴリを削除する
-        $('#child_category').remove();
-        $('#grandchild_category').remove();
+        $(child).remove();
+        $(grandchild).remove();
         var insertHTML = '';
         children.forEach(function(child){
           insertHTML += appendOption(child);
@@ -49,8 +56,8 @@ $(document).on('turbolinks:load', function(){
         alert('カテゴリー取得に失敗しました');
       })
     }else{
-      $('#child_category').remove();
-      $('#grandchild_category').remove();
+      $(child).remove();
+      $(grandchild).remove();
     }
   });
   //子カテゴリー選択後イベント発火
@@ -66,7 +73,7 @@ $(document).on('turbolinks:load', function(){
       .done(function(grandchildren){
         if (grandchildren.length != 0) {
           //子カテゴリが変更された時に孫カテゴリを削除する
-          $('#grandchild_category').remove();
+          $(grandchild).remove();
           var insertHTML = '';
           grandchildren.forEach(function(grandchild){
             insertHTML += appendOption(grandchild);
@@ -79,7 +86,7 @@ $(document).on('turbolinks:load', function(){
         alert('カテゴリー取得に失敗しました');
       })
     }else{
-      $('#grandchild_category').remove();
+      $(grandchild).remove();
     }
   });
 });

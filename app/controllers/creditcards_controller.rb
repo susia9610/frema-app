@@ -70,7 +70,7 @@ class CreditcardsController < ApplicationController
 
   private
   def set_card
-    @card = Creditcard.where(user_id: current_user.id).first if Creditcard.where(user_id: current_user.id).present?
+    @card = Creditcard.find_by(user_id: current_user.id) if Creditcard.find_by(user_id: current_user.id).present?
   end
 
   def set_parents
