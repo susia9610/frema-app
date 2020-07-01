@@ -34,11 +34,11 @@
                 %th 
                   カテゴリー
                 %td
-                  = link_to categories_path, class: "categories" do
+                  = link_to "/categories/#{@item.category.parent.parent.id}/parent", class: "categories" do
                     = @parent.name
-                  = link_to categories_path, class: "categories" do
+                  = link_to "/categories/#{@item.category.parent.id}/child", class: "categories" do
                     = @child.name
-                  = link_to categories_path, class: "categories" do
+                  = link_to "/categories/#{@item.category.id}/grandchild", class: "categories" do
                     = @grandchild.name
               %tr
                 %th 
