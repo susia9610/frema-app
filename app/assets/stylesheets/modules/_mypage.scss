@@ -18,12 +18,11 @@
 }
 
 .mypage__container {
-  padding: 30px 30px;
   background-color: whitesmoke;
   .mypage__inner {
-    margin-left: 50px;
+    margin: 0 auto 0;
     padding: 40px 0 20px 0;
-    width: 1420px;
+    width: 1020px;
     display: flex;
     justify-content: space-between;
   }
@@ -56,6 +55,31 @@
         .arrow {
           margin: auto 0;
         }
+      }
+    }
+  }
+}
+
+.mypage__content {
+  width: 700px;
+  height: 100%;
+  background-color: white;
+}
+
+.user {
+  background-color: white;
+  height: 200px;
+  background-image: image-url("material/pict/mypage_back.jpg");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__name {
+    a {
+      color: black;
+      &:hover {
+        text-decoration: underline;
+        opacity: 0.5;
       }
     }
   }
@@ -94,6 +118,13 @@
   p {
     line-height: 50px;
   }
+}
+
+.form {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card__add__inner {
