@@ -80,7 +80,7 @@
         .show_purchasebox
           - if user_signed_in? && current_user.id == @item.seller_id
             .item-editbtn
-              = link_to "商品編集", root_path
+              = link_to "商品編集", edit_item_path
               = link_to "商品削除", item_path(@item), method: :delete
           - else
             .show_purchasebtn

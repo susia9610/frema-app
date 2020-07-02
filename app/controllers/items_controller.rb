@@ -26,20 +26,20 @@ class ItemsController < ApplicationController
   end
  
   def edit
-    # if @item.seller_id == current_user.id
-      
-    # else
-    #   redirect_to root_path
-    # end
+    if @item.seller_id == current_user.id
+      @item.images.new
+    else
+      redirect_to root_path
+    end
   end
    
   def update
     if @item.seller_id == current_user.id
+      @item = Item.find(params[:id])
       @item.update(set_params)
-      redirect_to root_path
+      render :update, notice: '出品しました'
     else 
-      flash.now[:alert] = '編集できません。入力必須項目を確認してください'
-      render :edit
+      redirect_to edit_item_path, alert: '編集できません。入力必須項目を確認してください'
     end
   end
 

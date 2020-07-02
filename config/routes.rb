@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
+  resources :items do
     collection do
       get "set_images"
     end
