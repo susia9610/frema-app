@@ -127,8 +127,16 @@
   align-items: center;
 }
 
-select.input-default harf{
-  height: 20px;
+select.input-default-harf{
+  height: 30px;
+}
+
+.card_list{
+  padding-top: 20px;
+}
+
+.name {
+  padding-bottom: 20px;
 }
 
 .form__upper{
@@ -141,6 +149,10 @@ select.input-default harf{
     text-align: center;
     margin-bottom: 10px;
   }
+}
+
+.input-default{
+  width: 260px;
 }
   
 
