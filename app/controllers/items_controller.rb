@@ -36,7 +36,6 @@ class ItemsController < ApplicationController
   def update
     if @item = Item.find(params[:id])
       @item.seller_id == current_user.id
-      binding.pry
       @item.update(set_params)
       render :update, notice: '出品しました'
     else 

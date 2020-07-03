@@ -1,13 +1,11 @@
 $(document).on('turbolinks:load', () => {
   const buildFileField = (index)=> {
-    const html = `
-                    <label class="label-images">
-                      <i class="fas fa-camera"></i>
-                      <input class="file-field" type="file"
-                      name="item[images_attributes][${index}][image]"
-                      id="item_images_attributes_${index}_image"><br>
-                    </label>
-                    `;
+    const html = `<label class="label-images">
+                    <i class="fas fa-camera"></i>
+                    <input class="file-field" type="file"
+                    name="item[images_attributes][${index}][image]"
+                    id="item_images_attributes_${index}_image"><br>
+                  </label>`;
     return html;
   }
   const buildDelete = (index)=> {
@@ -34,7 +32,8 @@ $(document).on('turbolinks:load', () => {
     }
     $(".new-wrapper__main__image-field__text").css('display','none');
     $('#image-box').css(css);
-    $('#previews').css(css);
+    $('#previews').css('flex-wrap', 'wrap').css('height', '360px');
+    $('#previews').not('.item-content').css('display','flex');
     $(".file-field").css('display','none');
     $('img').css('margin', '40px 12px 0px 12px');
     $(".label-image").not(".label-image:last").css('display', 'none');
