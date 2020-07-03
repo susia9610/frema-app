@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to :seller, class_name: "User", foreign_key: "seller_id", optional: true
   has_many   :images, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :comments
   accepts_nested_attributes_for :images, allow_destroy: true
   validates :name, :description, :condition_id, :postage_id, :prefecture_id, :shipping_days_id, :price, presence: true
   validates :price, numericality: { only_integer: true , greater_than: 299, less_than: 9999999 }

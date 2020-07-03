@@ -53,6 +53,9 @@ class ItemsController < ApplicationController
     @grandchild = Category.find(@item.category_id)
     @child = @grandchild.parent
     @parent = @child.parent 
+   
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
 
   def purchase
