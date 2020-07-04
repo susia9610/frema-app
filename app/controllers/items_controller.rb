@@ -31,7 +31,9 @@ class ItemsController < ApplicationController
     if @item.save
       render :create, notice: '出品しました'
     else
-      redirect_to new_item_path, alert: "出品できません。入力必須項目を確認してください"
+      @item.images.new
+      flash[:alert] = '出品できません。入力必須項目を確認してください。'
+      render :new
     end
   end
  
