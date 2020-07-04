@@ -34,12 +34,12 @@ class ItemsController < ApplicationController
   end
    
   def update
-    if @item = Item.find(params[:id])
-      @item.seller_id == current_user.id
-      @item.update(set_params)
+    @item = Item.find(params[:id])
+    @item.seller_id == current_user.id
+    if @item.update(set_params)
       render :update, notice: '出品しました'
     else 
-      redirect_to edit_item_path, alert: '編集できません。入力必須項目を確認してください'
+      redirect_to edit_item_path, alert: "編集できません。入力必須項目を確認してください"
     end
   end
 
