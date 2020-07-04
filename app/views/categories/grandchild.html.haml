@@ -1,0 +1,27 @@
+= render "/items/header"
+
+.category__main
+  .category__content
+    .category__title
+      = "#{@category.name}の商品一覧"
+
+  .category__item--list_box
+    - @items.each do |item|
+      - category = Category.find(item.category_id) 
+      .category__item_list
+        .category__item_list--body
+          =link_to item_path(item.id) do
+            - item.images.first(1).each do |image|
+              =image_tag image.image.to_s, class: "category__item_list--img"
+              .category__item_list--details
+                .category__item_list--name
+                  = item.name
+                  %ul
+                    %li= "¥" + item.price.to_s
+                    %li
+                      =icon("fas", "star", class: "likeIcon")
+                      0
+                  %p (税込)
+
+= render "/items/banner"
+= render "/items/footer"

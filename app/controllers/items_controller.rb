@@ -4,6 +4,8 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only:[:purchase, :pay, :done]
   before_action :set_image, only:[:show, :purchase,:pay]
   before_action :set_card, only:[:purchase, :pay]
+  before_action :set_parents, only:[:index,:new, :create,:show]
+  
   require "payjp"
 
   def index
@@ -13,6 +15,14 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.new
+  end
+
+  def get_category_children
+    @child = Category.find(params[:parent_id]).children
+  end
+  
+  def get_category_grandchildren
+    @grandchildren = Category.find(params[:child_id]).children
   end
     
   def create
@@ -52,11 +62,14 @@ class ItemsController < ApplicationController
   end
   
   def show
+    @grandchild = Category.find(@item.category_id)
+    @child = @grandchild.parent
+    @parent = @child.parent 
   end
 
   def purchase
     if @item.seller_id == current_user.id
-      redirect_to root_path   
+      redirect_to root_path
     else
       unless @item.status_id == "1"
         redirect_to root_path, notice: "購入済みです"
@@ -113,10 +126,13 @@ class ItemsController < ApplicationController
 
   def move_to_root
     redirect_to root_path unless user_signed_in?
-    # flash[:alert] = "ログインしてください"
   end
 
   def set_card
     @card = Creditcard.find_by(user_id: current_user.id)
+  end
+
+  def set_parents
+    @parents = Category.where(ancestry: nil)
   end
 end

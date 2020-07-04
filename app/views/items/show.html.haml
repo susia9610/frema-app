@@ -29,12 +29,17 @@
                 %th 
                   出品者
                 %td 
-                  = @item.seller_id
+                  =@item.seller.nickname
               %tr
                 %th 
                   カテゴリー
                 %td
-                  = @item.category_id
+                  = link_to "/categories/#{@item.category.parent.parent.id}/parent", class: "categories" do
+                    = @parent.name
+                  = link_to "/categories/#{@item.category.parent.id}/child", class: "categories" do
+                    = @child.name
+                  = link_to "/categories/#{@item.category.id}/grandchild", class: "categories" do
+                    = @grandchild.name
               %tr
                 %th 
                   ブランド
@@ -68,11 +73,12 @@
         
         .optonalarea
           .optonalarea__favoritebtn
-          - if user_signed_in? && current_user.id == @item.seller_id
-            #favoritebtn
-              = render partial: 'favorites/favorite', locals: {item: @item}
-          - else
-            = link_to "お気に入り登録する際はログインしてください", root_path
+            - if user_signed_in?
+              #favoritebtn
+                = render partial: 'favorites/favorite', locals: {item: @item}
+            - else
+              .favoritebtn_login
+                = link_to "⭐︎ログインしてお気に入りに登録する", new_user_session_path
             
           .optonalarea__optonalbtn
             = link_to "🏴 不適切な商品の報告", "#"

@@ -1,0 +1,32 @@
+= render "/items/header"
+
+.category__container
+  .category__container--top
+    %h3 カテゴリー一覧
+    
+    - @parents.each_with_index do |parent, i|
+      - unless parent.name.include?("カテゴリー一覧")
+        = link_to "##{i}", class: "box__parent--link" do
+          = parent.name
+
+  - @parents.each_with_index do |parent, i|
+    - unless parent.name.include?("カテゴリー一覧")
+      .category__container--boxes
+        .category__container--boxes--title{id: "#{i}"}
+          = link_to "#{parent.name}", parent_category_path(parent.id), class: "category__parent--title" 
+
+        .category__box--child
+          - parent.children.each do |child|
+            .child__box
+              .child__box--name{id: "#{i}"}
+                = link_to child_category_path(child.id), class: "category__child--btn" do
+                  = child.name  
+                
+                .grandchild__box
+                  - child.children.each do |grandchild|
+                    .grandchild__link
+                      = link_to grandchild_category_path(grandchild.id), class: "category__link--btn" do
+                        = grandchild.name 
+
+= render "/items/banner"
+= render "/items/footer"

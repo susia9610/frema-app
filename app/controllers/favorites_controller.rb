@@ -1,5 +1,6 @@
 class FavoritesController < ApplicationController
 before_action :set_item, only: [:create, :destroy]
+before_action :set_parents, only: [:index]
 
   def index
     @nickname = current_user.nickname
@@ -27,6 +28,11 @@ before_action :set_item, only: [:create, :destroy]
   def set_item
     @item = Item.find(params[:item_id])
   end
+
+  def set_parents
+    @parents = Category.where(ancestry: nil)
+  end
+
 end
 
 
