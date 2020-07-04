@@ -1,0 +1,89 @@
+= render "/items/templates/subheader"
+.new-wrapper
+  = form_with model: @item, local: true do |f|
+    .new-wrapper__main
+      .new-wrapper__main__title
+        出品画像
+        %span.require 必須
+      .new-wrapper__main__text
+        最大１０枚までアップロードできます
+      .new-wrapper__main__image-field#image-box
+        #previews
+          - if @item.persisted?
+            - @item.images.each_with_index do |image,i|
+              .preview-box
+                - if i != (@item.images.length - 1)
+                  = image_tag image.image.to_s, data: { index: i }, width: "100", height: "100"
+                  .item-content{"data-index" => "#{i}"}
+                    .item-content__delete
+                      削除
+          = f.fields_for :images do |i|
+            .item-content{"data-index" => "#{i.index}"} 
+              = i.label :image, class: "label-image" do
+                = icon('fas','camera')
+                = i.file_field :image, class: "file-field"
+              - if i.index != (@item.images.length - 1)
+                = i.check_box :_destroy, data: { index: i.index }, class: 'hidden-destroy'
+              - if @item.persisted?
+                .item-content{"data-index" => "#{@item.images.count}"}
+                  = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'file-field', id: 'simo'
+        .new-wrapper__main__image-field__text
+          クリックしてファイルをアップロード
+    .new-wrapper__main
+      .new-wrapper__main__title
+        商品名
+        %span.require 必須
+      = f.text_field :name, class: "new-wrapper__main__input-text", placeholder: "40文字まで"
+      .new-wrapper__main__title.spacing
+        商品の説明
+        %span.require 必須
+      = f.text_area :description, class: "new-wrapper__main__input-textarea", placeholder: "商品の説明(必須 1,000文字以内)\n (色、素材、重さ、定価、注意点など) \n\n例) 2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。合わせやすいのでおすすめです。"
+    .new-wrapper__main
+      .new-wrapper__main__subtitle
+        商品の詳細
+      .new-wrapper__main__title
+        カテゴリー
+        %span.require 必須
+      = f.select :category_id, [["選択してください", 0],["選択肢1", 1],["選択肢2", 2],["選択肢3", 3]], {}, {class: "new-wrapper__main__input-select"}
+      .new-wrapper__main__title.spacing
+        ブランド
+        %span.require 必須
+      = f.text_field :brand, class: "new-wrapper__main__input-text", placeholder: "例) シャネル"
+      .new-wrapper__main__title.spacing
+        サイズ
+        %span.any 任意
+      = f.select :size, [["選択してください", 0],["選択肢1", 1],["選択肢2", 2],["選択肢3", 3]], {}, {class: "new-wrapper__main__input-select"}
+      .new-wrapper__main__title.spacing
+        商品の状態
+        %span.require 必須
+      = f.collection_select :condition_id, Condition.all, :id, :name, {prompt: "選択してください"}, class: "new-wrapper__main__input-select"
+    .new-wrapper__main
+      .new-wrapper__main__subtitle
+        配送について
+      .new-wrapper__main__title
+        配送料の負担
+        %span.require 必須
+      = f.collection_select :postage_id, Postage.all, :id, :name, {prompt: "選択してください"}, class: "new-wrapper__main__input-select"
+      .new-wrapper__main__title.spacing
+        発送元の地域
+        %span.require 必須
+      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, class: "new-wrapper__main__input-select"
+      .new-wrapper__main__title.spacing
+        発送までの日数
+        %span.require 必須
+      = f.collection_select :shipping_days_id, ShippingDays.all, :id, :name, {prompt: "選択してください"}, class: "new-wrapper__main__input-select"
+    .new-wrapper__main
+      .new-wrapper__main__subtitle
+        価格 (¥300~9,999,999)
+      .new-wrapper__main__title.float-left
+        販売価格
+        %sapn.require 必須
+      .new-wrapper__main__input-price.froat-right
+        ¥
+        = f.text_field :price, class: "new-wrapper__main__input-price__input", placeholder: "0"
+      .spacing
+      .spacing
+      = f.submit "変更を確定する", class: "new-wrapper__main__submit"
+      .new-wrapper__main__caution
+        禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+= render "/items/templates/subfooter"

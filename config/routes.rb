@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items, only: [:index, :new, :create, :show, :edit, :destroy] do
+  resources :items do
     collection do
       get "set_images"
       get 'get_category_children', defaults: { format: 'json' }
