@@ -192,41 +192,41 @@
         }
       }  
       
-      .commentbox{
-        padding: 24px;
-        background-color: #ffffff;
-        margin: 10px 0;
-        text-align: center;
-        &__newcontent{
-          form {
-            .text {
-              width: 100%;
-              min-height: 104px;
-              padding: 10px;
-            }
-          }  
-        }
-        &__noticemsg{
-          padding: 8px;
-          font-size: 14px;
-          background-color: #f8f8f8;
-          margin: 10px 0;
-          text-align: left;
-        }
-        &__commentbtn{
-          line-height: 48px;
-          background: #3CCACE;
-          border: 1px solid #3CCACE;
-          color: #fff;
-          width: 60%;
-          font-size: 18px;
-          border-radius: 100px;
-          .commentbtn-icon{
-            color:#fff;
-          }
-        }
-      }
-    }
+    //   .commentbox{
+    //     padding: 24px;
+    //     background-color: #ffffff;
+    //     margin: 10px 0;
+    //     text-align: center;
+    //     &__newcontent{
+    //       form {
+    //         .text {
+    //           width: 100%;
+    //           min-height: 104px;
+    //           padding: 10px;
+    //         }
+    //       }  
+    //     }
+    //     &__noticemsg{
+    //       padding: 8px;
+    //       font-size: 14px;
+    //       background-color: #f8f8f8;
+    //       margin: 10px 0;
+    //       text-align: left;
+    //     }
+    //     &__commentbtn{
+    //       line-height: 48px;
+    //       background: #3CCACE;
+    //       border: 1px solid #3CCACE;
+    //       color: #fff;
+    //       width: 60%;
+    //       font-size: 18px;
+    //       border-radius: 100px;
+    //       .commentbtn-icon{
+    //         color:#fff;
+    //       }
+    //     }
+    //   }
+    // }
 
     .links {
       list-style: none;

@@ -93,17 +93,18 @@
               = link_to "購入する", purchase_item_path(@item.id)
           
       .commentbox
-        .commentbox__newcontent
-          %form
-            %input.text
+        = render "/items/comment"
+        -# .commentbox__newcontent
+        -#   %form
+        -#     %input.text
 
-        .commentbox__noticemsg
-          相手のことを考え丁寧なコメントを心がけましょう。
-          %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        -# .commentbox__noticemsg
+        -#   相手のことを考え丁寧なコメントを心がけましょう。
+        -#   %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
           
-        %button.commentbox__commentbtn
-          =icon('fa','comment', class: "commentbtn-icon")
-          コメントする
+        -# %button.commentbox__commentbtn
+        -#   =icon('fa','comment', class: "commentbtn-icon")
+        -#   コメントする
 
       .links
         %ur

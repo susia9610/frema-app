@@ -34,7 +34,7 @@ Rails.application.routes.draw do
       post "pay"
     end
 
-    resources :comments, only: :create
+    resources :comments, only:[:create,:update,:destroy]
     
   end
   

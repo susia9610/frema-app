@@ -55,7 +55,7 @@ class ItemsController < ApplicationController
     @parent = @child.parent 
    
     @comment = Comment.new
-    @comments = @item.comments.includes(:user)
+    @comments = @item.comments
   end
 
   def purchase
