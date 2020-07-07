@@ -1,0 +1,51 @@
+- if user_signed_in?
+  .commentbox__content
+    - @comments.each do |comment|
+      -if comment.user_id == @item.seller_id
+        .commentbox__content--sellername
+          = comment.user.nickname
+        .commentbox__content--block
+          .commentbox__content--block--sellerlist
+            = comment.content
+          .commentbox__content--block--sublist
+            .commentbox__content--block--sublist--icon
+              = icon("fa fa-user-circle fa-3x", class: "userbtn-icon")
+        .commentbox__content--buttom
+          .commentbox__content--buttom--date
+            = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
+        - if comment.user_id == current_user.id
+          .commentbox__content--buttom--btn
+            = link_to '削除', item_comment_path(@item.id,comment.id) ,method: :delete
+      
+      - else comment.user_id == @item.seller_id
+        .commentbox__content--name
+          = comment.user.nickname
+        .commentbox__content--block
+          .commentbox__content--block--list
+            = comment.content
+            
+          .commentbox__content--block--sublist
+            .commentbox__content--block--sublist--icon
+              = icon("fa fa-user-circle fa-3x", class: "userbtn-icon")
+        .commentbox__content--buttom
+          .commentbox__content--buttom--date
+            = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
+        - if comment.user_id == current_user.id
+          .commentbox__content--buttom--btn
+            = link_to '削除', item_comment_path(@item.id,comment.id) ,method: :delete
+            
+  .commentbox__bottomcontent
+    .commentbox__bottomcontent--newcontent
+      = form_with url: item_comments_path(@item), model: @comment, class: "new_comment" do |f|
+        = f.text_area :content
+        = f.hidden_field :item_id, value: @item.id
+        %button.commentbox__bottomcontent--commentbtn{name: "button", type: "submit"}
+          =icon('fa','comment', class: "commentbtn-icon")
+          コメントする
+
+    .commentbox__bottomcontent--noticemsg
+      相手のことを考え丁寧なコメントを心がけましょう。
+      %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
+- else
+  .commentbox__sinein
+    = link_to "💬コメントを投稿するにはログインしてください", new_user_session_path

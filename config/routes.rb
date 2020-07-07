@@ -33,6 +33,9 @@ Rails.application.routes.draw do
       get "done"
       post "pay"
     end
+
+    resources :comments, only:[:create,:destroy]
+    
   end
   
   resources  :items do

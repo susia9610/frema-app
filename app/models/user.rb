@@ -19,6 +19,7 @@ class User < ApplicationRecord
     end
   end
   has_one :address
+  has_many :comments, dependent: :destroy
   has_many :sns_credentials
   has_many :creditcard
   has_many :buyer_items, class_name: "Item", foreign_key: "buyer_id"

@@ -44,7 +44,8 @@
       .new-wrapper__main__title
         カテゴリー
         %span.require 必須
-      = f.select :category_id, [["選択してください", 0],["選択肢1", 1],["選択肢2", 2],["選択肢3", 3]], {}, {class: "new-wrapper__main__input-select"}
+      .new-category-box
+        = f.collection_select :category_id, @parents, :id, :name,{prompt: "---"},class: "new-category-input-box", id: "category_form"
       .new-wrapper__main__title.spacing
         ブランド
         %span.require 必須
