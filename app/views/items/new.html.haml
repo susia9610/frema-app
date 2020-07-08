@@ -1,5 +1,7 @@
 = render "/items/templates/subheader"
 .new-wrapper
+  - breadcrumb :itemNew
+  = render "layouts/breadcrumbsitem"
   = form_with model: @item, url: items_path, local: true do |f|
     .new-wrapper__main
       .new-wrapper__main__title

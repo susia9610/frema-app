@@ -1,5 +1,7 @@
 = render 'items/header'
 .mypage__container
+  - breadcrumb :logout
+  = render "layouts/breadcrumbs"
   .mypage__inner
     = render 'mypage/parts/side_list'
     = render 'mypage/parts/logout'
