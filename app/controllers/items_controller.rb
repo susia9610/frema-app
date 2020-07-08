@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only:[:purchase, :pay, :done]
   before_action :set_image, only:[:show, :purchase,:pay]
   before_action :set_card, only:[:purchase, :pay]
-  before_action :set_parents, only:[:index,:new, :create,:show]
+  before_action :set_parents, only:[:index,:new, :edit,:create,:show]
   
   require "payjp"
 
@@ -67,6 +67,9 @@ class ItemsController < ApplicationController
     @grandchild = Category.find(@item.category_id)
     @child = @grandchild.parent
     @parent = @child.parent 
+   
+    @comment = Comment.new
+    @comments = @item.comments
   end
 
   def purchase
