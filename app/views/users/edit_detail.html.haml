@@ -3,7 +3,9 @@
   .new_session-wrapper
     .new_session-wrapper__logo   
       = render "devise/sessions/header"  
-    .new_session-wrapper__main     
+    .new_session-wrapper__main 
+      - breadcrumb :detail
+      = render "layouts/breadcrumbs"
       .new_session-wrapper__main__head
         メールアドレス・パスワード変更
       .new_session-wrapper__main__title

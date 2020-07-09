@@ -1,6 +1,8 @@
 = render "/items/templates/subheader"
 
 .new-wrapper
+  - breadcrumb :itemCreate
+  = render "layouts/breadcrumbsitem"
   .new-wrapper__main
     .new-wrapper__main__create
       商品の出品が完了しました

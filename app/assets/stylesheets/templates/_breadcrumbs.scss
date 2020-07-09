@@ -1,0 +1,18 @@
+.breadcrumbs{
+  .breadcrumbs-list{
+    display: flex;
+    line-height: 40px;
+    width: 1020px;
+    margin: 0 auto;
+    a{
+      margin: 0px 10px 0px 10px;
+      color: black;
+      font-size: 15px;
+    }
+    span{
+      margin: 0px 10px 0px 10px;
+      font-weight: bold;
+    }
+  }
+
+}

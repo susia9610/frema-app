@@ -5,7 +5,9 @@
     .new_session-wrapper__logo
       = render "devise/sessions/header"
 
-    .new_session-wrapper__main     
+    .new_session-wrapper__main
+      - breadcrumb :newUser
+      = render "layouts/breadcrumbs"
       .new_session-wrapper__main__head
         会員情報
       .new_session-wrapper__main__title

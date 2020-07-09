@@ -3,6 +3,8 @@
     = render "devise/sessions/header"
     
   .new_session-wrapper__main
+    - breadcrumb :createUser
+    = render "layouts/breadcrumbs"
     .new_session-wrapper__main__head
       登録が完了しました
     =link_to root_path, class:"new_session-wrapper__main__btn" do 

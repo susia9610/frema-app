@@ -1,6 +1,8 @@
 = render "/items/templates/subheader"
 
 .new-wrapper
+  - breadcrumb :itemUpdate
+  = render "layouts/breadcrumbsitem"
   .new-wrapper__main
     .new-wrapper__main__create
       商品の編集が完了しました
