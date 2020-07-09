@@ -1,5 +1,7 @@
 = render 'items/header'
 .mypage__container
+  - breadcrumb :newCreditcards
+  = render "layouts/breadcrumbs"
   .mypage__inner
     = render 'mypage/parts/side_list'
     = render 'creditcards/parts/card_add'

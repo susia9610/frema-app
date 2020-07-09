@@ -1,5 +1,7 @@
 = render 'items/header'
 .pickup__container
+  - breadcrumb :favorites
+  = render "layouts/breadcrumbs"
   %h2.head #{@nickname}さんのマイページ
   .product_box
     .product__head
