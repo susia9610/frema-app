@@ -62,8 +62,8 @@ crumb :logout do
 end
 
 crumb :itemShow do
-  link "商品詳細情報", "#"
-  link Item.find(params[:id]).name, "#"
+  link "商品詳細情報", item_path(Item.ids)
+  link Item.find(params[:id]).name, item_path(Item.ids)
   parent :root 
 end
 
@@ -87,13 +87,12 @@ crumb :itemCreate do
   parent :itemNew
 end
 
-# crumb :purchase do
-#   link "購入内容の確認", purchase_item_path(@item.id)
-#   link Item.find(params[:id]).name, "#"
-#   parent :itemShow
-# end
+crumb :purchase do
+  link "購入内容の確認", purchase_item_path(Item.ids)
+  parent :itemShow
+end
 
-# crumb :done do
-#   link "購入完了"
-#   parent :purchase
-# end
+crumb :done do
+  link "購入完了"
+  parent :purchase
+end
