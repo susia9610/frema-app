@@ -13,4 +13,9 @@ class Item < ApplicationRecord
   validates :name, length: { maximum: 40 }
   validates :price, numericality: { only_integer: true , greater_than: 299, less_than: 9999999 }
   validates :images, presence: true
+
+  def self.search(search)
+    return Item.all unless search
+    Item.where(['name LIKE ?', "%#{search}%"])
+  end
 end
