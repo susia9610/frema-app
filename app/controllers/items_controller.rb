@@ -40,6 +40,12 @@ class ItemsController < ApplicationController
   def edit
     if @item.seller_id == current_user.id
       @item.images.new
+      grandchild_category = @item.category
+      child_category = grandchild_category.parent
+
+      @category = Category.where(ancestry: nil)
+      @category_children_array = Category.where(ancestry: child_category.ancestry)
+      @category_grandchildren_array = Category.where(ancestry: grandchild_category.ancestry)
     else
       redirect_to root_path
     end
