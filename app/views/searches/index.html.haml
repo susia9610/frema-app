@@ -2,8 +2,7 @@
 .search
   .search-container
     .search-left
-      -# = render 'searches/form-bar'
-      -# ↑詳細検索で使用↑
+      = render 'searches/form-bar'
     .search-right
       %section.items-box-container
         -if @search.present?

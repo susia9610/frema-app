@@ -73,7 +73,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :searches, only:[:index]
-  
+  resources :searches, only:[:index, :detail_search]
+  # get "search" => "items#item_search"
+
 end
 
