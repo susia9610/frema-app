@@ -28,22 +28,21 @@
           width: 100%;
           display: flex;
           margin-bottom: 5px;
-          input {
-            width: calc(100% - 26px);
+          .search__box__input {
+            width: calc(100% - 70px);
             height: 36px;
             padding: 0 0 0 5px;
           }
-          button {
-            width: 36px;
-            border: 0;
+          .search__box__button {
+            width: 70px;
+            height: 36px;
+            border: 1px solid;
+            border-color: #808080;
+            border-radius: 2px;
+            color: white;
             cursor: pointer;
             background-color: $basic-color;
-            padding: 8px;
-          }
-          input {
-            width: calc(100% - 26px);
-            height: 36px;
-            padding: 0 0 0 5px;
+            padding-bottom: 2px;
           }
         }
       }
@@ -55,7 +54,6 @@
         z-index: 2;
       }
     }
-
     .nav {
       font-size: 14px;
       display: flex;
