@@ -4,12 +4,13 @@
       .icon
         = link_to (image_tag asset_path("material/logo/logo.png"), alt:"test"), root_path
       .search__box
-        = form_tag(searches_path,method: :get) do
-          = text_field_tag :search, "",placeholder:"何かお探しですか？"
-          = submit_tag 'search', :name => nil do
+        = form_tag(searches_path,method: :get, class: "search__box__form") do
+          = text_field_tag :search, "",placeholder:"何かお探しですか？", class: "search__box__input"
+          %input{name: "authenticity_token", type: "hidden", class: "search__box__input", value: "k0ZPEbptaaDwDD8yF1Q3pvPnbXFHEMFLbA8zgiYouBXKwreit0eqBKjr8ixYwkbtm3pSrAMhhUwn6jXJR2I60Q=="}/
+          = submit_tag '検索', :name => nil, class:"search__box__button" do
+            = icon("fas", "search")
             .search__box__icon
               =image_tag asset_path('material/icon/icon-search 1.png')
-          %input{name: "authenticity_token", type: "hidden", value: "k0ZPEbptaaDwDD8yF1Q3pvPnbXFHEMFLbA8zgiYouBXKwreit0eqBKjr8ixYwkbtm3pSrAMhhUwn6jXJR2I60Q=="}/
       %ul.topresultLists
     .nav
       %ul.listsLeft
