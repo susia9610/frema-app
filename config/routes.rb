@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   registrations: 'users/registrations'
   }
   
+  get '/searches/detail_search', to: 'searches#detail_search'
+  
   devise_scope :user do
     get  'addresses', to: 'users/registrations#new_address'
     post 'addresses', to: 'users/registrations#create_address'
@@ -73,8 +75,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :searches, only:[:index, :detail_search]
-  # get "search" => "items#item_search"
+  resources :searches, only:[:index]
+  
+
 
 end
 
