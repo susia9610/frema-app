@@ -2,8 +2,42 @@
 .search
   .search-container
     .search-left
-      -# = render 'searches/form-bar'
-      -# ↑詳細検索で使用↑
+      .detail_search
+        = search_form_for(@q,url: searches_path, class:"detail_search") do |f|
+          .detail_search__select
+            = f.select( :sorts, { '並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc' }, {onchange: 'this.form.submit()'}, class:"detail_search__sort")
+          .detail_search_form
+            .detail_search__title
+              %h3 詳細検索
+            .detail_search__group
+              .detail_search__group--label
+                = icon("fas", "search")
+                %p キーワード
+                = f.search_field :name_cont, placeholder: "例）値下げ"
+            .detail_search__group
+              .detail_search__group--label
+                = icon("fas", "search")
+                %p 価格
+              .detail_search__group--forms
+                = f.search_field :price_gteq, placeholder: "¥ Min"
+                %p 〜
+                = f.search_field :price_lteq, placeholder: "¥ Max"
+              .input-form-box
+                %label 商品状態
+                = f.collection_select :condition_id_eq, Condition.all, :id, :name, {prompt: "選択してください"}, class: "detail_search__status"
+              .input-form-box
+                %label 配送料の負担　　　　　
+                = f.collection_select :postage_id_eq, Postage.all, :id, :name, {prompt: "選択してください"}, class: "detail_search__postage"
+              .input-form-box
+                %label 発送元　　　　　　　　
+                = f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name, {prompt: "選択してください"}, class: "detail_search__prefecture"   
+
+              .detail_search__btns
+                .detail_search__btn--grey{ id:"search-clear",class:"detail_search__btn--grey"}
+                  クリア　
+                = f.submit "完了",class:"detail_search__btn--red",id:'search_submit'
+
+      
     .search-right
       %section.items-box-container
         -if @search.present?
@@ -17,7 +51,7 @@
           %h2.search-result-nil
             新着商品
         .items-box-content
-          - @items[0..2].each do |item|
+          - @items[0..6].each do |item|
             .product__list
               =link_to item_path(item.id) do
                 -item.images.first(1).each do |image|
@@ -31,5 +65,8 @@
                         =icon("fas", "star", class: "likeIcon")
                         0
                     %p (税込)
+  .pagination
+    = paginate(@items)
+
 = render 'items/banner'
 = render 'items/footer'

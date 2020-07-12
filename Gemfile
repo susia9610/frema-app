@@ -92,6 +92,7 @@ gem 'payjp'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'gretel'
+gem 'ransack'
 
 
 
