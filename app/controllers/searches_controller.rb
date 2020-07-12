@@ -6,13 +6,13 @@ class SearchesController < ApplicationController
     @items = Item.search(params[:search]).limit(132)
     @search = params[:search]
     @search_item = Item.ransack(params[:q]) 
-    @items = @search_item.result.page(params[:page])
+    @items_detail_search = @search_item.result.page(params[:page])
   end
   
   def detail_search
     # @search = params[:q][:name_cont]
     @search_item = Item.ransack(params[:q]) 
-    @items = @search_item.result.page(params[:page])
+    @items_detail_search = @search_item.result.page(params[:page])
   end
 
 
