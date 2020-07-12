@@ -60,8 +60,9 @@
                   - if item.images.present?
                     = image_tag "#{item.images[0].image}", class:'pickup-content__img'
                     .img_title
-                      %p.img_price
-                        ="¥#{item.price}"
+                      %ul.img_price
+                        %li= "¥#{item.price}"
+                      %p (税込)
                   - else
                     = image_tag "", class:'pickup-content__img'
                   %figcaption.text__box 
