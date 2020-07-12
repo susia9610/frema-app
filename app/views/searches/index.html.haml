@@ -51,7 +51,7 @@
           %h2.search-result-nil
             新着商品
         .items-box-content
-          - @items[0..6].each do |item|
+          - @items[0..2].each do |item|
             .product__list
               =link_to item_path(item.id) do
                 -item.images.first(1).each do |image|
@@ -65,6 +65,23 @@
                         =icon("fas", "star", class: "likeIcon")
                         0
                     %p (税込)
+        -if @items.length > 3
+          .items-box-content
+            - @items[3..5].each do |item|
+              .product__list
+                =link_to item_path(item.id) do
+                  -item.images.first(1).each do |image|
+                    =image_tag image.image.to_s, class: "product__list--img"
+                  .product__list--body
+                    %h3= item.name
+                    .details
+                      %ul
+                        %li= "¥" + item.price.to_s
+                        %li
+                          =icon("fas", "star", class: "likeIcon")
+                          0
+                      %p (税込)
+                    
   .pagination
     = paginate(@items)
 
