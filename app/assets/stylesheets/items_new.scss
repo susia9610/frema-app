@@ -44,6 +44,14 @@
         color: $frema;
         font-weight: bold;
         background: #eee;
+        width: 40px;
+        margin-left: 42px;
+        cursor: pointer;
+        transition: 400ms;
+        border-radius: 4px;
+      }
+      &__delete:hover{
+        background-color: #AFEEEE;
       }
     }
     &__image-field{
@@ -68,7 +76,7 @@
         display: none;
       }
       &__text{
-        padding-top: 40px;
+        padding-top: 10px;
       }
 
     }

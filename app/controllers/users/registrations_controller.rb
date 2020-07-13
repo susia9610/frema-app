@@ -15,7 +15,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     @user = User.new(sign_up_params)
     unless @user.valid?
-      flash.now[:alert] = @user.errors.full_messages
+      flash.now[:alert] = "登録できません。入力必須項目を確認してください"
       render :new and return
     end
     session["devise.regist_data"] = {user: @user.attributes}
@@ -33,12 +33,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(session["devise.regist_data"]["user"])
     @address = Address.new(address_params)
     unless @address.valid?
-      flash.now[:alert] = @address.errors.full_messages
+      flash.now[:alert] = "登録できません。入力必須項目を確認してください"
       render :new_address and return
     end
     @user.build_address(@address.attributes)
     unless @user.save
-      flash.now[:alert] = @user.errors.full_messages
+      flash.now[:alert] = "登録できません。入力必須項目を確認してください"
       render :new
     end
     session["devise.regist_data"]["user"].clear

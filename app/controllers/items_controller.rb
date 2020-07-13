@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
     else
       @item.images.new
       flash[:alert] = '出品できません。入力必須項目を確認してください。'
-      render :new
+      redirect_to new_item_path
     end
   end
  
