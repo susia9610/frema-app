@@ -2,7 +2,7 @@
 .new-wrapper
   - breadcrumb :itemNew
   = render "layouts/breadcrumbsitem"
-  = form_with model: @item, url: items_path, local: true do |f|
+  = form_with model: @item, url: items_path, name: "item", local: true do |f|
     .new-wrapper__main
       .new-wrapper__main__title
         出品画像
@@ -14,11 +14,11 @@
           - if @item.persisted?
             - @item.images.each_with_index do |image,i|
               = image_tag image.src.url, { data: { index: i } }, width: "100", height: "100"
-          = f.fields_for :images do |i|
-            .div0{"data-index" => "#{i.index}"} 
-              = i.label :image, class: "label-image" do
-                = icon('fas','camera')
-                = i.file_field :image, class: "file-field"
+          = f.label :image, class: "label-image" do
+            = f.fields_for :images do |i|
+              .div0{"data-index" => "#{i.index}"} 
+              = i.file_field :image, class: "file-field"
+            = icon('fas','camera')
         .new-wrapper__main__image-field__text
           クリックしてファイルをアップロード
     .new-wrapper__main
