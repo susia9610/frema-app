@@ -9,22 +9,22 @@
 |lastname|string|null: false|
 |firstname_kana|string|null: false|
 |lastname_kana|string|null: false|
-|birthday_year|integer|null: false|
-|birthday_month|integer|null: false|
-|birthday_day|integer|null: false|
-|tel_number|string|null: false|
+|birth_year|integer|null: false|
+|birth_month|integer|null: false|
+|birth_day|integer|null: false|
 |email|string|null: false|
 |encrypted_password|string|null: false|
-|password_confirmation|string|null: false|
+|reset_password_token|string|
+|reset_password_sent_at|datetime|
+|remember_created_at|satetime|
 
 ### Association
-- has_many :items,dependent: :destroy
-- has_many :comments
-- has_one  :card
 - has_one  :address
-
-### index
-add_index: [:nickname, :email]
+- has_many :comments, dependent: :destroy
+- has_many :sns_credentials
+- has_many :creditcard
+- has_many :buyer_items, class_name: "Item", foreign_key: "buyer_id"
+- has_many :seller_items, class_name: "Item", foreign_key: "seller_id"
 
 ## addressesテーブル
 
@@ -35,33 +35,27 @@ add_index: [:nickname, :email]
 |firstname_kana|string|null: false|
 |lastname_kana|string|null: false|
 |post_number|string|null: false|
-|prefecture|string|null: false|
+|prefecture_id|string|null: false|
 |local|string|null: false|
 |local_number|string|null: false|
-|building|string|null: false|
+|building|string||
 |tel_number|string||
-|user_id|integer|null: false,foreign_key:true|
+|user|references|null: false,foreign_key:true|
 
 ### Association
-- belongs_to :user
+- belongs_to_active_hash :prefecture
+- belongs_to :user, optional: true
 
-### index
-add_index: [:prefecture, :user_id]
-
-
-## cardsテーブル
+## creditcardsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|customer_id|string||
-|card_id|string||
-|user_id|integer|null: false,foreign_key:true|
+|customer_id|string|null: false|
+|card_id|string|null: false|
+|user|references|null: false,foreign_key:true|
 
 ### Association
 - belongs_to :user
-
-### index
-add_index: [:user_id]
 
 ## commentsテーブル
 
@@ -76,7 +70,7 @@ add_index: [:user_id]
 - belongs_to :item
 
 ### index
-add_index: [:user_id, :item_id]
+add_index :comments, [:user_id, :item_id]
 
 
 ## itemsテーブル
@@ -85,59 +79,74 @@ add_index: [:user_id, :item_id]
 |------|----|-------|
 |name|string|null: false|
 |description|text|null: false|
-|condition|string|null: false|
-|prefecture|string|null: false|
+|condition_id|string|null: false|
+|prefecture_id|string|null: false|
 |size|string||
 |price|integer|null: false|
-|shipping_days|integer|null: false|
-|postage|string|null: false|
-|user_id|integer|null: false,foreign_key:true|
-|category_id|integer|null: false,foreign_key:true|
-|brand_id|integer|null: false,foreign_key:true|
+|shipping_days_id|integer|null: false|
+|postage_id|string|null: false|
+|category_id|integer|null: false|
+|brand|string|null: false|
+|status_id|string||
 
 ### Association
-- belongs_to :user
-- belongs_to :brand
+- belongs_to_active_hash :prefecture
+- belings_to_active_hash :postage
+- belongs_to_active_hash :shipping_days
 - belongs_to :category
-- has_many :images,dependent: :destroy
-- has_many :comments
-
-### index
-add_index: [:name, :price]
-
+- belongs_to :buyer, class_name: "User", foreign_key: "buyer_id", optional: true
+- belongs_to :seller, class_name: "User", foreign_key: "seller_id", optional: true
+- has_many :images, dependent: :destroy
+- has_many :favorites, dependent: :destroy
+- has_many :comments, dependent: :destroy
 
 ## imagesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|url|string|null: false|
-|item_id|integer|null: false,foreign_key:true|
+|image|string|null: false|
+|item|references|null: false,foreign_key:true|
 
 ### Association
-- belongs_to :item
-
-
-## brandsテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
-### Association
-- has_many :items
-
-### index
-add_index: [:name]
+- belongs_to :item, optional: true
 
 ## categoriesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|ancestry|string||
+|ancestry|string|index: true|
 
 ### Association
 - has_many :items
+- has_ancestry
 
-### index
-add_index: [:name]
+## ancestries_categoryテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|ancestry|string|index: true|
+
+## sns_credentialsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|provider|string||
+|uid|string||
+|user|references|foreign_key|
+
+### Association
+- belongs_to :user, optional: true
+
+## favoritesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user|references|foreign_key: true|
+|item|references|foreign_key: true|
+|user_id, :item_id|index|unique: true|
+
+### Association
+- belongs_to :user
+- belongs_to :item
