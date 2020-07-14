@@ -1,6 +1,8 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
+  belongs_to_active_hash :postage
+  belongs_to_active_hash :shipping_days
   belongs_to :category
   belongs_to :buyer, class_name: "User", foreign_key: "buyer_id", optional: true
   belongs_to :seller, class_name: "User", foreign_key: "seller_id", optional: true
